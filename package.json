@@ -1,0 +1,14 @@
+{
+  "name": "bucks-prototype",
+  "version": "0.1.0",
+  "description": "Buckinghamshire Council website redesign prototype",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0",
+    "vite": "^6.0.0"
+  }
+}

@@ -1,0 +1,409 @@
+// =============================================================================
+// Seasonal / Featured Content Block
+// Highlights timely information (school terms, winter gritting, etc.)
+// Uses accent green to feel "fresh" and draw the eye.
+// =============================================================================
+
+.seasonal {
+  background-color: $color-bg-warm;
+  border-top: 4px solid $color-accent;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+    align-items: center;
+
+    @include bp(md) {
+      grid-template-columns: 1fr 1fr;
+      gap: $space-10;
+    }
+
+    @include bp(lg) {
+      grid-template-columns: 2fr 3fr;
+    }
+  }
+
+  // Left: label + heading block
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    background-color: $color-accent;
+    color: $color-primary-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    padding: $space-1 $space-3;
+    border-radius: $radius-full;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: $space-4;
+  }
+
+  &__heading {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-primary-dark;
+    margin-bottom: $space-3;
+    line-height: 1.2;
+
+    @include bp(md) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__description {
+    color: $color-text-secondary;
+    font-size: $font-size-base;
+    margin-bottom: $space-5;
+    max-width: 45ch;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    background-color: $color-primary-dark;
+    color: $color-text-inverted;
+    padding: $space-3 $space-6;
+    border-radius: $radius-sm;
+    text-decoration: none;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-base;
+    transition: background $transition-base, box-shadow $transition-base;
+
+    &:hover {
+      background-color: $color-primary;
+      box-shadow: $shadow-sm;
+      color: $color-text-inverted;
+      text-decoration: none;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+  }
+
+  // Right: list of seasonal items / dates
+  &__items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+}
+
+// --- Individual seasonal item ------------------------------------------------
+.seasonal-item {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  background-color: $color-bg;
+  border-radius: $radius-md;
+  padding: $space-4 $space-5;
+  border-left: 4px solid $color-accent;
+  box-shadow: $shadow-sm;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow $transition-base, transform $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateX(2px);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__dates {
+    text-align: center;
+    flex-shrink: 0;
+    min-width: 60px;
+
+    .month {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: $color-text-secondary;
+      font-weight: $font-weight-medium;
+    }
+
+    .day {
+      display: block;
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-bold;
+      color: $color-primary-dark;
+      line-height: 1;
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 40px;
+    background-color: $color-border-light;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-base;
+    color: $color-text;
+    margin-bottom: $space-1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__meta {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+
+  &__badge {
+    display: inline-block;
+    background-color: $color-accent-light;
+    color: $color-accent-dark;
+    font-size: 0.7rem;
+    font-weight: $font-weight-bold;
+    padding: 2px $space-2;
+    border-radius: $radius-full;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  &__badge--alert {
+    background-color: lighten($color-yellow, 25%);
+    color: darken($color-yellow, 30%);
+  }
+}
+
+// =============================================================================
+// Right now in Bucks — combined featured CTA + two timely service cards.
+// Layout: 2fr primary (featured-story) + 1fr secondary (two stacked timely-cards).
+// Replaces the standalone timely-services and seasonal-featured sections.
+// Swap card content per season (see commented HTML in index.html for examples).
+// =============================================================================
+
+.right-now {
+  padding: $space-16 0;
+
+  .section__header h2 {
+    font-size: $font-size-3xl;
+
+    @include bp(md) {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-8;
+
+    @include bp(md) {
+      grid-template-columns: 2fr 1fr;
+      gap: $space-8;
+      align-items: stretch;
+    }
+  }
+
+  &__secondary {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+
+    // Stretch cards to fill the column equally; match accent to section red
+    .timely-card {
+      flex: 1;
+      background-color: transparent;
+      border-left-color: #e83f4b;
+    }
+  }
+}
+
+.timely-card {
+  display: block;
+  padding: $space-5 $space-5 $space-5 $space-6;
+  background-color: $color-bg;
+  border-left: 4px solid $color-accent;
+  text-decoration: none;
+  color: $color-text;
+  transition:
+    box-shadow $transition-base,
+    transform $transition-base;
+
+  &:hover &__title {
+    color: $color-primary;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+    color: $color-text;
+  }
+
+  // Colour variants — set via modifier to match the service's brand colour
+  &--blue   { border-color: $color-primary; }
+  &--orange { border-color: #ed7004; }
+  &--green  { border-color: #009b3e; }
+  &--alert  { border-color: $color-red; }
+
+  &__category {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: $space-2;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-family: $font-family-heading;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  &__desc {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    line-height: 1.45;
+    margin-top: $space-2;
+  }
+
+  &__arrow {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: $color-text-secondary;
+    transition: transform $transition-base, color $transition-base;
+  }
+
+  &:hover &__arrow {
+    color: $color-primary;
+    transform: translateX(3px);
+  }
+}
+
+// =============================================================================
+// Contact block – "Can't find what you need?" fallback before the footer.
+// Directly addresses the #2 pain point: residents can't find a phone number.
+// =============================================================================
+
+.contact-block {
+  background-color: $color-bg-warm;
+  border-top: 1px solid $color-border-light;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: $space-8;
+
+    @include bp(md) {
+      flex-direction: row;
+      align-items: center;
+      gap: $space-12;
+    }
+  }
+
+  &__text {
+    flex: 1;
+
+    h2 {
+      font-size: $font-size-2xl;
+      margin-bottom: $space-2;
+
+      @include bp(md) {
+        font-size: $font-size-3xl;
+      }
+    }
+
+    p {
+      color: $color-text-secondary;
+      max-width: 42ch;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+    flex-shrink: 0;
+
+    @include bp(sm) {
+      flex-direction: row;
+      align-items: center;
+      gap: $space-8;
+    }
+  }
+
+  &__option {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      gap: $space-2;
+      margin-bottom: $space-1;
+
+      svg {
+        width: 22px;
+        height: 22px;
+        color: $color-primary;
+        flex-shrink: 0;
+      }
+    }
+
+    a {
+      font-family: $font-family-heading;
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $color-primary-dark;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-primary;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+
+    span {
+      font-size: $font-size-sm;
+      color: $color-text-secondary;
+      padding-left: calc(22px + #{$space-2}); // align under icon text
+    }
+  }
+
+  &__divider {
+    display: none;
+
+    @include bp(sm) {
+      display: block;
+      width: 1px;
+      align-self: stretch;
+      background: $color-border-light;
+    }
+  }
+}

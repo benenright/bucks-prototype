@@ -1,0 +1,176 @@
+// =============================================================================
+// Base – reset, root variables, and global element styles
+// =============================================================================
+
+// Export brand tokens as CSS custom properties so JS can access them
+// and so the Wagtail theme system can override them per section.
+:root {
+  --color-primary:          #{$color-primary};
+  --color-primary-dark:     #{$color-primary-dark};
+  --color-primary-light:    #{$color-primary-light};
+  --color-primary-fg:       #{$color-primary-fg};
+  --color-accent:           #{$color-accent};
+  --color-accent-dark:      #{$color-accent-dark};
+  --color-text:             #{$color-text};
+  --color-text-secondary:   #{$color-text-secondary};
+  --color-bg:               #{$color-bg};
+  --color-bg-warm:          #{$color-bg-warm};
+  --color-bg-dark:          #{$color-bg-dark};
+  --color-border:           #{$color-border};
+  --color-focus:            #{$color-focus};
+  --color-yellow:           #{$color-yellow};
+  --color-red:              #{$color-red};
+}
+
+// Minimal reset — keeps specificity low (avoids fighting Wagtail's normalize)
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 112.5%; // 18px base (respect user browser font size settings)
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  color: $color-text;
+  background-color: $color-bg;
+  -webkit-font-smoothing: antialiased;
+}
+
+// --- Skip link (accessibility first) ----------------------------------------
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: $space-4;
+  z-index: $z-modal;
+  padding: $space-3 $space-6;
+  background: $color-primary;
+  color: $color-primary-fg;
+  font-weight: $font-weight-bold;
+  text-decoration: none;
+  border-radius: 0 0 $radius-md $radius-md;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+// --- Focus styles (WCAG 2.1 AA) ----------------------------------------------
+:focus-visible {
+  outline: 3px solid $color-focus;
+  outline-offset: 2px;
+}
+
+// --- Typography --------------------------------------------------------------
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+  color: $color-text;
+}
+
+h1 { font-size: $font-size-4xl; }
+h2 { font-size: $font-size-2xl; }
+h3 { font-size: $font-size-xl; }
+h4 { font-size: $font-size-lg; }
+
+@include bp(md) {
+  h1 { font-size: 3.2rem; }
+  h2 { font-size: $font-size-3xl; }
+}
+
+p {
+  line-height: $line-height-base;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: $color-primary-dark;
+    text-decoration-thickness: 2px;
+  }
+}
+
+ul, ol {
+  padding-left: $space-6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// --- Layout utility ----------------------------------------------------------
+.container {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $gutter;
+  padding-right: $gutter;
+
+  @include bp(md) {
+    padding-left: $gutter-lg;
+    padding-right: $gutter-lg;
+  }
+}
+
+.container--narrow {
+  max-width: $max-width-narrow;
+}
+
+// --- Visually hidden (accessible) -------------------------------------------
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// --- Section spacing ---------------------------------------------------------
+.section {
+  padding-top: $space-12;
+  padding-bottom: $space-12;
+
+  @include bp(md) {
+    padding-top: $space-20;
+    padding-bottom: $space-20;
+  }
+}
+
+.section--tight {
+  padding-top: $space-8;
+  padding-bottom: $space-8;
+}
+
+.section__header {
+  margin-bottom: $space-8;
+
+  h2 {
+    margin-bottom: $space-2;
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+  }
+}

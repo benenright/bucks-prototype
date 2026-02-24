@@ -1,0 +1,26 @@
+// =============================================================================
+// main.scss – entry point
+// Import order follows ITCSS: Settings → Base → Layout → Components → Utilities
+// =============================================================================
+
+// 1. Settings – must be first so all subsequent partials can use them
+@import 'variables';
+
+// 2. Base
+@import 'base';
+
+// Components
+@import 'header';
+@import 'hero';
+@import 'top-tasks';
+@import 'seasonal';
+@import 'cards';
+@import 'footer';
+@import 'content-page';
+
+// Utilities
+.u-mt-0       { margin-top: 0 !important; }
+.u-mb-0       { margin-bottom: 0 !important; }
+.u-text-center{ text-align: center !important; }
+.u-hidden     { display: none !important; }
+.u-flex       { display: flex !important; }

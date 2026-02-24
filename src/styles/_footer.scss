@@ -1,0 +1,150 @@
+// =============================================================================
+// Site Footer
+// =============================================================================
+
+.site-footer {
+  background-color: $color-bg-dark;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: $font-size-sm;
+  margin-top: auto;
+
+  // --- Upper footer: newsletter + links ------------------------------------
+  &__upper {
+    padding-top: $space-12;
+    padding-bottom: $space-10;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__upper-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-8;
+
+    @include bp(md) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include bp(lg) {
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: $space-6;
+    }
+  }
+
+  // --- Column: brand block --------------------------------------------------
+  &__brand {
+    .site-logo__name {
+      color: $color-text-inverted;
+    }
+    .site-logo__tagline {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &__brand-desc {
+    margin-top: $space-4;
+    font-size: $font-size-sm;
+    line-height: 1.6;
+    max-width: 30ch;
+  }
+
+  &__social {
+    display: flex;
+    gap: $space-3;
+    margin-top: $space-5;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: $radius-sm;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: background $transition-base, color $transition-base;
+
+      &:hover {
+        background-color: $color-primary;
+        color: $color-text-inverted;
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  // --- Column: link group ---------------------------------------------------
+  &__group-heading {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $color-text-inverted;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: $space-4;
+  }
+
+  &__link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__link {
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    line-height: 1.5;
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-text-inverted;
+      text-decoration: underline;
+    }
+  }
+
+  // --- Lower footer: legal + accessibility ---------------------------------
+  &__lower {
+    padding-top: $space-5;
+    padding-bottom: $space-5;
+  }
+
+  &__lower-inner {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    align-items: flex-start;
+
+    @include bp(md) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__legal {
+    font-size: $font-size-sm;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  &__legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-4;
+
+    a {
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      font-size: $font-size-sm;
+
+      &:hover {
+        color: $color-text-inverted;
+        text-decoration: underline;
+      }
+    }
+  }
+}
