@@ -42,7 +42,7 @@
   }
 
   @include bp(md) {
-    padding: 14rem 0 6rem;
+    padding: 10rem 0 6rem;
   }
 
   &__inner {
@@ -126,215 +126,146 @@
 }
 
 // =============================================================================
-// Chat widget
-// Frameless — elements sit directly on the dark hero background.
-// The white input bar is the visual hero of this section.
+// Hero search bar
 // =============================================================================
 
-.chat-widget {
-  // No card/box — elements are open on the dark bg
+.hero__search {
   width: 100%;
-  max-width: 800px;
+  max-width: 640px;
+  margin-bottom: $space-5;
+}
 
-  // --- Conversation messages ------------------------------------------------
-  // Collapsed at zero height; slides open when JS adds .has-messages
-  &__messages {
-    display: flex; // always flex — height controlled by max-height
-    flex-direction: column;
-    gap: $space-3;
-    text-align: left;
-    // Collapsed state
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    margin-bottom: 0;
-    transition:
-      max-height 420ms cubic-bezier(0.4, 0, 0.2, 1),
-      opacity    300ms ease 100ms,
-      margin-bottom 420ms cubic-bezier(0.4, 0, 0.2, 1);
+.hero__search-bar {
+  display: flex;
+  align-items: center;
+  background: $color-bg;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 
-    // Subtle scrollbar on dark bg
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.2) transparent;
-
-    &.has-messages {
-      max-height: 300px;
-      overflow-y: auto;
-      opacity: 1;
-      margin-bottom: $space-5;
-    }
+  &:focus-within {
+    outline: 3px solid $color-focus;
+    outline-offset: 0;
   }
 
-  &__bubble {
-    display: flex;
-    gap: $space-3;
-    align-items: flex-start;
-
-    &--user {
-      flex-direction: row-reverse;
-
-      .chat-widget__bubble-text {
-        background-color: rgba(0, 106, 180, 0.5); // $color-primary at 50%
-        color: $color-text-inverted;
-        text-align: right;
-      }
-    }
-  }
-
-  &__bubble-avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: $radius-full;
-    background: $color-accent;
+  .hero__search-icon {
+    padding: 0 $space-3 0 $space-4;
+    color: $color-text-secondary;
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
 
-    svg {
-      width: 15px;
-      height: 15px;
-      color: $color-primary-dark;
-    }
+    svg { width: 20px; height: 20px; display: block; }
   }
 
-  &__bubble-text {
-    background-color: rgba(10, 10, 60, 0.72);
-    color: $color-text-inverted;
-    padding: $space-3 $space-4;
-    border-radius: $radius-md;
-    font-size: $font-size-base;
-    line-height: 1.5;
-    max-width: 85%;
-
-    a {
-      color: $color-text-inverted;
-      font-weight: $font-weight-medium;
-    }
-  }
-
-  // --- "Powered by AI" label below input ------------------------------------
-  &__ai-label {
-    text-align: center;
-    margin-top: $space-2;
-    margin-bottom: $space-6;
-    font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.42);
-    max-width: none;
-
-    svg {
-      display: inline-block;
-      vertical-align: middle;
-      width: 12px;
-      height: 12px;
-      margin-right: 3px;
-      opacity: 0.7;
-    }
-  }
-
-  // --- Quick suggestion chips -----------------------------------------------
-  &__suggestions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: $space-2;
-  }
-
-  &__suggestion {
-    background: rgba(0, 0, 0, 0.28);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: $radius-full;
-    color: rgba(255, 255, 255, 0.9);
-    padding: $space-2 $space-4;
-    font-size: $font-size-sm;
-    font-family: $font-family-base;
-    cursor: pointer;
-    transition: background $transition-base, border-color $transition-base, color $transition-base;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.45);
-      border-color: rgba(255, 255, 255, 0.35);
-      color: $color-text-inverted;
-    }
-
-    &:focus-visible {
-      outline: 3px solid $color-focus;
-      outline-offset: 2px;
-    }
-  }
-
-  // --- The hero input bar ---------------------------------------------------
-  // Large, solid white pill — this is the main visual statement.
-  // The send button sits inside on the right.
-  &__input-area {
-    display: flex;
-    align-items: center;
-    background-color: $color-bg; // solid white
-    border-radius: 16px;
-    padding: 6px 6px 6px $space-6;
-    box-shadow:
-      0 4px 24px rgba(0, 0, 0, 0.25),
-      0 0 0 1px rgba(255, 255, 255, 0.08);
-    transition: box-shadow $transition-base;
-
-    &:focus-within {
-      box-shadow:
-        0 4px 24px rgba(0, 0, 0, 0.3),
-        0 0 0 3px $color-focus;
-    }
-  }
-
-  &__input {
+  input {
     flex: 1;
-    background: transparent;
     border: none;
     outline: none;
-    padding: $space-3 $space-3 $space-3 0;
-    color: $color-text;
+    padding: $space-4 $space-3;
     font-family: $font-family-base;
     font-size: $font-size-base;
-    min-width: 0; // prevent overflow
+    background: transparent;
+    color: $color-text;
+    min-width: 0;
 
-    &::placeholder {
-      color: $color-text-secondary;
-    }
-
-    // Focus ring handled by the parent &__input-area :focus-within above
-    &:focus {
-      outline: none;
-    }
+    &::placeholder { color: $color-text-secondary; }
+    &:focus { outline: none; }
   }
 
-  &__send {
+  button[type="submit"] {
     flex-shrink: 0;
-    width: 42px;
-    height: 42px;
     background: $color-primary;
     border: none;
-    border-radius: 14px;
+    color: $color-text-inverted;
+    padding: $space-4 $space-5;
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
     cursor: pointer;
+    white-space: nowrap;
+    transition: background $transition-base;
+    align-self: stretch;
+
+    &:hover { background: $color-primary-dark; }
+    &:focus-visible { outline: 3px solid $color-focus; outline-offset: 2px; }
+  }
+}
+
+// --- "or" divider between search and AI button --------------------------------
+.hero__divider {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: $font-size-sm;
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: $space-5;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+// --- "Ask us anything" AI button — large hero CTA ----------------------------
+.hero__ai-btn {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  width: 100%;
+  max-width: 640px;
+  background: rgba(29, 23, 81, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: $color-text-inverted;
+  padding: $space-4 $space-5;
+  cursor: pointer;
+  text-align: left;
+  font-family: $font-family-base;
+  transition: background $transition-base, border-color $transition-base;
+
+  &:hover {
+    background: rgba(29, 23, 81, 0.95);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  &:focus-visible {
+    outline: 3px solid $color-focus;
+    outline-offset: 2px;
+  }
+
+  &-icon {
+    flex-shrink: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: background $transition-base, transform $transition-base;
 
-    svg {
-      width: 20px;
-      height: 20px;
-      color: $color-text-inverted;
+    svg { width: 44px; height: 44px; color: $color-accent; }
+  }
+
+  &-text {
+    flex: 1;
+
+    strong {
+      display: block;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semibold;
     }
 
-    &:hover {
-      background: $color-primary-dark;
-      transform: scale(1.06);
-    }
-
-    &:focus-visible {
-      outline: 3px solid $color-focus;
-      outline-offset: 2px;
+    small {
+      display: block;
+      font-size: $font-size-sm;
+      color: rgba(255, 255, 255, 0.65);
+      margin-top: 2px;
     }
   }
 
+  &-arrow {
+    flex-shrink: 0;
+    opacity: 0.5;
+    svg { width: 18px; height: 18px; }
+  }
 }
 
 
@@ -358,7 +289,7 @@
     width: 7px;
     height: 7px;
     background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
+    border-radius: 0;
     animation: typing-bounce 1.2s ease-in-out infinite;
 
     &:nth-child(2) { animation-delay: 0.2s; }
@@ -401,7 +332,9 @@
     margin-top: $space-8;
 
     .task-tile__sublabel {
-      display: block;
+      @include bp(lg) {
+        display: block;
+      }
     }
   }
 }

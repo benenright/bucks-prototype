@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Check when your bins and boxes are collected in Buckinghamshire. Find your next collection dates for general waste, recycling, food waste and garden waste." />
-  <title>Check your bin collection day – Buckinghamshire Council</title>
+  <meta name="description" content="Find out when your bins are collected, what goes in each bin, how to report a missed collection, and more." />
+  <title>Bin collections – Waste and recycling – Buckinghamshire Council</title>
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="/src/styles/main.scss" />
@@ -65,115 +65,156 @@
   <main id="main-content">
 
     <!-- =========================================================================
-         PAGE HEADER
+         PAGE HEADER (white – level-2 landing)
     ========================================================================= -->
-    <div class="content-header">
+    <div class="landing-header">
       <div class="container">
-
         <nav class="breadcrumb breadcrumb--on-light" aria-label="Breadcrumb">
           <ol>
             <li><a href="/">Home</a></li>
             <li><a href="/bins-and-recycling/">Waste and recycling</a></li>
-            <li><a href="/bins-and-recycling/bin-collections/">Bin collections</a></li>
-            <li aria-current="page">Check your bin collection day</li>
+            <li aria-current="page">Bin collections</li>
           </ol>
         </nav>
+        <h1>Bin collections</h1>
+        <p>Find out when your bins are collected, what goes in each bin, and how to get help with your collection.</p>
 
-        <h1>Check your bin collection day</h1>
+        <div class="top-tasks__grid">
 
-        <ol class="anchor-links" aria-label="On this page">
-          <li><a href="#check-dates">Check your dates</a></li>
-          <li><a href="#what-goes-in">What goes in each bin</a></li>
-          <li><a href="#collection-changes">Collection changes</a></li>
-          <li><a href="#printable-calendar">Printable calendar</a></li>
-        </ol>
+          <a href="/bins-and-recycling/bin-collection-days/" class="task-tile task-tile--green">
+            <span class="task-tile__icon-wrap" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
+            </span>
+            <span class="task-tile__label">Check your bin collection day</span>
+            <span class="task-tile__sublabel">Find out when your bins and boxes are collected</span>
+          </a>
 
+          <a href="/bins-and-recycling/missed-bin/" class="task-tile task-tile--orange">
+            <span class="task-tile__icon-wrap" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+            </span>
+            <span class="task-tile__label">Report a missed bin collection</span>
+            <span class="task-tile__sublabel">Let us know if your bin wasn't emptied on collection day</span>
+          </a>
+
+          <a href="/bins-and-recycling/garden-waste/" class="task-tile task-tile--mid-green">
+            <span class="task-tile__icon-wrap" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
+            </span>
+            <span class="task-tile__label">Manage garden waste</span>
+            <span class="task-tile__sublabel">Subscribe or renew your garden waste collection</span>
+          </a>
+
+        </div>
       </div>
     </div>
 
     <!-- =========================================================================
-         TWO-COLUMN LAYOUT
+         TOPICS
     ========================================================================= -->
-    <div class="container">
-      <div class="content-layout">
+    <section class="section" aria-labelledby="topics-heading">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="topics-heading">Topics</h2>
+        </div>
 
-        <!-- Main content -->
-        <article class="content-main prose">
+        <ul class="topic-links" role="list">
 
-          <section id="check-dates">
-            <p>Use our online tool to find out when your bins and boxes are next collected. Enter your postcode and select your address to see your personalised collection schedule.</p>
-
-            <a href="#" class="btn-primary">
-              Check your collection dates
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+          <li>
+            <a href="/bins-and-recycling/garden-waste/" class="topic-link">
+              <span class="topic-link__text">
+                <span class="topic-link__name">Garden waste <svg class="topic-link__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="topic-link__desc">Subscribe or renew your garden waste collection service</span>
+              </span>
             </a>
+          </li>
 
-            <p>We collect four types of waste from most homes:</p>
-            <ul>
-              <li>Food waste (weekly, in a small caddy)</li>
-              <li>Recycling — paper, card, cans, plastic and glass</li>
-              <li>General waste (fortnightly, grey bin)</li>
-              <li>Garden waste — if you have an active subscription</li>
-            </ul>
-          </section>
+          <li>
+            <a href="/bins-and-recycling/new-and-replacement-bins/" class="topic-link">
+              <span class="topic-link__text">
+                <span class="topic-link__name">New and replacement bins <svg class="topic-link__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="topic-link__desc">Request a new, replacement or additional bin or recycling box</span>
+              </span>
+            </a>
+          </li>
 
-          <section id="what-goes-in">
-            <h2>What goes in each bin</h2>
-            <p>Putting the wrong things in your bins can contaminate an entire lorry load of recycling, so it's worth getting it right.</p>
+          <li>
+            <a href="/bins-and-recycling/what-goes-in-your-bins/" class="topic-link">
+              <span class="topic-link__text">
+                <span class="topic-link__name">Check what you can put in your bins <svg class="topic-link__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="topic-link__desc">Find out which waste and recycling goes in each bin and box</span>
+              </span>
+            </a>
+          </li>
 
-            <h3>Recycling bin (blue or green lid)</h3>
-            <p>Accepts paper, cardboard, plastic bottles and containers, glass bottles and jars, tins and cans. Items should be empty and rinsed but don't need to be spotless.</p>
+          <li>
+            <a href="/bins-and-recycling/help-with-bins/" class="topic-link">
+              <span class="topic-link__text">
+                <span class="topic-link__name">Help taking out your bins <svg class="topic-link__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="topic-link__desc">If you have difficulty getting your bins to the collection point</span>
+              </span>
+            </a>
+          </li>
 
-            <h3>Food waste caddy (small, with green lid)</h3>
-            <p>All cooked and uncooked food scraps, including meat, fish, dairy and vegetable peelings. Line with compostable liner bags or newspaper.</p>
+          <li>
+            <a href="/bins-and-recycling/contaminated-bin/" class="topic-link">
+              <span class="topic-link__text">
+                <span class="topic-link__name">Pay for us to empty a contaminated bin <svg class="topic-link__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="topic-link__desc">If your bin contains the wrong materials, you may be charged for collection</span>
+              </span>
+            </a>
+          </li>
 
-            <h3>General waste bin (grey)</h3>
-            <p>Anything that cannot be recycled or composted. Please bag your waste before placing it in the grey bin.</p>
-          </section>
+          <li>
+            <a href="/bins-and-recycling/waste-refund/" class="topic-link">
+              <span class="topic-link__text">
+                <span class="topic-link__name">Request a refund for waste services <svg class="topic-link__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="topic-link__desc">Apply for a refund if you have moved home or cancelled a service</span>
+              </span>
+            </a>
+          </li>
 
-          <section id="collection-changes">
-            <h2>Collection changes</h2>
-            <p>Collections may be moved if a bank holiday falls on or before your scheduled day. When this happens, your collection will take place one day later than usual.</p>
-            <p>You'll be notified of any changes through the <a href="#">My Bucks account</a> service if you've set up alerts for your address.</p>
-          </section>
+          <li>
+            <a href="/bins-and-recycling/waste-collection-policy/" class="topic-link">
+              <span class="topic-link__text">
+                <span class="topic-link__name">Household waste collection policy 2026 <svg class="topic-link__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="topic-link__desc">Information about changes to household waste collection from 2026</span>
+              </span>
+            </a>
+          </li>
 
-          <section id="printable-calendar">
-            <h2>Printable calendar</h2>
-            <p>If you'd prefer a printed calendar, you can download a PDF version of your collection schedule. Enter your postcode using the tool above, then select <strong>View and download printable schedule</strong>.</p>
-            <p>Calendars show the full year and are updated every April.</p>
-          </section>
-
-        </article>
-
-        <!-- Sidebar -->
-        <aside class="content-sidebar">
-          <nav class="related-pages" aria-labelledby="related-heading">
-            <h2 class="related-pages__heading" id="related-heading">Related content</h2>
-            <ul>
-              <li><a href="/bins-and-recycling/missed-bin/">Report a missed bin collection</a></li>
-              <li><a href="/bins-and-recycling/household-recycling/">What can I recycle?</a></li>
-              <li><a href="/bins-and-recycling/garden-waste/">Garden waste subscriptions</a></li>
-              <li><a href="/bins-and-recycling/household-recycling-centres/">Find a recycling centre</a></li>
-              <li><a href="/bins-and-recycling/bulky-waste/">Bulky waste collections</a></li>
-            </ul>
-          </nav>
-
-          <button class="sidebar-ai-prompt" data-open-chat aria-controls="chat-panel" aria-expanded="false" aria-label="Ask us anything">
-            <span class="sidebar-ai-prompt__icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
-            </span>
-            <span class="sidebar-ai-prompt__text">
-              <span class="sidebar-ai-prompt__label">Ask us anything</span>
-              <span class="sidebar-ai-prompt__desc">Get instant AI-powered answers about council services</span>
-            </span>
-            <svg class="sidebar-ai-prompt__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-          </button>
-        </aside>
-
+        </ul>
       </div>
-    </div>
+    </section>
 
   </main>
+
+  <!-- =========================================================================
+       CONTACT BLOCK
+  ========================================================================= -->
+  <section class="contact-block section--tight" aria-labelledby="contact-help-heading">
+    <div class="container">
+      <div class="contact-block__inner">
+
+        <div class="contact-block__text">
+          <h2 id="contact-help-heading">Can't find what you need?</h2>
+          <p>Get instant AI-powered answers about council services</p>
+        </div>
+
+        <div class="contact-block__divider" aria-hidden="true"></div>
+
+        <div class="contact-block__action">
+          <button class="contact-block__cta" data-open-chat aria-controls="chat-panel" aria-expanded="false" aria-label="Ask us anything">
+            <span class="contact-block__cta-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+            </span>
+            <span class="contact-block__cta-label">Ask us anything</span>
+            <svg class="contact-block__cta-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- =========================================================================
        FOOTER
@@ -296,9 +337,9 @@
     <div class="chat-panel__footer">
       <div class="chat-panel__suggestions" role="group" aria-label="Quick suggestions">
         <button class="chat-panel__suggestion" data-query="check bin collection day">Bin collection day</button>
-        <button class="chat-panel__suggestion" data-query="pay council tax">Council tax</button>
+        <button class="chat-panel__suggestion" data-query="report a missed bin">Missed bin</button>
         <button class="chat-panel__suggestion" data-query="garden waste">Garden waste</button>
-        <button class="chat-panel__suggestion" data-query="search planning">Planning</button>
+        <button class="chat-panel__suggestion" data-query="what goes in my bins">What goes in my bins</button>
       </div>
       <form class="chat-panel__input-area" id="chat-form" aria-label="Ask us anything">
         <label for="chat-input" class="visually-hidden">Type your question</label>

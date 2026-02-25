@@ -310,8 +310,7 @@
 // =============================================================================
 
 .contact-block {
-  background-color: $color-bg-warm;
-  border-top: 1px solid $color-border-light;
+  background-color: $color-midnight-blue;
 
   &__inner {
     display: flex;
@@ -331,6 +330,7 @@
     h2 {
       font-size: $font-size-2xl;
       margin-bottom: $space-2;
+      color: $color-text-inverted;
 
       @include bp(md) {
         font-size: $font-size-3xl;
@@ -338,8 +338,8 @@
     }
 
     p {
-      color: $color-text-secondary;
-      max-width: 42ch;
+      color: $color-text-inverted;
+      max-width: none;
     }
   }
 
@@ -399,11 +399,77 @@
   &__divider {
     display: none;
 
-    @include bp(sm) {
+    @include bp(md) {
       display: block;
       width: 1px;
       align-self: stretch;
-      background: $color-border-light;
+      background: rgba(255, 255, 255, 0.12);
+      flex-shrink: 0;
+      margin: 0 $space-6;
     }
+  }
+
+  &__action {
+    flex-shrink: 0;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-3;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: $color-text-inverted;
+    cursor: pointer;
+    padding: $space-4 $space-5;
+    font-family: $font-family-base;
+    text-align: left;
+    transition: border-color $transition-base;
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+
+      .contact-block__cta-label {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .contact-block__cta-arrow {
+        transform: translateX(4px);
+        opacity: 1;
+      }
+    }
+
+    &:focus-visible {
+      outline: 3px solid $color-focus;
+      outline-offset: 4px;
+    }
+  }
+
+  &__cta-icon {
+    flex-shrink: 0;
+    color: $color-accent;
+
+    svg {
+      width: 36px;
+      height: 36px;
+      display: block;
+    }
+  }
+
+  &__cta-label {
+    font-family: $font-family-heading;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  &__cta-arrow {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    opacity: 0.55;
+    transition: transform $transition-base, opacity $transition-base;
   }
 }

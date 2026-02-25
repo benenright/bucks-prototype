@@ -18,11 +18,6 @@
   <!-- Inline SVG sprite (avoids extra HTTP requests) -->
   <!-- Icons sourced from Heroicons (MIT licence) — swap for your icon set -->
 
-  <!-- Figtree – variable font, weights 300–800 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..800&display=swap" />
-
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="/src/styles/main.scss" />
 </head>
@@ -45,17 +40,12 @@
           <img src="/assets/images/bucks-logo.svg" alt="Buckinghamshire Council" class="site-logo__img" />
         </a>
 
-        <!-- Header actions: Search · My account · Menu -->
+        <!-- Header actions: Menu · Search · Ask us anything · My account -->
         <div class="site-header__actions">
 
-          <button class="header-icon-btn" aria-label="Search the site" id="search-trigger">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
-            <span class="header-btn-label">Search</span>
-          </button>
-
           <a href="/sign-in/" class="header-account-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
-            <span class="header-btn-label">My account</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" /></svg>
+            <span class="header-btn-label">Account</span>
           </a>
 
           <button
@@ -68,7 +58,18 @@
             <span class="header-menu-btn__bars" aria-hidden="true">
               <span></span><span></span><span></span>
             </span>
-            <span>Menu</span>
+            <span class="header-btn-label">Menu</span>
+          </button>
+
+          <button class="header-icon-btn" aria-label="Search the site" id="search-trigger">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+            <span class="header-btn-label">Search</span>
+          </button>
+
+          <button class="header-ai-btn" id="ai-panel-trigger" data-open-chat aria-controls="chat-panel" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+            <span class="header-ai-btn__dot" aria-hidden="true"></span>
+            <span class="header-ai-btn__label">Ask us anything</span>
           </button>
 
         </div>
@@ -77,61 +78,7 @@
 
     <!-- Navigation panel — slides in below header on Menu click -->
     <!-- WAGTAIL: include 'partials/nav.html' -->
-    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-      <div class="container">
-        <ul class="site-nav__list">
-
-          <li><a href="/bins-and-recycling/" class="site-nav__link">
-            <span class="site-nav__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg></span>
-            <span class="site-nav__label">Bins &amp; recycling</span>
-            <svg class="site-nav__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-          </a></li>
-
-          <li><a href="/council-tax/" class="site-nav__link">
-            <span class="site-nav__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg></span>
-            <span class="site-nav__label">Council tax</span>
-            <svg class="site-nav__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-          </a></li>
-
-          <li><a href="/schools-and-learning/" class="site-nav__link">
-            <span class="site-nav__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg></span>
-            <span class="site-nav__label">Schools &amp; learning</span>
-            <svg class="site-nav__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-          </a></li>
-
-          <li><a href="/planning/" class="site-nav__link">
-            <span class="site-nav__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg></span>
-            <span class="site-nav__label">Planning &amp; building</span>
-            <svg class="site-nav__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-          </a></li>
-
-          <li><a href="/roads-and-transport/" class="site-nav__link">
-            <span class="site-nav__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" /></svg></span>
-            <span class="site-nav__label">Roads &amp; transport</span>
-            <svg class="site-nav__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-          </a></li>
-
-          <li><a href="/adult-social-care/" class="site-nav__link">
-            <span class="site-nav__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg></span>
-            <span class="site-nav__label">Adult social care</span>
-            <svg class="site-nav__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-          </a></li>
-
-          <li><a href="/jobs/" class="site-nav__link">
-            <span class="site-nav__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" /></svg></span>
-            <span class="site-nav__label">Jobs</span>
-            <svg class="site-nav__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-          </a></li>
-
-          <li><a href="/environment/" class="site-nav__link">
-            <span class="site-nav__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253M3 12a8.959 8.959 0 01.444-2.764" /></svg></span>
-            <span class="site-nav__label">Environment</span>
-            <svg class="site-nav__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-          </a></li>
-
-        </ul>
-      </div>
-    </nav>
+    <!-- @include "/src/partials/nav.html" -->
     <!-- WAGTAIL: end include -->
 
   </header>
@@ -153,51 +100,37 @@
             How can we help you today?
           </h1>
 
-          <!-- <p class="hero__subheading">
-            Ask our assistant anything about council services, or browse by topic below.
-          </p> -->
-
-          <!-- AI Chat Widget -->
-          <div class="chat-widget" role="region" aria-label="AI assistant chat">
-
-            <div class="chat-widget__messages" id="chat-messages" aria-live="polite" aria-label="Chat conversation">
-              <!-- Messages injected by JS when user interacts -->
+          <!-- Site search -->
+          <form class="hero__search" action="/search/" method="get" role="search">
+            <div class="hero__search-bar">
+              <span class="hero__search-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+              </span>
+              <label for="hero-search-input" class="visually-hidden">Search council services</label>
+              <input type="text" id="hero-search-input" name="q" placeholder="Search for a service or topic..." autocomplete="off" />
+              <button type="submit">Search</button>
             </div>
+          </form>
 
-            <!-- Input row -->
-            <form class="chat-widget__input-area" id="chat-form" aria-label="Ask a question">
-              <label for="chat-input" class="visually-hidden">Type your question</label>
-              <input
-                type="text"
-                id="chat-input"
-                class="chat-widget__input"
-                placeholder="Ask me anything — e.g. 'How do I pay my council tax?'"
-                autocomplete="off"
-                spellcheck="false"
-              />
-              <button type="submit" class="chat-widget__send" aria-label="Send message">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
-              </button>
-            </form>
+          <!-- Divider -->
+          <div class="hero__divider" aria-hidden="true">or</div>
 
-            <p class="chat-widget__ai-label" aria-hidden="true">
+          <!-- AI assistant CTA -->
+          <button class="hero__ai-btn" data-open-chat aria-controls="chat-panel" aria-expanded="false">
+            <span class="hero__ai-btn-icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
-              Powered by AI · Get instant answers to your questions
-            </p>
-
-            <!-- Quick suggestion chips — ordered by actual traffic data -->
-            <div class="chat-widget__suggestions" role="group" aria-label="Quick suggestions">
-              <button class="chat-widget__suggestion" data-query="check bin collection day">Check my bin day</button>
-              <button class="chat-widget__suggestion" data-query="garden waste">Garden waste</button>
-              <button class="chat-widget__suggestion" data-query="pay council tax">Pay council tax</button>
-              <button class="chat-widget__suggestion" data-query="planning application">Search planning</button>
-            </div>
-
-          </div>
-          <!-- /chat-widget -->
+            </span>
+            <span class="hero__ai-btn-text">
+              <strong>Ask us anything</strong>
+              <small>Get instant AI-powered answers about council services</small>
+            </span>
+            <span class="hero__ai-btn-arrow" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+            </span>
+          </button>
 
           <p class="hero__search-fallback">
-            Prefer to browse? <a href="/all-services/">See all services A–Z</a>
+            Prefer to browse? <a href="#services-heading">See all services</a>
           </p>
 
         </div>
@@ -219,15 +152,6 @@
 
         <div class="top-tasks__grid">
 
-          <a href="/schools-and-learning/term-dates/" class="task-tile task-tile--seasonal">
-            <span class="task-tile__badge">Right now</span>
-            <div class="task-tile__icon-wrap" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
-            </div>
-            <span class="task-tile__label">Check school term dates</span>
-            <span class="task-tile__sublabel">Spring term 2026</span>
-          </a>
-
           <a href="/bins-and-recycling/bin-collection-days/" class="task-tile task-tile--green">
             <div class="task-tile__icon-wrap" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-.375c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v.375c0 .621.504 1.125 1.125 1.125z" /></svg>
@@ -240,8 +164,16 @@
             <div class="task-tile__icon-wrap" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
             </div>
-            <span class="task-tile__label">Garden waste</span>
-            <span class="task-tile__sublabel">Subscribe or renew</span>
+            <span class="task-tile__label">Manage garden waste</span>
+            <span class="task-tile__sublabel">Subscribe or renew online</span>
+          </a>
+
+          <a href="/planning/search-applications/" class="task-tile task-tile--purple">
+            <div class="task-tile__icon-wrap" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" /></svg>
+            </div>
+            <span class="task-tile__label">View a planning application</span>
+            <span class="task-tile__sublabel">Search by address or postcode</span>
           </a>
 
           <a href="/council-tax/pay/" class="task-tile task-tile--blue">
@@ -249,39 +181,40 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
             </div>
             <span class="task-tile__label">Pay council tax</span>
-            <span class="task-tile__sublabel">Pay, view bill or move address</span>
+            <span class="task-tile__sublabel">Pay, manage account or move address</span>
           </a>
 
-          <a href="/planning/search-applications/" class="task-tile task-tile--purple">
+          <a href="/schools-and-learning/term-dates/" class="task-tile task-tile--seasonal">
+            <span class="task-tile__badge">Right now</span>
             <div class="task-tile__icon-wrap" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
             </div>
-            <span class="task-tile__label">Search planning applications</span>
-            <span class="task-tile__sublabel">By address or postcode</span>
+            <span class="task-tile__label">Check school term dates</span>
+            <span class="task-tile__sublabel">Spring term 2026</span>
           </a>
 
-          <a href="/roads-and-transport/report-pothole/" class="task-tile task-tile--orange">
-            <div class="task-tile__icon-wrap" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
-            </div>
-            <span class="task-tile__label">Report a pothole</span>
-            <span class="task-tile__sublabel">Roads &amp; pavements</span>
-          </a>
-
-          <a href="/roads-and-transport/roadworks/" class="task-tile task-tile--teal">
+          <a href="/roads-and-transport/" class="task-tile task-tile--teal">
             <div class="task-tile__icon-wrap" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z" /></svg>
             </div>
-            <span class="task-tile__label">Check roadworks</span>
-            <span class="task-tile__sublabel">Planned works near you</span>
+            <span class="task-tile__label">Roadworks &amp; potholes</span>
+            <span class="task-tile__sublabel">Report defects or check planned works</span>
           </a>
 
           <a href="/roads-and-transport/parking/pay-parking-fine/" class="task-tile task-tile--yellow">
             <div class="task-tile__icon-wrap" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a3 3 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" /></svg>
             </div>
-            <span class="task-tile__label">Pay a parking fine</span>
-            <span class="task-tile__sublabel">Pay or appeal a PCN</span>
+            <span class="task-tile__label">Pay or appeal a parking fine</span>
+            <span class="task-tile__sublabel">PCN payment or appeal</span>
+          </a>
+
+          <a href="/jobs/" class="task-tile task-tile--orange">
+            <div class="task-tile__icon-wrap" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" /></svg>
+            </div>
+            <span class="task-tile__label">Find a job at the council</span>
+            <span class="task-tile__sublabel">Search current vacancies</span>
           </a>
 
         </div>
@@ -301,7 +234,6 @@
       <div class="container">
         <div class="section__header">
           <h2 id="right-now-heading">Right now in Bucks</h2>
-          <p>Services with upcoming deadlines or seasonal peaks</p>
         </div>
 
         <div class="right-now__grid">
@@ -320,7 +252,7 @@
           <div class="right-now__secondary">
 
             <a href="/bins-and-recycling/garden-waste/" class="timely-card timely-card--green">
-              <span class="timely-card__category">Bins &amp; recycling</span>
+              <span class="timely-card__category">Waste and recycling</span>
               <h3 class="timely-card__title">Renew your garden waste subscription<svg class="timely-card__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></h3>
               <p class="timely-card__desc">Collections peak March–May. Renew or subscribe now so there's no gap when the season gets going.</p>
             </a>
@@ -356,68 +288,91 @@
 
 
     <!-- -----------------------------------------------------------------------
-         POPULAR SERVICES — service area directory
+         SERVICES — full service area directory
          WAGTAIL: block popular_services
     ----------------------------------------------------------------------- -->
     <section class="popular-services" aria-labelledby="services-heading">
       <div class="container">
-        <div class="section__header" style="display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
-          <div>
-            <h2 id="services-heading">Popular services</h2>
-            <p>Browse the services residents use most</p>
-          </div>
-          <a href="/all-services/" class="view-all-link">
-            Browse all services A–Z
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
-          </a>
+        <div class="section__header">
+          <h2 id="services-heading">Services</h2>
         </div>
 
         <ul class="service-grid" role="list">
 
           <li>
-            <a href="/bins-and-recycling/" class="service-row">
+            <a href="/cost-of-living/" class="service-row service-row--popular">
               <span class="service-row__icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-.375c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v.375c0 .621.504 1.125 1.125 1.125z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Bins &amp; recycling<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__name">Help with cost of living<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Financial support, benefits and help with bills</span>
+                <span class="service-row__badge">Popular</span>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/bins-and-recycling/" class="service-row service-row--popular">
+              <span class="service-row__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
+              </span>
+              <span class="service-row__text">
+                <span class="service-row__name">Waste and recycling<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
                 <span class="service-row__desc">Collections, garden waste, recycling centres</span>
+                <span class="service-row__badge">Popular</span>
               </span>
             </a>
           </li>
 
           <li>
-            <a href="/council-tax/" class="service-row">
+            <a href="/planning/" class="service-row service-row--popular">
               <span class="service-row__icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Council tax<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
-                <span class="service-row__desc">Pay, discounts and change of address</span>
+                <span class="service-row__name">Planning &amp; building<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Applications, permits and building control</span>
+                <span class="service-row__badge">Popular</span>
               </span>
             </a>
           </li>
 
           <li>
-            <a href="/schools-and-learning/" class="service-row">
+            <a href="/schools-and-learning/" class="service-row service-row--popular">
               <span class="service-row__icon" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg>
               </span>
               <span class="service-row__text">
                 <span class="service-row__name">Schools &amp; learning<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
                 <span class="service-row__desc">Admissions, term dates and SEND</span>
+                <span class="service-row__badge">Popular</span>
               </span>
             </a>
           </li>
 
           <li>
-            <a href="/planning/" class="service-row">
+            <a href="/council-tax/" class="service-row service-row--popular">
               <span class="service-row__icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Planning &amp; building<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
-                <span class="service-row__desc">Applications, permits and building control</span>
+                <span class="service-row__name">Council tax<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Pay, discounts and change of address</span>
+                <span class="service-row__badge">Popular</span>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/libraries/" class="service-row service-row--popular">
+              <span class="service-row__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+              </span>
+              <span class="service-row__text">
+                <span class="service-row__name">Libraries<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Find a library, renew books and search the catalogue</span>
+                <span class="service-row__badge">Popular</span>
               </span>
             </a>
           </li>
@@ -425,7 +380,7 @@
           <li>
             <a href="/roads-and-transport/" class="service-row">
               <span class="service-row__icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" /></svg>
               </span>
               <span class="service-row__text">
                 <span class="service-row__name">Roads &amp; transport<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
@@ -435,13 +390,73 @@
           </li>
 
           <li>
-            <a href="/jobs/" class="service-row">
+            <a href="/housing/" class="service-row">
               <span class="service-row__icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Jobs<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
-                <span class="service-row__desc">Current vacancies and working at Bucks</span>
+                <span class="service-row__name">Housing &amp; benefits<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Housing support, benefits and homelessness help</span>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/community-and-safety/" class="service-row">
+              <span class="service-row__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+              </span>
+              <span class="service-row__text">
+                <span class="service-row__name">Community &amp; safety<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Community safety, emergencies and volunteering</span>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/environmental-health/" class="service-row">
+              <span class="service-row__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253M3 12a8.959 8.959 0 01.444-2.764" /></svg>
+              </span>
+              <span class="service-row__text">
+                <span class="service-row__name">Environmental health<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Noise, food safety, pollution and pest control</span>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/culture-and-tourism/" class="service-row">
+              <span class="service-row__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
+              </span>
+              <span class="service-row__text">
+                <span class="service-row__name">Culture &amp; tourism<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Arts, events, museums and visiting Bucks</span>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/births-deaths-marriages/" class="service-row">
+              <span class="service-row__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+              </span>
+              <span class="service-row__text">
+                <span class="service-row__name">Births, deaths &amp; marriages<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Register births and deaths, book ceremonies</span>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/children-and-families/" class="service-row">
+              <span class="service-row__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
+              </span>
+              <span class="service-row__text">
+                <span class="service-row__name">Children &amp; families<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Early years, fostering and family support</span>
               </span>
             </a>
           </li>
@@ -449,35 +464,47 @@
           <li>
             <a href="/adult-social-care/" class="service-row">
               <span class="service-row__icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Adult social care<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__name">Care for adults<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
                 <span class="service-row__desc">Care at home, care homes and carer support</span>
               </span>
             </a>
           </li>
 
           <li>
-            <a href="/libraries/" class="service-row">
+            <a href="/health-and-wellbeing/" class="service-row">
               <span class="service-row__icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Libraries<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
-                <span class="service-row__desc">Find a library, renew books and search the catalogue</span>
+                <span class="service-row__name">Health &amp; wellbeing<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Public health, vaccinations and healthy living</span>
               </span>
             </a>
           </li>
 
           <li>
-            <a href="/transport-and-roads/blue-badges/" class="service-row">
+            <a href="/council-and-elections/" class="service-row">
               <span class="service-row__icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Blue badge<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
-                <span class="service-row__desc">Apply for or renew a Blue Badge disability parking permit</span>
+                <span class="service-row__name">Council &amp; elections<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Councillors, meetings, decisions and voting</span>
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/business/" class="service-row">
+              <span class="service-row__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" /></svg>
+              </span>
+              <span class="service-row__text">
+                <span class="service-row__name">Business<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__desc">Licences, grants, trading standards and support</span>
               </span>
             </a>
           </li>
@@ -581,29 +608,19 @@
 
         <div class="contact-block__text">
           <h2 id="contact-help-heading">Can't find what you need?</h2>
-          <p>Our contact centre can help with any council service — from bins and council tax to planning and social care.</p>
+          <p>Get instant AI-powered answers about council services</p>
         </div>
 
-        <div class="contact-block__options">
+        <div class="contact-block__divider" aria-hidden="true"></div>
 
-          <div class="contact-block__option">
-            <div class="contact-block__option-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
-              <a href="tel:03001316000">0300 131 6000</a>
-            </div>
-            <span>Monday to Friday, 9am–5pm</span>
-          </div>
-
-          <div class="contact-block__divider" aria-hidden="true"></div>
-
-          <div class="contact-block__option">
-            <div class="contact-block__option-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-              <a href="/contact/">Send us a message</a>
-            </div>
-            <span>Response within 5 working days</span>
-          </div>
-
+        <div class="contact-block__action">
+          <button class="contact-block__cta" data-open-chat aria-controls="chat-panel" aria-expanded="false" aria-label="Ask us anything">
+            <span class="contact-block__cta-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+            </span>
+            <span class="contact-block__cta-label">Ask us anything</span>
+            <svg class="contact-block__cta-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -625,7 +642,7 @@
           <!-- Brand column -->
           <div class="site-footer__brand">
             <a href="/" class="site-logo" aria-label="Buckinghamshire Council – homepage">
-              <img src="/assets/images/bucks-logo.svg" alt="Buckinghamshire Council" class="site-logo__img" />
+              <img src="/assets/images/bucks-logo-footer.svg" alt="Buckinghamshire Council" class="site-logo__img" />
             </a>
             <p class="site-footer__brand-desc">
               Serving the communities of Aylesbury, Chiltern, South Bucks and Wycombe.
@@ -653,14 +670,24 @@
           <!-- Link group: Services -->
           <nav aria-label="Footer services links">
             <h3 class="site-footer__group-heading">Services</h3>
-            <ul class="site-footer__link-list" role="list">
-              <li><a href="/council-tax/" class="site-footer__link">Council tax</a></li>
-              <li><a href="/bins-and-recycling/" class="site-footer__link">Bins &amp; recycling</a></li>
-              <li><a href="/planning/" class="site-footer__link">Planning</a></li>
-              <li><a href="/roads-and-transport/" class="site-footer__link">Roads &amp; transport</a></li>
+                        <ul class="site-footer__link-list" role="list">
+              <li><a href="/cost-of-living/" class="site-footer__link">Help with cost of living</a></li>
+              <li><a href="/bins-and-recycling/" class="site-footer__link">Waste and recycling</a></li>
+              <li><a href="/planning/" class="site-footer__link">Planning &amp; building</a></li>
               <li><a href="/schools-and-learning/" class="site-footer__link">Schools &amp; learning</a></li>
-              <li><a href="/adult-social-care/" class="site-footer__link">Adult social care</a></li>
-              <li><a href="/housing/" class="site-footer__link">Housing</a></li>
+              <li><a href="/council-tax/" class="site-footer__link">Council tax</a></li>
+              <li><a href="/libraries/" class="site-footer__link">Libraries</a></li>
+              <li><a href="/roads-and-transport/" class="site-footer__link">Roads &amp; transport</a></li>
+              <li><a href="/housing/" class="site-footer__link">Housing &amp; benefits</a></li>
+              <li><a href="/community-and-safety/" class="site-footer__link">Community &amp; safety</a></li>
+              <li><a href="/environmental-health/" class="site-footer__link">Environmental health</a></li>
+              <li><a href="/culture-and-tourism/" class="site-footer__link">Culture &amp; tourism</a></li>
+              <li><a href="/births-deaths-marriages/" class="site-footer__link">Births, deaths &amp; marriages</a></li>
+              <li><a href="/children-and-families/" class="site-footer__link">Children &amp; families</a></li>
+              <li><a href="/adult-social-care/" class="site-footer__link">Care for adults</a></li>
+              <li><a href="/health-and-wellbeing/" class="site-footer__link">Health &amp; wellbeing</a></li>
+              <li><a href="/council-and-elections/" class="site-footer__link">Council &amp; elections</a></li>
+              <li><a href="/business/" class="site-footer__link">Business</a></li>
             </ul>
           </nav>
 
@@ -712,6 +739,46 @@
 
   </footer>
   <!-- WAGTAIL: end include footer -->
+
+  <!-- Off-canvas AI chat panel -->
+  <div class="chat-panel-overlay" id="chat-panel-overlay" aria-hidden="true"></div>
+  <aside class="chat-panel" id="chat-panel" role="dialog" aria-label="AI assistant" aria-modal="true" aria-hidden="true">
+
+    <div class="chat-panel__header">
+      <div class="chat-panel__title">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+        AI Assistant <span class="chat-panel__beta">Beta</span>
+      </div>
+      <button class="chat-panel__close" id="chat-panel-close" aria-label="Close chat panel">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <div class="chat-panel__messages" id="chat-messages" aria-live="polite" aria-label="Chat conversation">
+      <div class="chat-panel__empty" id="chat-empty">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+        Ask me anything about Buckinghamshire Council services.
+      </div>
+    </div>
+
+    <div class="chat-panel__footer">
+      <div class="chat-panel__suggestions" role="group" aria-label="Quick suggestions">
+        <button class="chat-panel__suggestion" data-query="check bin collection day">Bin collection day</button>
+        <button class="chat-panel__suggestion" data-query="pay council tax">Council tax</button>
+        <button class="chat-panel__suggestion" data-query="garden waste">Garden waste</button>
+        <button class="chat-panel__suggestion" data-query="search planning">Planning</button>
+      </div>
+      <form class="chat-panel__input-area" id="chat-form" aria-label="Ask us anything">
+        <label for="chat-input" class="visually-hidden">Type your question</label>
+        <input type="text" id="chat-input" class="chat-panel__input" placeholder="Ask us anything..." autocomplete="off" spellcheck="false" />
+        <button type="submit" class="chat-panel__send" aria-label="Send message">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
+        </button>
+      </form>
+      <p class="chat-panel__disclaimer" aria-hidden="true">AI answers may be inaccurate. Always verify important information.</p>
+    </div>
+
+  </aside>
 
   <script type="module" src="/src/js/main.js"></script>
 </body>

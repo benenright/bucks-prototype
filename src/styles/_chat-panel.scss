@@ -1,0 +1,264 @@
+// =============================================================================
+// Off-canvas AI chat panel
+// Slides in from the right edge of the browser on all pages.
+// Chat history persists across pages via sessionStorage (managed in main.js).
+// =============================================================================
+
+// --- Overlay backdrop ---------------------------------------------------------
+.chat-panel-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: $z-overlay;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-slow, visibility $transition-slow;
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// --- Panel shell --------------------------------------------------------------
+.chat-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 420px;
+  max-width: 100vw;
+  background: $color-bg;
+  z-index: $z-modal;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform $transition-slow;
+  box-shadow: -4px 0 32px rgba(0, 0, 0, 0.18);
+
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  // --- Panel header -----------------------------------------------------------
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-4 $space-5;
+    background: $color-primary-dark;
+    color: $color-text-inverted;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-base;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      color: $color-accent;
+      flex-shrink: 0;
+    }
+  }
+
+  &__beta {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.65rem;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+    margin-left: $space-1;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    padding: $space-1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color $transition-base;
+
+    svg { width: 20px; height: 20px; }
+
+    &:hover { color: $color-text-inverted; }
+    &:focus-visible { outline: 3px solid $color-focus; outline-offset: 2px; }
+  }
+
+  // --- Messages area ----------------------------------------------------------
+  &__messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: $space-6 $space-5;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    scrollbar-width: thin;
+    scrollbar-color: $color-border-light transparent;
+  }
+
+  &__empty {
+    margin: auto;
+    text-align: center;
+    padding: $space-8 $space-4;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    line-height: 1.6;
+
+    svg {
+      width: 36px;
+      height: 36px;
+      color: $color-accent;
+      margin: 0 auto $space-4;
+      display: block;
+      opacity: 0.7;
+    }
+  }
+
+  // --- Bubbles ----------------------------------------------------------------
+  &__bubble {
+    display: flex;
+    gap: $space-3;
+    align-items: flex-start;
+
+    &--user {
+      flex-direction: row-reverse;
+
+      .chat-panel__bubble-text {
+        background: $color-primary;
+        color: $color-text-inverted;
+
+        a { color: rgba(255,255,255,0.9); }
+      }
+    }
+  }
+
+  &__bubble-avatar {
+    width: 28px;
+    height: 28px;
+    background: $color-accent;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg { width: 14px; height: 14px; color: $color-primary-dark; }
+  }
+
+  &__bubble-text {
+    background: $color-bg-warm;
+    color: $color-text;
+    padding: $space-3 $space-4;
+    font-size: $font-size-sm;
+    line-height: 1.55;
+    max-width: 85%;
+
+    a {
+      color: $color-primary;
+      font-weight: $font-weight-medium;
+      text-underline-offset: 3px;
+    }
+  }
+
+  // --- Footer: suggestions + input ------------------------------------------
+  &__footer {
+    flex-shrink: 0;
+    border-top: 1px solid $color-border-light;
+    padding: $space-4 $space-5;
+    background: $color-bg;
+  }
+
+  &__suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    margin-bottom: $space-4;
+  }
+
+  &__suggestion {
+    background: $color-bg-warm;
+    border: 1px solid $color-border-light;
+    color: $color-text;
+    padding: $space-1 $space-3;
+    font-size: $font-size-sm;
+    font-family: $font-family-base;
+    cursor: pointer;
+    transition: background $transition-base, border-color $transition-base;
+    line-height: 1.6;
+
+    &:hover {
+      background: $color-primary-light;
+      border-color: $color-primary;
+    }
+    &:focus-visible { outline: 3px solid $color-focus; outline-offset: 2px; }
+  }
+
+  &__input-area {
+    display: flex;
+    border: 1px solid $color-border;
+
+    &:focus-within {
+      outline: 3px solid $color-focus;
+      outline-offset: 0;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: $space-3 $space-4;
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    background: $color-bg;
+    color: $color-text;
+    min-width: 0;
+
+    &::placeholder { color: $color-text-secondary; }
+    &:focus { outline: none; }
+  }
+
+  &__send {
+    flex-shrink: 0;
+    width: 46px;
+    background: $color-primary;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background $transition-base;
+
+    svg { width: 18px; height: 18px; color: $color-text-inverted; }
+
+    &:hover { background: $color-primary-dark; }
+    &:focus-visible { outline: 3px solid $color-focus; outline-offset: 2px; }
+  }
+
+  &__disclaimer {
+    margin-top: $space-3;
+    font-size: 0.7rem;
+    color: $color-text-secondary;
+    text-align: center;
+    line-height: 1.4;
+  }
+}
+
+// Typing dots — light bg version (panel)
+.chat-panel .typing-dots {
+  span {
+    background-color: $color-text-secondary;
+  }
+}
+
+// Prevent body scroll when panel open
+body.chat-panel-open { overflow: hidden; }

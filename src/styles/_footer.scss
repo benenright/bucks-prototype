@@ -3,7 +3,7 @@
 // =============================================================================
 
 .site-footer {
-  background-color: $color-bg-dark;
+  background-color: $color-primary-dark;
   color: rgba(255, 255, 255, 0.75);
   font-size: $font-size-sm;
   margin-top: auto;
@@ -32,6 +32,10 @@
 
   // --- Column: brand block --------------------------------------------------
   &__brand {
+    .site-logo__img {
+      width: 200px;
+      height: auto;
+    }
     .site-logo__name {
       color: $color-text-inverted;
     }

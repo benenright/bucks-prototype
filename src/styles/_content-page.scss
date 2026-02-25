@@ -103,6 +103,11 @@
 
 .content-main {
   min-width: 0;
+
+  // Offset anchor scroll targets so sticky header doesn't obscure section headings
+  section[id] {
+    scroll-margin-top: 90px;
+  }
 }
 
 .content-sidebar {
@@ -186,6 +191,7 @@
   &:hover {
     background-color: $color-primary-dark;
     box-shadow: $shadow-md;
+    color: $color-primary-fg;
   }
 
   &:focus-visible {
@@ -197,6 +203,213 @@
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+  }
+}
+
+// --- Level-2 landing page header (white background) --------------------------
+.landing-header {
+  background: $color-bg;
+  padding-top: $space-8;
+  padding-bottom: $space-8;
+  border-bottom: 1px solid $color-border-light;
+
+  @include bp(md) {
+    padding-top: $space-12;
+    padding-bottom: $space-10;
+  }
+
+  .breadcrumb {
+    margin-bottom: $space-5;
+  }
+
+  h1 {
+    margin-bottom: $space-4;
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+    max-width: 65ch;
+  }
+
+  .top-tasks__grid {
+    margin-top: $space-8;
+  }
+}
+
+// --- Top tasks: warm variant (used on level-2 pages) --------------------------
+.top-tasks--light {
+  background-color: $color-bg-warm;
+
+  > .container {
+    border-top: 1px solid $color-border-light;
+  }
+
+  .section__header h2 {
+    color: $color-text;
+  }
+
+  .section__header p {
+    color: $color-text-secondary;
+  }
+}
+
+// --- Top tasks: 2-col grid (for pages with only 2 tasks) ----------------------
+.top-tasks__grid--2col {
+  @include bp(md) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 560px;
+  }
+}
+
+// --- Top tasks: 3-col grid (for level-2 landing pages) ------------------------
+.top-tasks__grid--3col {
+  @include bp(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// --- Topic links: child pages (no icons, 2-col on desktop) --------------------
+.topic-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include bp(md) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: $space-8;
+  }
+}
+
+.topic-link {
+  display: block;
+  padding: $space-5 0;
+  border-top: 1px solid $color-border-light;
+  text-decoration: none;
+  color: $color-text;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary-dark;
+
+    .topic-link__name {
+      color: $color-primary;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid $color-focus;
+    outline-offset: 2px;
+  }
+
+  &__text {
+    display: block;
+  }
+
+  &__name {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: $font-family-heading;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-lg;
+    line-height: 1.3;
+  }
+
+  &__desc {
+    display: block;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin-top: $space-1;
+    line-height: 1.4;
+  }
+
+  &__arrow {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    color: $color-text-secondary;
+    transition: transform $transition-base, color $transition-base;
+  }
+
+  &:hover &__arrow {
+    color: $color-primary;
+    transform: translateX(3px);
+  }
+}
+
+// --- Sidebar AI prompt button -------------------------------------------------
+.sidebar-ai-prompt {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  width: 100%;
+  margin-top: $space-10;
+  padding: $space-4 $space-5;
+  background-color: $color-midnight-blue;
+  border: none;
+  color: $color-text-inverted;
+  cursor: pointer;
+  text-align: left;
+  font-family: $font-family-base;
+  transition: opacity $transition-base;
+
+  &:hover {
+    opacity: 0.88;
+
+    .sidebar-ai-prompt__arrow {
+      transform: translateX(3px);
+      color: $color-text-inverted;
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid $color-focus;
+    outline-offset: 2px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    color: $color-accent;
+
+    svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+  }
+
+  &__text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__label {
+    display: block;
+    font-family: $font-family-heading;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    line-height: 1.2;
+  }
+
+  &__desc {
+    display: block;
+    font-size: $font-size-sm;
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: rgba(255, 255, 255, 0.45);
+    transition: transform $transition-base, color $transition-base;
   }
 }
 
