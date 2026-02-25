@@ -42,7 +42,7 @@
   }
 
   @include bp(md) {
-    padding: 10rem 0 6rem;
+    padding: 14rem 0 6rem;
   }
 
   &__inner {
@@ -140,6 +140,8 @@
   align-items: center;
   background: $color-bg;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  border-radius: $radius-sm;
+  overflow: hidden;
 
   &:focus-within {
     outline: 3px solid $color-focus;
@@ -219,6 +221,7 @@
   max-width: 640px;
   background: rgba(29, 23, 81, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-sm;
   color: $color-text-inverted;
   padding: $space-4 $space-5;
   cursor: pointer;

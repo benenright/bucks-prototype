@@ -210,12 +210,11 @@
 .landing-header {
   background: $color-bg;
   padding-top: $space-8;
-  padding-bottom: $space-8;
-  border-bottom: 1px solid $color-border-light;
+  padding-bottom: 0;
 
   @include bp(md) {
     padding-top: $space-12;
-    padding-bottom: $space-10;
+    padding-bottom: 0;
   }
 
   .breadcrumb {
