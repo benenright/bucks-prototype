@@ -7,7 +7,7 @@
 
 // --- Single header bar -------------------------------------------------------
 .site-header {
-  background-color: $color-primary-dark;
+  background-color: $color-brand-dark;
   position: sticky;
   top: 0;
   z-index: $z-header;
@@ -142,7 +142,7 @@
 .header-ai-btn {
   display: inline-flex;
   align-items: center;
-  gap: 1px;
+  gap: 5px;
   background: $color-midnight-blue;
   color: $color-text-inverted;
   border: 1px solid transparent;
@@ -159,11 +159,27 @@
     font-size: $font-size-sm;
   }
 
-  svg {
-    width: 20px;
-    height: 20px;
+  &__icon-stack {
+    display: inline-grid;
+    align-items: center;
+    justify-items: center;
     flex-shrink: 0;
+  }
+
+  &__chat {
+    width: 22px;
+    height: 22px;
     color: $color-accent;
+    grid-area: 1/1;
+  }
+
+  &__spark {
+    width: 16px;
+    height: 16px;
+    color: $color-midnight-blue;
+    grid-area: 1/1;
+    margin-top: -3px;
+    margin-left: 4px;
   }
 
   &:hover { border-color: rgba(255, 255, 255, 0.35); }
@@ -173,7 +189,9 @@
   &__dot { display: none; }
 
   &.has-chat {
-    svg { animation: icon-pulse 2s ease-in-out infinite; }
+    @media (prefers-reduced-motion: no-preference) {
+      .header-ai-btn__icon-stack { animation: icon-pulse 2s ease-in-out infinite; }
+    }
   }
 
   // Hide text label on smallest screens, show from sm up
@@ -311,7 +329,7 @@
 
   &__col-heading {
     font-family: $font-family-base;
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: $font-weight-bold;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -320,6 +338,15 @@
 
     &--spaced {
       margin-top: $space-8;
+    }
+  }
+
+  // Two-section wrapper inside the services column
+  &__services-section {
+    & + & {
+      margin-top: $space-6;
+      padding-top: $space-6;
+      border-top: 1px solid $color-border-light;
     }
   }
 
@@ -450,7 +477,7 @@
 
   &__task-desc {
     font-family: $font-family-base;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: $color-text-secondary;
     line-height: 1.3;
   }
@@ -458,7 +485,7 @@
   &__task-now {
     display: inline-block;
     font-family: $font-family-base;
-    font-size: 9px;
+    font-size: 0.5625rem;
     font-weight: $font-weight-bold;
     letter-spacing: 0.06em;
     text-transform: uppercase;

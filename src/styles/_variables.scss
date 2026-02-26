@@ -7,10 +7,11 @@
 
 // --- Brand colours -----------------------------------------------------------
 // Source: main.css on buckinghamshire.gov.uk
-$color-primary:           #006ab4;  // Bucks blue
-$color-primary-dark:      #2c2d84;  // Dark navy/indigo
+$color-primary:           #2c2d84;  // Indigo – default link/icon colour
+$color-primary-dark:      #006ab4;  // Bucks blue – hover colour
 $color-primary-light:     #bfdaec;  // Light blue tint
 $color-primary-fg:        #ffffff;  // Text on primary bg
+$color-brand-dark:        #2c2d84;  // Structural dark bg (header, footer, banners)
 
 $color-accent:            #9fc63b;  // Lime green accent
 $color-accent-dark:       #4c8200;  // Darker green (hover states)
@@ -75,7 +76,7 @@ $space-20:  5rem;     // 80px
 $space-24:  6rem;     // 96px
 
 // --- Layout ------------------------------------------------------------------
-$max-width:         75rem;   // 1200px content max
+$max-width:         68.125rem; // 1090px content max
 $max-width-narrow:  48rem;   // 768px for reading
 $gutter:            1.5rem;    // ~27px mobile side padding
 $gutter-lg:         4.5rem;    // ~81px tablet/desktop side padding

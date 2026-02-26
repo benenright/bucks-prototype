@@ -63,8 +63,11 @@ function updateAiHeaderBtn() {
 const chatPanel   = document.getElementById('chat-panel');
 const chatOverlay = document.getElementById('chat-panel-overlay');
 
+let panelOpener = null; // element that opened the panel, restored on close
+
 function openPanel() {
   if (!chatPanel) return;
+  panelOpener = document.activeElement;
   chatPanel.classList.add('is-open');
   chatPanel.setAttribute('aria-hidden', 'false');
   chatOverlay?.classList.add('is-visible');
@@ -81,6 +84,7 @@ function closePanel() {
   chatOverlay?.classList.remove('is-visible');
   document.body.classList.remove('chat-panel-open');
   chatState = null;
+  panelOpener?.focus();
 }
 
 // Open triggers: hero button + header button (both pages)
@@ -91,9 +95,30 @@ document.querySelectorAll('[data-open-chat]').forEach(el => {
 document.getElementById('chat-panel-close')?.addEventListener('click', closePanel);
 chatOverlay?.addEventListener('click', closePanel);
 
-// Close on Escape
+// Close on Escape; focus-trap Tab within the panel while open
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && chatPanel?.classList.contains('is-open')) closePanel();
+  if (!chatPanel?.classList.contains('is-open')) return;
+
+  if (e.key === 'Escape') {
+    closePanel();
+    return;
+  }
+
+  if (e.key === 'Tab') {
+    const focusable = Array.from(chatPanel.querySelectorAll(
+      'a[href], button:not([disabled]), input:not([disabled]), textarea, select, [tabindex]:not([tabindex="-1"])'
+    )).filter(el => el.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
 });
 
 // --- Restore messages from sessionStorage ------------------------------------

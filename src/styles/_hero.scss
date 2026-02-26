@@ -12,7 +12,7 @@
   background-position: center;
   background-repeat: no-repeat;
   color: $color-text-inverted;
-  padding: 14rem 0 4rem;
+  padding: 8rem 0 4rem;
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -76,13 +76,15 @@
       height: 7px;
       background: $color-accent;
       border-radius: $radius-full;
-      animation: pulse 2s ease-in-out infinite;
+      @media (prefers-reduced-motion: no-preference) {
+        animation: pulse 2s ease-in-out infinite;
+      }
     }
   }
 
   // --- Heading ---------------------------------------------------------------
   &__heading {
-    font-size: $font-size-4xl;
+    font-size: $font-size-3xl;
     font-weight: $font-weight-bold;
     color: $color-text-inverted;
     margin-bottom: $space-8;
@@ -90,7 +92,7 @@
     letter-spacing: -0.02em;
 
     @include bp(md) {
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       white-space: nowrap;
     }
   }
@@ -148,21 +150,11 @@
     outline-offset: 0;
   }
 
-  .hero__search-icon {
-    padding: 0 $space-3 0 $space-4;
-    color: $color-text-secondary;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-
-    svg { width: 20px; height: 20px; display: block; }
-  }
-
   input {
     flex: 1;
     border: none;
     outline: none;
-    padding: $space-4 $space-3;
+    padding: $space-4 $space-3 $space-4 $space-4;
     font-family: $font-family-base;
     font-size: $font-size-base;
     background: transparent;
@@ -175,19 +167,20 @@
 
   button[type="submit"] {
     flex-shrink: 0;
-    background: $color-primary;
+    background: $color-primary-dark;
     border: none;
     color: $color-text-inverted;
-    padding: $space-4 $space-5;
-    font-family: $font-family-base;
-    font-size: $font-size-base;
-    font-weight: $font-weight-medium;
+    padding: 0 $space-4;
     cursor: pointer;
-    white-space: nowrap;
     transition: background $transition-base;
     align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    &:hover { background: $color-primary-dark; }
+    svg { width: 20px; height: 20px; display: block; }
+
+    &:hover { background: $color-brand-dark; }
     &:focus-visible { outline: 3px solid $color-focus; outline-offset: 2px; }
   }
 }
@@ -293,10 +286,11 @@
     height: 7px;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 0;
-    animation: typing-bounce 1.2s ease-in-out infinite;
-
-    &:nth-child(2) { animation-delay: 0.2s; }
-    &:nth-child(3) { animation-delay: 0.4s; }
+    @media (prefers-reduced-motion: no-preference) {
+      animation: typing-bounce 1.2s ease-in-out infinite;
+      &:nth-child(2) { animation-delay: 0.2s; }
+      &:nth-child(3) { animation-delay: 0.4s; }
+    }
   }
 }
 
@@ -310,7 +304,7 @@
 // =============================================================================
 
 .page-banner {
-  background-color: $color-primary-dark;
+  background-color: $color-brand-dark;
   color: $color-text-inverted;
   padding: $space-8 0 $space-10;
 

@@ -78,12 +78,13 @@
     margin-bottom: $space-3;
 
     a {
-      color: $color-text;
-      text-decoration: none;
+      color: $color-primary;
+      text-decoration: underline;
+      text-underline-offset: 3px;
 
       &:hover {
-        color: $color-primary;
-        text-decoration: underline;
+        color: $color-primary-dark;
+        text-decoration: none;
       }
     }
   }
