@@ -372,3 +372,142 @@ if (siteHeader) {
 // =============================================================================
 const yearEl = document.getElementById('footer-year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// =============================================================================
+// Header search button → navigate to /search/
+// =============================================================================
+document.getElementById('search-trigger')?.addEventListener('click', () => {
+  window.location.href = '/search/';
+});
+
+// =============================================================================
+// Search results page
+// =============================================================================
+if (location.pathname.includes('/search')) {
+  const RESULTS = [
+    { title: 'Check your bin collection day', desc: 'Find out when your bins and boxes are collected. Enter your postcode to get your personalised collection schedule.', href: '/bins-and-recycling/bin-collection-days/' },
+    { title: 'Report a missed bin collection', desc: "Let us know if your bin wasn't collected on your scheduled day. We'll investigate and rearrange if needed.", href: '/bins-and-recycling/bin-collections/report-missed/' },
+    { title: 'Garden waste subscription', desc: 'Sign up for or renew your garden waste collection service. Collections run from March to November.', href: '/bins-and-recycling/garden-waste/' },
+    { title: 'Household waste recycling centres', desc: 'Find your nearest recycling centre, check opening times, and see what materials are accepted.', href: '/bins-and-recycling/recycling-centres/' },
+    { title: 'Council tax – pay online', desc: 'Pay your council tax bill, set up a Direct Debit, or apply for a discount or exemption.', href: '/council-tax/pay/' },
+    { title: 'Planning applications – search and comment', desc: 'Search for planning applications in Buckinghamshire, view documents, and submit comments on proposals.', href: '/planning/search-applications/' },
+    { title: 'School term dates', desc: 'View term dates and school holidays for Buckinghamshire maintained schools and academies.', href: '/schools-and-learning/term-dates/' },
+    { title: 'Apply for a school place', desc: "Apply for your child's first school place or transfer to a new school. Applications for September 2026 are now open.", href: '/schools-and-learning/apply-for-school/' },
+    { title: 'Resident parking permits', desc: 'Apply for, renew or update a resident parking permit for your zone. Check which zone your address is in.', href: '/roads-and-transport/parking/permits/' },
+    { title: 'Housing benefit and council tax support', desc: 'Apply for help with your rent or council tax if you are on a low income or receiving benefits.', href: '/housing/benefits/' },
+    { title: 'Register to vote', desc: 'Register to vote or update your details on the electoral register. You must be registered to vote in elections.', href: '/council-and-elections/register-to-vote/' },
+    { title: 'Report a pothole or road defect', desc: 'Report a pothole, damaged road surface, or other highway defect. Safety-critical repairs are prioritised within 24 hours.', href: '/roads-and-transport/report-pothole/' },
+    { title: 'Bulky waste collection', desc: "Book a collection for large items that can't go in your normal bins, such as furniture, mattresses and appliances.", href: '/bins-and-recycling/bulky-waste/' },
+    { title: 'Blue Badge – apply or renew', desc: "Apply for a Blue Badge parking permit for people with disabilities. Check if you're eligible and apply online.", href: '/transport-and-roads/blue-badges/' },
+    { title: 'Freedom of Information requests', desc: 'Make a request for information held by Buckinghamshire Council under the Freedom of Information Act 2000.', href: '/foi/' },
+  ];
+
+  const PER_PAGE = 5;
+  let currentPage = 1;
+
+  const params = new URLSearchParams(location.search);
+  const query  = params.get('q') || '';
+
+  // Pre-fill search input
+  const searchInput = document.getElementById('search-page-input');
+  if (searchInput) searchInput.value = query;
+
+  // Simple relevance filter: any result whose title/desc contains a query word
+  function getFiltered() {
+    if (!query.trim()) return RESULTS;
+    const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    return RESULTS.filter(r =>
+      words.some(w => r.title.toLowerCase().includes(w) || r.desc.toLowerCase().includes(w))
+    );
+  }
+
+  function renderPage(page) {
+    const filtered = getFiltered();
+    const total    = filtered.length;
+    const totalPages = Math.ceil(total / PER_PAGE);
+    currentPage = Math.min(Math.max(1, page), totalPages || 1);
+
+    const start   = (currentPage - 1) * PER_PAGE;
+    const slice   = filtered.slice(start, start + PER_PAGE);
+
+    // Meta
+    const metaEl = document.getElementById('search-meta');
+    if (metaEl) {
+      if (total === 0) {
+        metaEl.textContent = query ? `No results for '${query}'` : '';
+      } else {
+        const from = start + 1;
+        const to   = Math.min(start + PER_PAGE, total);
+        metaEl.textContent = query
+          ? `Showing ${from}–${to} of ${total} results for '${query}'`
+          : `Showing ${from}–${to} of ${total} results`;
+      }
+    }
+
+    // Results list
+    const listEl   = document.getElementById('search-results');
+    const noResEl  = document.getElementById('search-no-results');
+    if (listEl) {
+      listEl.innerHTML = '';
+      if (slice.length === 0) {
+        listEl.hidden = true;
+        if (noResEl) noResEl.hidden = false;
+      } else {
+        listEl.hidden = false;
+        if (noResEl) noResEl.hidden = true;
+        slice.forEach(r => {
+          const li = document.createElement('li');
+          li.className = 'search-result';
+          li.innerHTML = `
+            <h2 class="search-result__title"><a href="${r.href}">${r.title}</a></h2>
+            <p class="search-result__desc">${r.desc}</p>`;
+          listEl.appendChild(li);
+        });
+      }
+    }
+
+    // Pagination
+    const paginationEl = document.getElementById('search-pagination');
+    if (paginationEl) {
+      paginationEl.innerHTML = '';
+      if (totalPages <= 1) return;
+
+      const prevBtn = document.createElement('button');
+      prevBtn.className = `search-pagination__btn${currentPage === 1 ? ' search-pagination__btn--disabled' : ''}`;
+      prevBtn.setAttribute('aria-label', 'Previous page');
+      prevBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg> Previous`;
+      function goToPage(p) { renderPage(p); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+      if (currentPage > 1) prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+      paginationEl.appendChild(prevBtn);
+
+      for (let p = 1; p <= totalPages; p++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = `search-pagination__btn${p === currentPage ? ' search-pagination__btn--active' : ''}`;
+        pageBtn.textContent = p;
+        pageBtn.setAttribute('aria-label', `Page ${p}`);
+        if (p === currentPage) pageBtn.setAttribute('aria-current', 'page');
+        if (p !== currentPage) pageBtn.addEventListener('click', () => goToPage(p));
+        paginationEl.appendChild(pageBtn);
+      }
+
+      const nextBtn = document.createElement('button');
+      nextBtn.className = `search-pagination__btn${currentPage === totalPages ? ' search-pagination__btn--disabled' : ''}`;
+      nextBtn.setAttribute('aria-label', 'Next page');
+      nextBtn.innerHTML = `Next <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>`;
+      if (currentPage < totalPages) nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+      paginationEl.appendChild(nextBtn);
+    }
+  }
+
+  renderPage(1);
+
+  // Feedback buttons
+  document.getElementById('feedback-yes')?.addEventListener('click', () => {
+    document.getElementById('search-feedback-actions').hidden = true;
+    document.getElementById('search-feedback-thanks').hidden = false;
+  });
+  document.getElementById('feedback-no')?.addEventListener('click', () => {
+    document.getElementById('search-feedback-actions').hidden = true;
+    document.getElementById('search-feedback-thanks').hidden = false;
+  });
+}
