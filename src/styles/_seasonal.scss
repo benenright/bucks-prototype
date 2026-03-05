@@ -313,6 +313,8 @@
 
 .contact-block {
   background-color: $color-midnight-blue;
+  padding-top: $space-12;
+  padding-bottom: $space-12;
 
   &__inner {
     display: flex;
@@ -340,138 +342,65 @@
     }
 
     p {
-      color: $color-text-inverted;
+      color: rgba(255, 255, 255, 0.75);
       max-width: none;
-    }
-  }
-
-  &__options {
-    display: flex;
-    flex-direction: column;
-    gap: $space-6;
-    flex-shrink: 0;
-
-    @include bp(sm) {
-      flex-direction: row;
-      align-items: center;
-      gap: $space-8;
-    }
-  }
-
-  &__option {
-    display: flex;
-    flex-direction: column;
-    gap: $space-1;
-
-    &-icon {
-      display: flex;
-      align-items: center;
-      gap: $space-2;
-      margin-bottom: $space-1;
-
-      svg {
-        width: 22px;
-        height: 22px;
-        color: $color-primary;
-        flex-shrink: 0;
-      }
-    }
-
-    a {
-      font-family: $font-family-heading;
-      font-size: $font-size-xl;
-      font-weight: $font-weight-bold;
-      color: $color-primary-dark;
-      text-decoration: none;
-
-      &:hover {
-        color: $color-primary;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-    }
-
-    span {
-      font-size: $font-size-sm;
-      color: $color-text-secondary;
-      padding-left: calc(22px + #{$space-2}); // align under icon text
-    }
-  }
-
-  &__divider {
-    display: none;
-
-    @include bp(md) {
-      display: block;
-      width: 1px;
-      align-self: stretch;
-      background: rgba(255, 255, 255, 0.12);
-      flex-shrink: 0;
-      margin: 0 $space-6;
     }
   }
 
   &__action {
     flex-shrink: 0;
   }
+  // CTA button — see _ask-btn.scss for shared .ask-btn styles
+}
 
-  &__cta {
-    display: inline-flex;
+// =============================================================================
+// Page feedback strip — "Is this page useful?" above the footer on every page.
+// =============================================================================
+
+.page-feedback {
+  padding: $space-5 0;
+
+  &__inner {
+    display: flex;
     align-items: center;
+    gap: $space-6;
+    flex-wrap: wrap;
+    border-top: 1px solid $color-border-light;
+    padding-top: $space-5;
+  }
+
+  &__question {
+    margin: 0;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-text;
+  }
+
+  &__actions {
+    display: flex;
     gap: $space-3;
-    background: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: $color-text-inverted;
-    cursor: pointer;
-    padding: $space-4 $space-5;
+  }
+
+  &__btn {
+    padding: $space-2 $space-6;
+    background: transparent;
+    border: 1px solid $color-border;
+    border-radius: 6px;
+    color: $color-text;
     font-family: $font-family-base;
-    text-align: left;
-    transition: border-color $transition-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    transition: background $transition-base, border-color $transition-base;
 
     &:hover {
-      border-color: rgba(255, 255, 255, 0.4);
-
-      .contact-block__cta-label {
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-
-      .contact-block__cta-arrow {
-        transform: translateX(4px);
-        opacity: 1;
-      }
+      background: $color-bg-warm;
+      border-color: $color-text;
     }
 
     &:focus-visible {
       outline: 3px solid $color-focus;
-      outline-offset: 4px;
+      outline-offset: 2px;
     }
-  }
-
-  &__cta-icon {
-    flex-shrink: 0;
-    color: $color-accent;
-
-    svg {
-      width: 36px;
-      height: 36px;
-      display: block;
-    }
-  }
-
-  &__cta-label {
-    font-family: $font-family-heading;
-    font-size: $font-size-lg;
-    font-weight: $font-weight-bold;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-
-  &__cta-arrow {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    opacity: 0.55;
-    transition: transform $transition-base, opacity $transition-base;
   }
 }

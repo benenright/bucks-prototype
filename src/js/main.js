@@ -23,7 +23,7 @@ const heroEl = document.querySelector('.hero');
 if (heroEl) {
   const img = heroImages[Math.floor(Math.random() * heroImages.length)];
   heroEl.style.backgroundImage =
-    `linear-gradient(rgba(44, 45, 132, 0.3), rgba(44, 45, 132, 1)), url('${img}')`;
+    `linear-gradient(to bottom, rgba(44, 45, 132, 0.2) 0%, rgba(29, 23, 81, 0.65) 35%, rgba(29, 23, 81, 0.97) 52%, rgba(29, 23, 81, 1) 65%), url('${img}')`;
 }
 
 // =============================================================================
@@ -51,10 +51,12 @@ function saveChat(messages) {
 // --- Header button state ------------------------------------------------------
 function updateAiHeaderBtn() {
   document.querySelectorAll('.header-ai-btn').forEach(btn => {
-    const label = btn.querySelector('.header-ai-btn__label');
+    const desktopLabel = btn.querySelector('.header-ai-btn__label--desktop');
+    const mobileLabel  = btn.querySelector('.header-ai-btn__label--mobile');
     const hasChat = loadChat().length > 0;
     btn.classList.toggle('has-chat', hasChat);
-    if (label) label.textContent = hasChat ? 'Continue chat' : 'Ask us anything';
+    if (desktopLabel) desktopLabel.textContent = hasChat ? 'Continue chat' : 'Ask us anything';
+    if (mobileLabel)  mobileLabel.textContent  = hasChat ? 'Continue' : 'Ask us...';
     btn.setAttribute('aria-label', hasChat ? 'Continue chat' : 'Ask us anything');
   });
 }
@@ -89,7 +91,18 @@ function closePanel() {
 
 // Open triggers: hero button + header button (both pages)
 document.querySelectorAll('[data-open-chat]').forEach(el => {
-  el.addEventListener('click', openPanel);
+  el.addEventListener('click', () => {
+    const query = el.dataset.query;
+    if (query) {
+      if (!chatPanel?.classList.contains('is-open')) openPanel();
+      setTimeout(() => {
+        appendBubble({ role: 'user', text: query });
+        simulateResponse(query);
+      }, chatPanel?.classList.contains('is-open') ? 0 : 350);
+    } else {
+      openPanel();
+    }
+  });
 });
 
 document.getElementById('chat-panel-close')?.addEventListener('click', closePanel);
@@ -408,9 +421,12 @@ if (location.pathname.includes('/search')) {
   const params = new URLSearchParams(location.search);
   const query  = params.get('q') || '';
 
-  // Pre-fill search input
+  // Pre-fill search input and heading
   const searchInput = document.getElementById('search-page-input');
   if (searchInput) searchInput.value = query;
+
+  const headingEl = document.getElementById('search-heading');
+  if (headingEl && query) headingEl.textContent = `Search results for '${query}'`;
 
   // Simple relevance filter: any result whose title/desc contains a query word
   function getFiltered() {
@@ -465,6 +481,10 @@ if (location.pathname.includes('/search')) {
         });
       }
     }
+
+    // Show feedback strip when there are results
+    const feedbackEl = document.getElementById('search-feedback');
+    if (feedbackEl) feedbackEl.hidden = (total === 0);
 
     // Pagination
     const paginationEl = document.getElementById('search-pagination');

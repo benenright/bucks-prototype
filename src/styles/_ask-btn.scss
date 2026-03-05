@@ -1,0 +1,160 @@
+// =============================================================================
+// Ask-btn — shared "Ask us anything" AI CTA button
+// Used in: hero (homepage), contact-block (section pages)
+// =============================================================================
+
+.ask-btn {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  background: $color-midnight-blue;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-sm;
+  color: $color-text-inverted;
+  padding: $space-4 $space-3;
+
+  @include bp(md) {
+    padding: $space-4 $space-5;
+  }
+  cursor: pointer;
+  text-align: left;
+  font-family: $font-family-base;
+  transition: background $transition-base, border-color $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    background: $color-brand-dark;
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  &:focus-visible {
+    outline: 3px solid $color-focus;
+    outline-offset: 2px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    display: inline-grid;
+    align-items: center;
+    justify-items: center;
+  }
+
+  &__chat {
+    width: 44px;
+    height: 44px;
+    color: $color-accent;
+    grid-area: 1/1;
+  }
+
+  &__spark {
+    width: 32px;
+    height: 32px;
+    color: $color-midnight-blue;
+    grid-area: 1/1;
+    margin-top: -3px;
+    margin-left: 8px;
+  }
+
+  &__text {
+    flex: 1;
+
+    strong {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: $font-weight-semibold;
+    }
+
+    small {
+      display: block;
+      font-size: $font-size-sm;
+      color: rgba(255, 255, 255, 0.65);
+      margin-top: 2px;
+    }
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    opacity: 0.5;
+    transition: transform $transition-base, opacity $transition-base;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+  }
+
+  &:hover &__arrow {
+    transform: translateX(3px);
+    opacity: 0.8;
+  }
+}
+
+// Search AI teaser context: white reversal
+.search-ai-teaser .ask-btn {
+  width: 100%;
+  background: $color-bg;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: $color-text;
+
+  .ask-btn__spark { color: $color-bg; }
+  .ask-btn__text small { color: $color-text-secondary; }
+  .ask-btn__arrow { color: $color-text; }
+
+  &:hover {
+    background: $color-bg-warm;
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Contact block context: white reversal on dark blue background
+.contact-block .ask-btn {
+  background: $color-bg;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: $color-text;
+
+  .ask-btn__spark { color: $color-bg; }
+  .ask-btn__text small { color: $color-text-secondary; }
+  .ask-btn__arrow { color: $color-text; }
+
+  &:hover {
+    background: $color-bg-warm;
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Content sidebar context: white reversal
+.content-sidebar .ask-btn {
+  width: 100%;
+  margin-top: $space-10;
+  background: $color-bg;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: $color-text;
+
+  .ask-btn__spark { color: $color-bg; }
+  .ask-btn__text small { color: $color-text-secondary; }
+  .ask-btn__arrow { color: $color-text; }
+
+  &:hover {
+    background: $color-bg-warm;
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Hero context: white reversal, fills the full search bar width
+.hero .ask-btn {
+  width: 100%;
+  max-width: 640px;
+  background: $color-bg;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: $color-text;
+
+  .ask-btn__spark { color: $color-bg; }
+  .ask-btn__text small { color: $color-text-secondary; }
+  .ask-btn__arrow { color: $color-text; }
+
+  &:hover {
+    background: $color-bg-warm;
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+}
+

@@ -180,7 +180,7 @@
   font-size: $font-size-base;
   font-weight: $font-weight-bold;
   padding: $space-3 $space-6;
-  border-radius: $radius-sm;
+  border-radius: 6px;
   text-decoration: none;
   border: none;
   cursor: pointer;
@@ -203,6 +203,16 @@
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+  }
+
+  &--accent {
+    background-color: $color-accent;
+    color: $color-midnight-blue;
+
+    &:hover {
+      background-color: $color-accent-dark;
+      color: $color-text-inverted;
+    }
   }
 }
 
@@ -343,76 +353,6 @@
   }
 }
 
-// --- Sidebar AI prompt button -------------------------------------------------
-.sidebar-ai-prompt {
-  display: flex;
-  align-items: center;
-  gap: $space-3;
-  width: 100%;
-  margin-top: $space-10;
-  padding: $space-4 $space-5;
-  background-color: $color-midnight-blue;
-  border: none;
-  color: $color-text-inverted;
-  cursor: pointer;
-  text-align: left;
-  font-family: $font-family-base;
-  transition: opacity $transition-base;
-
-  &:hover {
-    opacity: 0.88;
-
-    .sidebar-ai-prompt__arrow {
-      transform: translateX(3px);
-      color: $color-text-inverted;
-    }
-  }
-
-  &:focus-visible {
-    outline: 3px solid $color-focus;
-    outline-offset: 2px;
-  }
-
-  &__icon {
-    flex-shrink: 0;
-    color: $color-accent;
-
-    svg {
-      width: 28px;
-      height: 28px;
-      display: block;
-    }
-  }
-
-  &__text {
-    flex: 1;
-    min-width: 0;
-  }
-
-  &__label {
-    display: block;
-    font-family: $font-family-heading;
-    font-size: $font-size-base;
-    font-weight: $font-weight-bold;
-    line-height: 1.2;
-  }
-
-  &__desc {
-    display: block;
-    font-size: $font-size-sm;
-    color: rgba(255, 255, 255, 0.65);
-    margin-top: 2px;
-    line-height: 1.3;
-  }
-
-  &__arrow {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    color: rgba(255, 255, 255, 0.45);
-    transition: transform $transition-base, color $transition-base;
-  }
-}
 
 // --- Related pages sidebar widget ---------------------------------------------
 .related-pages {

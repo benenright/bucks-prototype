@@ -12,7 +12,7 @@
   background-position: center;
   background-repeat: no-repeat;
   color: $color-text-inverted;
-  padding: 8rem 0 4rem;
+  padding: 8rem 0 0;
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -42,7 +42,7 @@
   }
 
   @include bp(md) {
-    padding: 14rem 0 6rem;
+    padding: 10rem 0 0;
   }
 
   &__inner {
@@ -51,10 +51,15 @@
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: $space-12;
     // Flexbox ensures every child centres reliably, not just inline content
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @include bp(md) {
+      padding-bottom: $space-24;
+    }
   }
 
   // --- "AI assistant · Beta" badge -------------------------------------------
@@ -84,7 +89,7 @@
 
   // --- Heading ---------------------------------------------------------------
   &__heading {
-    font-size: $font-size-3xl;
+    font-size: $font-size-4xl;
     font-weight: $font-weight-bold;
     color: $color-text-inverted;
     margin-bottom: $space-8;
@@ -92,7 +97,7 @@
     letter-spacing: -0.02em;
 
     @include bp(md) {
-      font-size: 3.2rem;
+      font-size: 3.5rem;
       white-space: nowrap;
     }
   }
@@ -109,16 +114,62 @@
     }
   }
 
+  // --- Example prompts -------------------------------------------------------
+  &__examples {
+    list-style: none;
+    padding: 0;
+    margin: $space-6 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $space-2;
+    max-width: 560px;
+  }
+
+  &__example {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.85);
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    padding: $space-2 $space-4;
+    cursor: pointer;
+    border-radius: $radius-full;
+    transition: background $transition-base, color $transition-base, border-color $transition-base;
+    white-space: nowrap;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: $color-text-inverted;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $color-focus;
+      outline-offset: 2px;
+    }
+  }
+
   // --- Fallback link ---------------------------------------------------------
   &__search-fallback {
-    margin-top: $space-6;
-    font-size: $font-size-sm;
+    margin-top: $space-10;
+    font-size: 0.9em;
     color: rgba(255, 255, 255, 0.5);
 
     a {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-1;
       color: rgba(255, 255, 255, 0.75);
       font-weight: $font-weight-medium;
+      text-decoration: underline;
       text-underline-offset: 3px;
+
+      svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
 
       &:hover {
         color: $color-text-inverted;
@@ -205,64 +256,8 @@
   }
 }
 
-// --- "Ask us anything" AI button — large hero CTA ----------------------------
-.hero__ai-btn {
-  display: flex;
-  align-items: center;
-  gap: $space-4;
-  width: 100%;
-  max-width: 640px;
-  background: rgba(29, 23, 81, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: $radius-sm;
-  color: $color-text-inverted;
-  padding: $space-4 $space-5;
-  cursor: pointer;
-  text-align: left;
-  font-family: $font-family-base;
-  transition: background $transition-base, border-color $transition-base;
-
-  &:hover {
-    background: rgba(29, 23, 81, 0.95);
-    border-color: rgba(255, 255, 255, 0.35);
-  }
-
-  &:focus-visible {
-    outline: 3px solid $color-focus;
-    outline-offset: 2px;
-  }
-
-  &-icon {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-
-    svg { width: 44px; height: 44px; color: $color-accent; }
-  }
-
-  &-text {
-    flex: 1;
-
-    strong {
-      display: block;
-      font-size: $font-size-base;
-      font-weight: $font-weight-semibold;
-    }
-
-    small {
-      display: block;
-      font-size: $font-size-sm;
-      color: rgba(255, 255, 255, 0.65);
-      margin-top: 2px;
-    }
-  }
-
-  &-arrow {
-    flex-shrink: 0;
-    opacity: 0.5;
-    svg { width: 18px; height: 18px; }
-  }
-}
+// --- "Ask us anything" AI button — see _ask-btn.scss for shared styles -------
+// Hero-specific width override is in _ask-btn.scss under .hero .ask-btn
 
 
 // =============================================================================
@@ -302,6 +297,75 @@
 // =============================================================================
 // Page banner – section-level landing pages (no background image)
 // =============================================================================
+
+// --- Mobile hero image (above blue banner) ------------------------------------
+.page-banner-hero-img--mobile {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+
+  @include bp(md) {
+    display: none;
+  }
+}
+
+// --- Desktop hero image column (inside banner, hangs below) ------------------
+.page-banner-hero-img--desktop {
+  display: none;
+
+  @include bp(md) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: $radius-sm;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  }
+}
+
+// --- Page banner with right-side image (section pages) -----------------------
+.page-banner--with-img {
+  overflow: visible; // allow image column to hang 60px below
+
+  .container {
+    @include bp(md) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: $space-8;
+      align-items: end;
+    }
+  }
+
+  // Task tiles: 2 columns instead of 3, to fit alongside image column
+  .top-tasks__grid {
+    @include bp(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+// Image column: square, aligns to bottom of banner, hangs 60px below
+.page-banner__img-col {
+  display: none;
+
+  @include bp(md) {
+    display: block;
+    align-self: end;
+    margin-bottom: -60px;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+// Give the section immediately after the image-banner extra top padding
+// so content clears the 60px image overhang
+.page-banner--with-img + section {
+  @include bp(md) {
+    padding-top: calc(#{$space-16} + 60px);
+  }
+}
 
 .page-banner {
   background-color: $color-brand-dark;

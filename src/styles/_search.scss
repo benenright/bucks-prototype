@@ -117,7 +117,7 @@
   background: $color-midnight-blue;
   color: $color-text-inverted;
   padding: $space-8;
-  border-radius: 2px;
+  border-radius: $radius-sm;
   display: flex;
   flex-direction: column;
   gap: $space-4;
@@ -293,7 +293,7 @@
     gap: $space-1;
     padding: $space-2 $space-4;
     border: 1px solid $color-border;
-    border-radius: $radius-sm;
+    border-radius: 6px;
     background: $color-bg;
     color: $color-primary;
     font-family: $font-family-base;
@@ -343,12 +343,14 @@
 .search-feedback {
   background: $color-bg-warm;
   border-top: 1px solid $color-border-light;
-  padding: $space-6 $space-6;
-  border-radius: $radius-sm;
-  display: flex;
-  align-items: center;
-  gap: $space-4;
-  flex-wrap: wrap;
+  padding: $space-6 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    flex-wrap: wrap;
+  }
 
   &__question {
     margin: 0;

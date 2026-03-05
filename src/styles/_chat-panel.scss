@@ -1,7 +1,7 @@
 // =============================================================================
 // Off-canvas AI chat panel
-// Slides in from the right edge of the browser on all pages.
-// Chat history persists across pages via sessionStorage (managed in main.js).
+// Mobile: floating bubble, full-width with margin.
+// Desktop: floating widget in bottom-right corner with rounded corners + shadow.
 // =============================================================================
 
 // --- Overlay backdrop ---------------------------------------------------------
@@ -13,6 +13,7 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity $transition-slow, visibility $transition-slow;
+  cursor: pointer;
 
   &.is-visible {
     opacity: 1;
@@ -23,74 +24,99 @@
 // --- Panel shell --------------------------------------------------------------
 .chat-panel {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 420px;
-  max-width: 100vw;
+  top: auto;
+  right: $space-4;
+  left: $space-4;   // stretch full width minus margins on mobile
+  bottom: $space-4;
+  max-height: calc(100dvh - 100px);
   background: $color-bg;
   z-index: $z-modal;
   display: flex;
   flex-direction: column;
-  transform: translateX(100%);
-  transition: transform $transition-slow;
-  box-shadow: -4px 0 32px rgba(0, 0, 0, 0.18);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.08);
+  // Fade + rise from below (same animation on mobile and desktop)
+  transform: translateY(16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform $transition-slow, opacity $transition-slow;
 
   &.is-open {
-    transform: translateX(0);
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  // Desktop: fixed-width widget in bottom-right
+  @include bp(md) {
+    left: auto;
+    right: 20px;
+    bottom: 20px;
+    width: 400px;
+    max-height: calc(100dvh - 100px);
+    border-radius: 20px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   // --- Panel header -----------------------------------------------------------
   &__header {
+    position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: $space-4 $space-5;
-    background: $color-primary-dark;
-    color: $color-text-inverted;
+    padding: $space-8 $space-5 $space-5;
+    background: $color-bg;
+    border-bottom: 1px solid $color-border-light;
     flex-shrink: 0;
+  }
+
+  &__logo {
+    height: 64px;
+    width: auto;
+    // Recolour white SVG to brand indigo (#2c2d84)
+    filter: brightness(0) saturate(100%) invert(19%) sepia(75%) saturate(900%) hue-rotate(218deg) brightness(88%);
   }
 
   &__title {
     display: flex;
     align-items: center;
     gap: $space-2;
+    margin-top: $space-3;
     font-weight: $font-weight-semibold;
-    font-size: $font-size-base;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    text-align: center;
 
     svg {
-      width: 18px;
-      height: 18px;
+      width: 15px;
+      height: 15px;
       color: $color-accent;
       flex-shrink: 0;
     }
   }
 
-  &__beta {
-    background: rgba(255, 255, 255, 0.15);
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 0.65rem;
-    font-weight: $font-weight-medium;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 2px 6px;
-    margin-left: $space-1;
-  }
-
   &__close {
+    position: absolute;
+    top: $space-3;
+    right: $space-4;
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.75);
+    color: $color-text-secondary;
     cursor: pointer;
     padding: $space-1;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color $transition-base;
+    border-radius: 50%;
+    transition: color $transition-base, background $transition-base;
 
     svg { width: 20px; height: 20px; }
 
-    &:hover { color: $color-text-inverted; }
+    &:hover {
+      color: $color-text;
+      background: rgba(0, 0, 0, 0.07);
+    }
     &:focus-visible { outline: 3px solid $color-focus; outline-offset: 2px; }
   }
 
@@ -128,7 +154,7 @@
   &__bubble {
     display: flex;
     gap: $space-3;
-    align-items: flex-start;
+    align-items: flex-end;
 
     &--user {
       flex-direction: row-reverse;
@@ -136,6 +162,7 @@
       .chat-panel__bubble-text {
         background: $color-primary;
         color: $color-text-inverted;
+        border-radius: 18px 4px 18px 18px;
 
         a { color: rgba(255,255,255,0.9); }
       }
@@ -143,24 +170,27 @@
   }
 
   &__bubble-avatar {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     background: $color-accent;
+    border-radius: 50%;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    svg { width: 14px; height: 14px; color: $color-primary-dark; }
+    svg { width: 18px; height: 18px; color: $color-text-inverted; margin-left: 2px; }
   }
 
   &__bubble-text {
     background: $color-bg-warm;
     color: $color-text;
     padding: $space-3 $space-4;
+    border-radius: 4px 18px 18px 18px;
     font-size: $font-size-sm;
     line-height: 1.55;
     max-width: 85%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
 
     a {
       color: $color-primary;
@@ -187,13 +217,14 @@
   &__suggestion {
     background: $color-bg-warm;
     border: 1px solid $color-border-light;
+    border-radius: 20px;
     color: $color-text;
-    padding: $space-1 $space-3;
-    font-size: $font-size-sm;
+    padding: 3px $space-3;
+    font-size: 0.75rem;
     font-family: $font-family-base;
     cursor: pointer;
     transition: background $transition-base, border-color $transition-base;
-    line-height: 1.6;
+    line-height: 1.5;
 
     &:hover {
       background: $color-primary-light;
@@ -205,6 +236,9 @@
   &__input-area {
     display: flex;
     border: 1px solid $color-border;
+    border-radius: 24px;
+    overflow: hidden;
+    background: $color-bg;
 
     &:focus-within {
       outline: 3px solid $color-focus;
@@ -219,7 +253,7 @@
     padding: $space-3 $space-4;
     font-family: $font-family-base;
     font-size: $font-size-sm;
-    background: $color-bg;
+    background: transparent;
     color: $color-text;
     min-width: 0;
 
@@ -229,16 +263,19 @@
 
   &__send {
     flex-shrink: 0;
-    width: 46px;
+    width: 42px;
+    height: 42px;
+    margin: 3px 3px 3px 0;
     background: $color-primary;
     border: none;
+    border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background $transition-base;
 
-    svg { width: 18px; height: 18px; color: $color-text-inverted; }
+    svg { width: 16px; height: 16px; color: $color-text-inverted; }
 
     &:hover { background: $color-primary-dark; }
     &:focus-visible { outline: 3px solid $color-focus; outline-offset: 2px; }
@@ -259,6 +296,3 @@
     background-color: $color-text-secondary;
   }
 }
-
-// Prevent body scroll when panel open
-body.chat-panel-open { overflow: hidden; }
