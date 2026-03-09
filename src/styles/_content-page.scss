@@ -42,38 +42,42 @@
   }
 }
 
-// --- Anchor links (in-page nav) -----------------------------------------------
-.anchor-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $space-2 $space-4;
-  margin-top: $space-5;
-  list-style: none;
-  padding: 0;
+// --- Contents list (in-page nav, GDS pattern) ---------------------------------
+.contents-list {
+  margin-top: $space-6;
+
+  &__heading {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    margin-bottom: $space-3;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: $space-3;
+    padding: $space-1 0;
+
+    &::before {
+      content: '—';
+      flex-shrink: 0;
+      color: $color-text-secondary;
+    }
+  }
 
   a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: $font-size-sm;
+    font-size: $font-size-base;
     font-weight: $font-weight-medium;
     color: $color-primary;
     text-decoration: underline;
     text-underline-offset: 3px;
-
-    // Downward chevron at the tail — open ˅ shape, no stem or bar
-    &::after {
-      content: '';
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-right: 1.5px solid currentColor;
-      border-bottom: 1.5px solid currentColor;
-      transform: rotate(45deg);
-      flex-shrink: 0;
-      position: relative;
-      top: -3px;
-    }
 
     &:hover {
       color: $color-primary-dark;
@@ -243,6 +247,15 @@
 
   .top-tasks__grid {
     margin-top: $space-8;
+  }
+
+  &--tinted {
+    background: #E9F0F9;
+    padding-bottom: $space-10;
+
+    @include bp(md) {
+      padding-bottom: $space-12;
+    }
   }
 }
 

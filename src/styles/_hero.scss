@@ -15,7 +15,7 @@
   padding: 8rem 0 0;
   position: relative;
   overflow: hidden;
-  text-align: center;
+  text-align: left;
 
   // Subtle accent glow — bottom left, uses brand green
   &::before {
@@ -49,13 +49,11 @@
     position: relative;
     z-index: 1;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
     padding-bottom: $space-12;
-    // Flexbox ensures every child centres reliably, not just inline content
+    // Flexbox ensures every child aligns to the left
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 
     @include bp(md) {
       padding-bottom: $space-24;
@@ -97,7 +95,7 @@
     letter-spacing: -0.02em;
 
     @include bp(md) {
-      font-size: 3.5rem;
+      font-size: 4rem;
       white-space: nowrap;
     }
   }
@@ -121,7 +119,7 @@
     margin: $space-6 0 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: $space-2;
     max-width: 560px;
   }
@@ -159,11 +157,15 @@
     a {
       display: inline-flex;
       align-items: center;
-      gap: $space-1;
-      color: rgba(255, 255, 255, 0.75);
+      gap: $space-2;
+      color: $color-text-inverted;
       font-weight: $font-weight-medium;
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      padding: $space-2 $space-4;
+      transition: border-color $transition-base;
 
       svg {
         width: 14px;
@@ -172,7 +174,12 @@
       }
 
       &:hover {
-        color: $color-text-inverted;
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      &:focus-visible {
+        outline: 3px solid $color-focus;
+        outline-offset: 2px;
       }
     }
   }
@@ -227,7 +234,7 @@
     align-self: stretch;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 
     svg { width: 20px; height: 20px; display: block; }
 

@@ -36,9 +36,9 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         search: resolve(__dirname, 'search/index.html'),
-        'bins-and-recycling': resolve(__dirname, 'bins-and-recycling/index.html'),
-        'bin-collection-days': resolve(__dirname, 'bins-and-recycling/bin-collection-days/index.html'),
-        'bin-collections': resolve(__dirname, 'bins-and-recycling/bin-collections/index.html'),
+        'waste-and-recycling': resolve(__dirname, 'waste-and-recycling/index.html'),
+        'bin-collection-days': resolve(__dirname, 'waste-and-recycling/bin-collection-days/index.html'),
+        'bin-collections': resolve(__dirname, 'waste-and-recycling/bin-collections/index.html'),
       }
     }
   }

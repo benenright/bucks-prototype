@@ -30,7 +30,7 @@
     align-items: center;
     gap: $space-2;
     background-color: $color-accent;
-    color: $color-primary-dark;
+    color: $color-text;
     font-size: $font-size-sm;
     font-weight: $font-weight-bold;
     padding: $space-1 $space-3;
@@ -171,7 +171,7 @@
   &__badge {
     display: inline-block;
     background-color: $color-accent-light;
-    color: $color-accent-dark;
+    color: $color-text;
     font-size: 0.7rem;
     font-weight: $font-weight-bold;
     padding: 2px $space-2;
@@ -227,7 +227,7 @@
     .timely-card {
       flex: 1;
       background-color: transparent;
-      border-left-color: #e83f4b;
+      border-left-color: #d42d38;
     }
   }
 }
@@ -333,17 +333,12 @@
 
     h2 {
       font-size: $font-size-2xl;
-      margin-bottom: $space-2;
+      margin-bottom: 0;
       color: $color-text-inverted;
 
       @include bp(md) {
         font-size: $font-size-3xl;
       }
-    }
-
-    p {
-      color: rgba(255, 255, 255, 0.75);
-      max-width: none;
     }
   }
 
@@ -391,11 +386,12 @@
     font-size: $font-size-sm;
     font-weight: $font-weight-medium;
     cursor: pointer;
-    transition: background $transition-base, border-color $transition-base;
+    transition: background $transition-base, color $transition-base, border-color $transition-base;
 
     &:hover {
-      background: $color-bg-warm;
-      border-color: $color-text;
+      background: #E9F0F9;
+      color: $color-primary;
+      border-color: $color-primary;
     }
 
     &:focus-visible {

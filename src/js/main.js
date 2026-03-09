@@ -23,7 +23,7 @@ const heroEl = document.querySelector('.hero');
 if (heroEl) {
   const img = heroImages[Math.floor(Math.random() * heroImages.length)];
   heroEl.style.backgroundImage =
-    `linear-gradient(to bottom, rgba(44, 45, 132, 0.2) 0%, rgba(29, 23, 81, 0.65) 35%, rgba(29, 23, 81, 0.97) 52%, rgba(29, 23, 81, 1) 65%), url('${img}')`;
+    `linear-gradient(to bottom, rgba(44, 45, 132, 0.4) 0%, rgba(29, 23, 81, 0.7) 35%, rgba(29, 23, 81, 0.97) 52%, rgba(29, 23, 81, 1) 65%), url('${img}')`;
 }
 
 // =============================================================================
@@ -55,9 +55,7 @@ function updateAiHeaderBtn() {
     const mobileLabel  = btn.querySelector('.header-ai-btn__label--mobile');
     const hasChat = loadChat().length > 0;
     btn.classList.toggle('has-chat', hasChat);
-    if (desktopLabel) desktopLabel.textContent = hasChat ? 'Continue chat' : 'Ask us anything';
-    if (mobileLabel)  mobileLabel.textContent  = hasChat ? 'Continue' : 'Ask us...';
-    btn.setAttribute('aria-label', hasChat ? 'Continue chat' : 'Ask us anything');
+    btn.setAttribute('aria-label', 'Ask us');
   });
 }
 
@@ -154,7 +152,7 @@ function renderSavedMessages() {
 const RESPONSES = {
   'garden waste': {
     text: "You can subscribe to or manage your garden waste collection online. If you're having trouble with your account or payment, our support team can help.",
-    link: { href: '/bins-and-recycling/garden-waste/', label: 'Manage garden waste subscription' }
+    link: { href: '/waste-and-recycling/garden-waste/', label: 'Manage garden waste subscription' }
   },
   'council tax': {
     text: "To pay your council tax online you'll need your account reference number (on your bill). You can pay by Direct Debit, card, or set up a standing order.",
@@ -224,7 +222,7 @@ function getResponse(query) {
 <strong>General waste bin</strong> — every other Wednesday (next collection: Wed 11 March)<br>
 <strong>Garden waste</strong> — fortnightly on Tuesdays, if you have an active subscription (next: Tue 3 March)<br><br>
 Collections may move by one day after a bank holiday.`,
-      link: { href: '/bins-and-recycling/bin-collection-days/', label: 'View your full schedule and set up reminders' }
+      link: { href: '/waste-and-recycling/bin-collection-days/', label: 'View your full schedule and set up reminders' }
     };
   }
 
@@ -370,15 +368,6 @@ if (navToggle && siteNav) {
   });
 }
 
-// =============================================================================
-// Sticky header: shrink logo after scrolling away from top
-// =============================================================================
-const siteHeader = document.querySelector('.site-header');
-if (siteHeader) {
-  const onScroll = () => siteHeader.classList.toggle('is-scrolled', window.scrollY > 0);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // set correct state on load
-}
 
 // =============================================================================
 // Footer: auto-update copyright year
@@ -398,10 +387,10 @@ document.getElementById('search-trigger')?.addEventListener('click', () => {
 // =============================================================================
 if (location.pathname.includes('/search')) {
   const RESULTS = [
-    { title: 'Check your bin collection day', desc: 'Find out when your bins and boxes are collected. Enter your postcode to get your personalised collection schedule.', href: '/bins-and-recycling/bin-collection-days/' },
-    { title: 'Report a missed bin collection', desc: "Let us know if your bin wasn't collected on your scheduled day. We'll investigate and rearrange if needed.", href: '/bins-and-recycling/bin-collections/report-missed/' },
-    { title: 'Garden waste subscription', desc: 'Sign up for or renew your garden waste collection service. Collections run from March to November.', href: '/bins-and-recycling/garden-waste/' },
-    { title: 'Household waste recycling centres', desc: 'Find your nearest recycling centre, check opening times, and see what materials are accepted.', href: '/bins-and-recycling/recycling-centres/' },
+    { title: 'Check your bin collection day', desc: 'Find out when your bins and boxes are collected. Enter your postcode to get your personalised collection schedule.', href: '/waste-and-recycling/bin-collection-days/' },
+    { title: 'Report a missed bin collection', desc: "Let us know if your bin wasn't collected on your scheduled day. We'll investigate and rearrange if needed.", href: '/waste-and-recycling/bin-collections/report-missed/' },
+    { title: 'Garden waste subscription', desc: 'Sign up for or renew your garden waste collection service. Collections run from March to November.', href: '/waste-and-recycling/garden-waste/' },
+    { title: 'Household waste recycling centres', desc: 'Find your nearest recycling centre, check opening times, and see what materials are accepted.', href: '/waste-and-recycling/recycling-centres/' },
     { title: 'Council tax – pay online', desc: 'Pay your council tax bill, set up a Direct Debit, or apply for a discount or exemption.', href: '/council-tax/pay/' },
     { title: 'Planning applications – search and comment', desc: 'Search for planning applications in Buckinghamshire, view documents, and submit comments on proposals.', href: '/planning/search-applications/' },
     { title: 'School term dates', desc: 'View term dates and school holidays for Buckinghamshire maintained schools and academies.', href: '/schools-and-learning/term-dates/' },
@@ -410,7 +399,7 @@ if (location.pathname.includes('/search')) {
     { title: 'Housing benefit and council tax support', desc: 'Apply for help with your rent or council tax if you are on a low income or receiving benefits.', href: '/housing/benefits/' },
     { title: 'Register to vote', desc: 'Register to vote or update your details on the electoral register. You must be registered to vote in elections.', href: '/council-and-elections/register-to-vote/' },
     { title: 'Report a pothole or road defect', desc: 'Report a pothole, damaged road surface, or other highway defect. Safety-critical repairs are prioritised within 24 hours.', href: '/roads-and-transport/report-pothole/' },
-    { title: 'Bulky waste collection', desc: "Book a collection for large items that can't go in your normal bins, such as furniture, mattresses and appliances.", href: '/bins-and-recycling/bulky-waste/' },
+    { title: 'Bulky waste collection', desc: "Book a collection for large items that can't go in your normal bins, such as furniture, mattresses and appliances.", href: '/waste-and-recycling/bulky-waste/' },
     { title: 'Blue Badge – apply or renew', desc: "Apply for a Blue Badge parking permit for people with disabilities. Check if you're eligible and apply online.", href: '/transport-and-roads/blue-badges/' },
     { title: 'Freedom of Information requests', desc: 'Make a request for information held by Buckinghamshire Council under the Freedom of Information Act 2000.', href: '/foi/' },
   ];
@@ -531,3 +520,10 @@ if (location.pathname.includes('/search')) {
     document.getElementById('search-feedback-thanks').hidden = false;
   });
 }
+
+// =============================================================================
+// Alert banner — dismiss button
+// =============================================================================
+document.querySelectorAll('.alert__dismiss').forEach(btn => {
+  btn.addEventListener('click', () => btn.closest('.alert-wrapper')?.remove());
+});

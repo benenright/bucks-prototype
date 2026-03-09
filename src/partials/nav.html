@@ -2,12 +2,23 @@
       <div class="container">
         <div class="site-nav__panel">
 
-          <!-- Col 1: Services + search (search below on desktop) -->
+          <!-- Col 1: Search (top) + Services -->
           <div class="site-nav__services-wrap">
+
+          <h3 class="site-nav__col-heading site-nav__col-heading--search">Search</h3>
+          <form class="site-nav__search" action="/search/" method="get" role="search">
+            <label for="nav-search-input" class="visually-hidden">Search council services</label>
+            <div class="site-nav__search-wrap">
+              <input type="text" id="nav-search-input" name="q" placeholder="Search for a topic, service or task..." autocomplete="off" spellcheck="false" />
+              <button type="submit" aria-label="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+              </button>
+            </div>
+          </form>
 
           <div class="site-nav__col site-nav__col--services">
 
-            <h2 class="site-nav__col-heading">Services</h2>
+            <h3 class="site-nav__col-heading">Services</h3>
             <ul class="site-nav__list" role="list">
 
               <li><a href="/cost-of-living/" class="site-nav__link">
@@ -40,7 +51,7 @@
                 <span class="site-nav__label">Council &amp; elections</span>
               </a></li>
 
-              <li><a href="/bins-and-recycling/" class="site-nav__link">
+              <li><a href="/waste-and-recycling/" class="site-nav__link">
                 <span class="site-nav__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg></span>
                 <span class="site-nav__label">Waste and recycling</span>
               </a></li>
@@ -99,22 +110,12 @@
 
           </div>
 
-          <form class="site-nav__search" action="/search/" method="get" role="search">
-            <label for="nav-search-input" class="visually-hidden">Search council services</label>
-            <div class="site-nav__search-wrap">
-              <input type="text" id="nav-search-input" name="q" placeholder="Search for a service or topic..." autocomplete="off" spellcheck="false" />
-              <button type="submit" aria-label="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
-              </button>
-            </div>
-          </form>
-
           </div><!-- /.site-nav__services-wrap -->
 
           <!-- Col 2: Top tasks -->
           <div class="site-nav__col site-nav__col--tasks">
 
-            <h2 class="site-nav__col-heading">Popular tasks</h2>
+            <h3 class="site-nav__col-heading">Popular tasks</h3>
             <ul class="site-nav__tasks" role="list">
 
               <li>
@@ -127,7 +128,7 @@
               </li>
 
               <li>
-                <a href="/bins-and-recycling/bin-collection-days/" class="site-nav__task">
+                <a href="/waste-and-recycling/bin-collection-days/" class="site-nav__task">
                   <span class="site-nav__task-body">
                     <span class="site-nav__task-label">Check bin collection day</span>
                   </span>

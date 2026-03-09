@@ -1,0 +1,96 @@
+// =============================================================================
+// Alert banner — container-width box beneath the site header.
+// Markup mirrors buckinghamshire.gov.uk: .alert.alert--message.alert--[blue|amber|red]
+// Remove the element entirely when no alert is needed.
+// =============================================================================
+
+// Outer wrapper — full-bleed background only
+.alert-wrapper {
+  &--blue   { background: #E9F0F9; }
+  &--amber  { background: #FFF4CC; }
+  &--red    { background: #FEECEB; }
+}
+
+.alert-wrapper .container {
+  position: relative;
+}
+
+.alert {
+  padding: $space-4 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: $font-size-sm;
+  line-height: 1.5;
+  max-width: 800px;
+
+  // --- Dismiss button ----------------------------------------------------------
+  &__dismiss {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $space-1;
+    color: inherit;
+    opacity: 0.5;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity $transition-base, background $transition-base;
+
+    svg { width: 18px; height: 18px; display: block; }
+
+    &:hover { opacity: 1; background: rgba(0, 0, 0, 0.07); }
+    &:focus-visible { outline: 3px solid $color-focus; outline-offset: 2px; }
+  }
+
+  // --- Header (icon + title in alert colour) ----------------------------------
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-base;
+    margin: 0;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+  }
+
+  // --- Body copy (standard text colour) ----------------------------------------
+  &__content {
+    p {
+      margin: 0;
+      color: $color-text;
+      max-width: 800px;
+    }
+
+    a {
+      font-weight: $font-weight-medium;
+      text-underline-offset: 2px;
+    }
+  }
+
+  // --- Colour variants ---------------------------------------------------------
+  &--blue {
+    .alert__header { color: $color-primary; }
+    .alert__content a { color: $color-primary; }
+  }
+
+  &--amber {
+    .alert__header { color: #7a5100; }
+    .alert__content a { color: #7a5100; }
+  }
+
+  &--red {
+    .alert__header { color: $color-red; }
+    .alert__content a { color: #a01000; }
+  }
+}

@@ -130,7 +130,7 @@
 // Always vertical: image on top, content panel below.
 // Lives inside the .right-now__grid as the 2/3 primary column.
 .featured-story {
-  background-color: #e83f4b;
+  background-color: #d42d38;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -168,7 +168,7 @@
   }
 
   &__body {
-    color: rgba(255, 255, 255, 0.82);
+    color: $color-text-inverted;
     font-size: $font-size-base;
     line-height: 1.5;
     margin-bottom: $space-6;
@@ -179,7 +179,7 @@
     display: inline-block;
     align-self: flex-start;
     background-color: #ffffff;
-    color: #e83f4b;
+    color: #d42d38;
     font-weight: $font-weight-bold;
     font-size: $font-size-base;
     font-family: $font-family-base;
@@ -206,7 +206,7 @@
 .news-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $space-8;
+  gap: $space-5;
 
   @include bp(md) {
     grid-template-columns: repeat(2, 1fr);

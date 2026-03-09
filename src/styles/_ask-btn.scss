@@ -36,12 +36,13 @@
     display: inline-grid;
     align-items: center;
     justify-items: center;
+    margin-top: -2px;
   }
 
   &__chat {
     width: 44px;
     height: 44px;
-    color: $color-accent;
+    color: #009b3e;
     grid-area: 1/1;
   }
 
@@ -59,7 +60,7 @@
 
     strong {
       display: block;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: $font-weight-semibold;
     }
 
@@ -101,7 +102,7 @@
   .ask-btn__arrow { color: $color-text; }
 
   &:hover {
-    background: $color-bg-warm;
+    background: #E9F0F9;
     border-color: rgba(0, 0, 0, 0.15);
   }
 }
@@ -117,7 +118,7 @@
   .ask-btn__arrow { color: $color-text; }
 
   &:hover {
-    background: $color-bg-warm;
+    background: #E9F0F9;
     border-color: rgba(0, 0, 0, 0.15);
   }
 }
@@ -135,7 +136,7 @@
   .ask-btn__arrow { color: $color-text; }
 
   &:hover {
-    background: $color-bg-warm;
+    background: #E9F0F9;
     border-color: rgba(0, 0, 0, 0.15);
   }
 }
@@ -143,17 +144,18 @@
 // Hero context: white reversal, fills the full search bar width
 .hero .ask-btn {
   width: 100%;
-  max-width: 640px;
+  max-width: 460px;
   background: $color-bg;
   border-color: rgba(0, 0, 0, 0.08);
   color: $color-text;
 
   .ask-btn__spark { color: $color-bg; }
+  .ask-btn__text strong { font-size: 1.35rem; }
   .ask-btn__text small { color: $color-text-secondary; }
   .ask-btn__arrow { color: $color-text; }
 
   &:hover {
-    background: $color-bg-warm;
+    background: #E9F0F9;
     border-color: rgba(0, 0, 0, 0.15);
   }
 }
