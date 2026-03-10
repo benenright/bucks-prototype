@@ -118,6 +118,17 @@
     min-width: 0;
   }
 
+  &__service {
+    display: none;
+    font-family: $font-family-base;
+    font-size: 13px;
+    font-weight: $font-weight-normal;
+    color: $color-accent;
+    line-height: 1;
+    margin-bottom: 5px;
+    letter-spacing: 0.02em;
+  }
+
   &__label {
     display: block;
     font-family: $font-family-heading;

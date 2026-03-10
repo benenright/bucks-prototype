@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Find out what you can and cannot put in each of your bins in Buckinghamshire, including general waste, recycling, food waste and garden waste." />
+  <title>Check what you can put in your bins – Buckinghamshire Council</title>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/src/styles/main.scss" />
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="site-header__inner">
+
+        <a href="/" class="site-logo" aria-label="Buckinghamshire Council – go to homepage">
+          <img src="/assets/images/bucks-logo.svg" alt="Buckinghamshire Council" class="site-logo__img" />
+        </a>
+
+        <div class="site-header__actions">
+
+          <button
+            class="header-menu-btn"
+            id="nav-toggle"
+            aria-controls="site-nav"
+            aria-expanded="false"
+            aria-label="Open navigation menu"
+          >
+            <svg class="header-menu-btn__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+            <span class="header-menu-btn__label">Menu</span>
+          </button>
+
+          <button class="header-icon-btn header-icon-btn--desktop-only" aria-label="Search the site" id="search-trigger">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+            <span class="header-btn-label">Search</span>
+          </button>
+
+          <button class="header-ai-btn" id="ai-panel-trigger" data-open-chat aria-controls="chat-panel" aria-expanded="false">
+            <span class="header-ai-btn__icon-stack" aria-hidden="true"><svg class="header-ai-btn__chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 3.694-9.75 8.25 0 4.556 4.365 8.25 9.75 8.25a9.743 9.743 0 003.848-.769l3.152 1.378a.75.75 0 00.968-.968l-1.378-3.152A8.4 8.4 0 0021.75 10.5c0-4.556-4.365-8.25-9.75-8.25z" clip-rule="evenodd" /></svg><svg class="header-ai-btn__spark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg></span>
+            <span class="header-ai-btn__dot" aria-hidden="true"></span>
+            <span class="header-ai-btn__label header-ai-btn__label--mobile" aria-hidden="true">Ask us</span>
+            <span class="header-ai-btn__label header-ai-btn__label--desktop">Ask us</span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- @include "/src/partials/nav.html" -->
+  </header>
+
+  <main id="main-content">
+
+    <div class="content-header">
+      <div class="container">
+
+        <nav class="breadcrumb breadcrumb--on-light" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/waste-and-recycling/">Waste and recycling</a></li>
+            <li><a href="/waste-and-recycling/bin-collections/">Bin collections</a></li>
+          </ol>
+        </nav>
+
+        <h1>Check what you can put in your bins</h1>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content-layout">
+
+        <article class="content-main prose">
+
+          <!-- WASTE WIZARD PLACEHOLDER -->
+          <div class="waste-wizard-placeholder" aria-label="Waste Wizard search tool (placeholder)">
+            <p class="waste-wizard-placeholder__label">Waste Wizard</p>
+            <p class="waste-wizard-placeholder__hint">Search for a specific item to find out which bin it goes in, or where to recycle or donate it</p>
+            <div class="waste-wizard-placeholder__search">
+              <input type="text" placeholder="e.g. cardboard, batteries, clothing…" disabled aria-disabled="true" />
+              <button type="button" disabled aria-disabled="true">Search</button>
+            </div>
+            <p class="waste-wizard-placeholder__note">Widget placeholder — to be integrated in production</p>
+          </div>
+
+          <!-- ACCORDION -->
+          <div class="accordion">
+
+            <details class="accordion__item">
+              <summary>
+                <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                General waste bin
+              </summary>
+              <div class="accordion__body">
+                <h3>What you can put in your general waste bin</h3>
+                <ul>
+                  <li>Broken glass, pyrex or china</li>
+                  <li>Broken toys</li>
+                  <li>Crisp, sweet and biscuit wrappers</li>
+                  <li>Empty paint tins</li>
+                  <li>Nappies and sanitary products</li>
+                  <li>Pet bedding and litter</li>
+                  <li>Plant pots</li>
+                  <li>Plastic bags and wrappers</li>
+                  <li>Polystyrene trays, cups and packaging</li>
+                  <li>Toothpaste tubes</li>
+                </ul>
+                <h3>What you cannot put in your general waste bin</h3>
+                <ul>
+                  <li>Batteries — place in a tied clear bag on top of any bin on collection day</li>
+                  <li>Gas bottles — take to a household recycling centre</li>
+                  <li>Electrical appliances</li>
+                  <li>Car batteries — take to a household recycling centre</li>
+                  <li>Sharps, needles or syringes — use the <a href="/waste-and-recycling/clinical-waste/sharps-boxes/">clinical waste service</a></li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary>
+                <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                Food waste caddy
+              </summary>
+              <div class="accordion__body">
+                <h3>Liners you can use</h3>
+                <p>You can line your caddy with:</p>
+                <ul>
+                  <li>Compostable bags</li>
+                  <li>Clear plastic or freezer bags</li>
+                  <li>Carrier bags</li>
+                  <li>Pedal bin liners</li>
+                  <li>Salad, bread and cereal wrapping</li>
+                  <li>Newspaper or kitchen roll</li>
+                </ul>
+                <p>Do not use black bin liners, rubble sacks, or hard plastic packaging.</p>
+                <h3>What you can put in your food waste caddy</h3>
+                <ul>
+                  <li>All uneaten food and mouldy items</li>
+                  <li>Raw and cooked meat and fish, including bones</li>
+                  <li>Dairy products</li>
+                  <li>Fruits and vegetables</li>
+                  <li>Eggs and eggshells</li>
+                  <li>Tea bags and coffee grounds</li>
+                  <li>Rice, pasta and beans</li>
+                  <li>Baked goods</li>
+                  <li>Pet food</li>
+                </ul>
+                <h3>What you cannot put in your food waste caddy</h3>
+                <ul>
+                  <li>Non-food products</li>
+                  <li>Food packaging of any kind</li>
+                  <li>Liquids</li>
+                  <li>Non-food materials</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary>
+                <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                Mixed recycling bin
+              </summary>
+              <div class="accordion__body">
+                <h3>How to prepare your recycling</h3>
+                <ul>
+                  <li>Rinse items using washing up water</li>
+                  <li>Remove greasy sections from pizza boxes</li>
+                  <li>Replace bottle and jar lids</li>
+                  <li>Remove polystyrene and bubble wrap from cardboard</li>
+                  <li>Keep all recycling loose — do not bag it</li>
+                </ul>
+                <h3>What you can put in your mixed recycling bin</h3>
+                <ul>
+                  <li>Plastic bottles</li>
+                  <li>Plastic pots, tubs and trays (including black plastic)</li>
+                  <li>Glass bottles and jars</li>
+                  <li>Tins and cans</li>
+                  <li>Tin foil and foil trays</li>
+                  <li>Aerosols</li>
+                  <li>Milk, juice and soup cartons</li>
+                </ul>
+                <h3>What you cannot put in your mixed recycling bin</h3>
+                <ul>
+                  <li>Broken glass</li>
+                  <li>Plastic bags and cling film</li>
+                  <li>Wrappers (crisp packets, sweet wrappers)</li>
+                  <li>Plant pots</li>
+                  <li>Toys</li>
+                  <li>China and household glassware</li>
+                  <li>Polystyrene</li>
+                  <li>Pet food pouches</li>
+                  <li>Electrical items</li>
+                  <li>Takeaway cups</li>
+                  <li>Coat hangers</li>
+                  <li>General waste</li>
+                  <li>Vapes</li>
+                </ul>
+                <h3>Aylesbury Vale</h3>
+                <p>If you live in Aylesbury Vale, blue-lidded bins accept mixed recycling plus newspaper, magazines, books, envelopes, greeting cards, cardboard and wrapping paper (without foil or glitter).</p>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary>
+                <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                Paper and cardboard recycling
+              </summary>
+              <div class="accordion__body">
+                <p>If you live in Wycombe, Chiltern or South Bucks, we provide boxes and bags to help you sort paper and cardboard for recycling.</p>
+                <h3>What you can put in your paper and cardboard recycling</h3>
+                <ul>
+                  <li>Magazines, newspapers, envelopes and junk mail</li>
+                  <li>Shredded paper — seal in an envelope first</li>
+                  <li>Greeting cards and cardboard packaging</li>
+                  <li>Corrugated cardboard</li>
+                  <li>Toilet and kitchen rolls</li>
+                  <li>Books, directories and catalogues</li>
+                </ul>
+                <h3>What you cannot put in your paper and cardboard recycling</h3>
+                <ul>
+                  <li>Plastic packaging</li>
+                  <li>Cartons (juice, soup, milk — put these in the mixed recycling bin)</li>
+                  <li>Waxed or laminated paper (crisp tubes, ice cream cartons)</li>
+                  <li>Takeaway cups with plastic lining</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary>
+                <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                Garden waste
+              </summary>
+              <div class="accordion__body">
+                <p>Garden waste collection is a subscription service. You need to sign up and pay an annual charge to use this service.</p>
+                <p><a href="#">Find out about garden waste collections</a>.</p>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary>
+                <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                Small household electricals
+              </summary>
+              <div class="accordion__body">
+                <p>Small electrical items with a plug, battery or charger can be recycled at the kerbside. Place them in a standard carrier bag on top of your recycling bin on collection day.</p>
+                <p>If you live in Aylesbury Vale, only items smaller than a shoebox are accepted at the kerbside. Larger items should be taken to a <a href="/waste-and-recycling/household-recycling-centres/">household recycling centre</a> or booked as a <a href="/waste-and-recycling/bulky-waste/">bulky waste collection</a>.</p>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary>
+                <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                Batteries
+              </summary>
+              <div class="accordion__body">
+                <p>Batteries must be kept separate from all other waste and recycling. Place loose batteries in a small clear bag and leave it on top of any bin on collection day.</p>
+                <h3>Types we collect</h3>
+                <ul>
+                  <li>Household batteries (AA, AAA, C, D, 9V)</li>
+                  <li>Mobile phone batteries</li>
+                  <li>Laptop batteries</li>
+                  <li>Power tool batteries</li>
+                </ul>
+                <h3>What we cannot collect</h3>
+                <ul>
+                  <li>Damaged or leaking batteries — take to a <a href="/waste-and-recycling/household-recycling-centres/">household recycling centre</a></li>
+                  <li>Car batteries — take to a household recycling centre</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary>
+                <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                Textiles
+              </summary>
+              <div class="accordion__body">
+                <p>Clean and dry clothes and home textiles can be recycled at <a href="/waste-and-recycling/household-recycling-centres/">household recycling centres</a> or at textile banks. Use the Waste Wizard to find your nearest drop-off point.</p>
+                <h3>Kerbside textile collections</h3>
+                <ul>
+                  <li><strong>Chiltern and Wycombe:</strong> order textile sacks for kerbside collection</li>
+                  <li><strong>South Bucks:</strong> place textiles in standard carrier bags beside your bins</li>
+                  <li><strong>Aylesbury:</strong> no kerbside textile collections — use a recycling centre or textile bank</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary>
+                <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                Vapes
+              </summary>
+              <div class="accordion__body">
+                <p>Place vapes in a separate clear bag (not the same bag as batteries) on top of your recycling bin lid on collection day.</p>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary>
+                <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                Contamination
+              </summary>
+              <div class="accordion__body">
+                <p>We will not empty your recycling bins, bags or boxes if they contain the wrong type of material. For example, plastic in a paper bin contaminates the whole load and prevents it being processed.</p>
+                <p>If your bin contains the wrong items, our crews will attach a red tag to let you know. Remove the incorrect items before your next collection day.</p>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary>
+                <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                Extra waste and recycling
+              </summary>
+              <div class="accordion__body">
+                <p>Your general waste bin must fit with the lid closed. We will not collect bins with the lid left open.</p>
+                <p>We will collect extra recycling left beside your bin if it is:</p>
+                <ul>
+                  <li>placed in a reusable container (not loose plastic bags)</li>
+                  <li>left neatly beside your usual bins</li>
+                  <li>cardboard flattened to less than 1 metre by 1 metre</li>
+                </ul>
+                <p>Excess items that cannot be collected at the kerbside should be taken to a <a href="/waste-and-recycling/household-recycling-centres/">household recycling centre</a>.</p>
+              </div>
+            </details>
+
+          </div><!-- /accordion -->
+
+        </article>
+
+        <aside class="content-sidebar">
+          <nav class="related-pages" aria-labelledby="related-heading">
+            <h2 class="related-pages__heading" id="related-heading">Related content</h2>
+            <ul>
+              <li><a href="/waste-and-recycling/bin-collection-days/">Check your bin collection day</a></li>
+              <li><a href="/waste-and-recycling/bin-collections/">Bin collections</a></li>
+              <li><a href="/waste-and-recycling/household-recycling-centres/">Household recycling centres</a></li>
+              <li><a href="/waste-and-recycling/bulky-waste/">Book a bulky waste collection</a></li>
+            </ul>
+          </nav>
+
+          <!-- @include "/src/partials/ask-btn.html" -->
+        </aside>
+
+      </div>
+    </div>
+
+  </main>
+
+  <section class="page-feedback" aria-label="Page feedback">
+    <div class="container">
+      <div class="page-feedback__inner">
+        <p class="page-feedback__question">Is this page useful?</p>
+        <div class="page-feedback__actions">
+          <button class="page-feedback__btn page-feedback__btn--yes" type="button">Yes</button>
+          <button class="page-feedback__btn page-feedback__btn--no" type="button">No</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <!-- @include "/src/partials/footer.html" -->
+
+  <!-- Off-canvas AI chat panel -->
+  <div class="chat-panel-overlay" id="chat-panel-overlay" aria-hidden="true"></div>
+  <aside class="chat-panel" id="chat-panel" role="dialog" aria-label="AI assistant" aria-modal="true" aria-hidden="true">
+    <div class="chat-panel__header">
+      <button class="chat-panel__close" id="chat-panel-close" aria-label="Close chat panel">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+      <img src="/assets/images/bucks-logo.svg" class="chat-panel__logo" alt="Buckinghamshire Council">
+      <div class="chat-panel__title">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+        AI Assistant
+      </div>
+    </div>
+    <div class="chat-panel__messages" id="chat-messages" aria-live="polite" aria-label="Chat conversation">
+      <div class="chat-panel__empty" id="chat-empty">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+        Ask me anything about Buckinghamshire Council services.
+      </div>
+    </div>
+    <div class="chat-panel__footer">
+      <div class="chat-panel__suggestions" role="group" aria-label="Quick suggestions">
+        <button class="chat-panel__suggestion" data-query="What can I put in my recycling bin?">What can I put in my recycling bin?</button>
+        <button class="chat-panel__suggestion" data-query="Can I recycle plastic bags?">Can I recycle plastic bags?</button>
+        <button class="chat-panel__suggestion" data-query="What goes in my food waste caddy?">What goes in my food waste caddy?</button>
+        <button class="chat-panel__suggestion" data-query="How do I recycle batteries?">How do I recycle batteries?</button>
+      </div>
+      <form class="chat-panel__input-area" id="chat-form" aria-label="Ask us anything">
+        <label for="chat-input" class="visually-hidden">Type your question</label>
+        <input type="text" id="chat-input" class="chat-panel__input" placeholder="Ask us anything..." autocomplete="off" spellcheck="false" />
+        <button type="submit" class="chat-panel__send" aria-label="Send message">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
+        </button>
+      </form>
+      <p class="chat-panel__disclaimer" aria-hidden="true">AI answers may be inaccurate. Always verify important information.</p>
+    </div>
+  </aside>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

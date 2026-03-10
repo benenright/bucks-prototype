@@ -255,7 +255,7 @@
   p {
     font-size: $font-size-lg;
     color: $color-text-secondary;
-    max-width: 65ch;
+    max-width: none;
   }
 
   .top-tasks__grid {
@@ -379,6 +379,132 @@
   }
 }
 
+
+// --- Waste Wizard placeholder -------------------------------------------------
+.waste-wizard-placeholder {
+  background: $color-bg-warm;
+  border: 2px dashed $color-border-light;
+  border-radius: 8px;
+  padding: $space-6;
+  margin-bottom: $space-10;
+
+  &__label {
+    font-family: $font-family-heading;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-lg;
+    color: $color-text;
+    margin-bottom: $space-1 !important;
+  }
+
+  &__hint {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin-bottom: $space-4 !important;
+  }
+
+  &__search {
+    display: flex;
+    gap: $space-3;
+    margin-bottom: $space-3;
+
+    input {
+      flex: 1;
+      padding: $space-3 $space-4;
+      border: 1px solid $color-border-light;
+      border-radius: 6px;
+      font-size: $font-size-base;
+      font-family: $font-family-base;
+      background: $color-bg;
+      color: $color-text-secondary;
+      cursor: not-allowed;
+    }
+
+    button {
+      padding: $space-3 $space-5;
+      background: $color-primary;
+      color: $color-primary-fg;
+      border: none;
+      border-radius: 6px;
+      font-family: $font-family-heading;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-base;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  &__note {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    font-style: italic;
+    margin-bottom: 0 !important;
+  }
+}
+
+// --- Accordion ----------------------------------------------------------------
+.accordion {
+  margin-top: $space-10;
+}
+
+.accordion__item {
+  border-top: 1px solid $color-border-light;
+
+  &:last-child {
+    border-bottom: 1px solid $color-border-light;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    padding: $space-5 0;
+    cursor: pointer;
+    list-style: none;
+    font-family: $font-family-heading;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-xl;
+    color: $color-text;
+    user-select: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover {
+      color: $color-primary-dark;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $color-focus;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+
+  .accordion__chevron {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: $color-primary;
+    transition: transform $transition-base;
+  }
+
+  &[open] summary .accordion__chevron {
+    transform: rotate(90deg);
+  }
+}
+
+.accordion__body {
+  padding-bottom: $space-8;
+  padding-left: calc(20px + #{$space-4}); // align with summary text
+
+  h3 {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    margin-top: $space-5;
+    margin-bottom: $space-3;
+  }
+}
 
 // --- Related pages sidebar widget ---------------------------------------------
 .related-pages {
