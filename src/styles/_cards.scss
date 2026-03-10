@@ -202,6 +202,92 @@
   }
 }
 
+// --- Standalone promo banner -------------------------------------------------
+// Horizontal layout: image left (~62%), content panel right.
+// Used above the news section on the homepage.
+.promo-banner {
+  overflow: hidden;
+  border-radius: $radius-sm;
+  display: flex;
+  flex-direction: column;
+
+  @include bp(md) {
+    flex-direction: row;
+    min-height: 380px;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    flex-shrink: 0;
+
+    @include bp(md) {
+      flex: 0 0 62%;
+      width: 62%;
+      aspect-ratio: unset;
+    }
+  }
+
+  &__content {
+    background: $color-brand-dark;
+    padding: $space-8 $space-6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include bp(md) {
+      flex: 1;
+      padding: $space-10;
+    }
+  }
+
+  &__heading {
+    font-family: $font-family-heading;
+    color: $color-text-inverted;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    line-height: 1.2;
+    margin-bottom: $space-4;
+
+    @include bp(md) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__body {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: $font-size-base;
+    line-height: 1.5;
+    margin-bottom: $space-6;
+  }
+
+  &__cta {
+    display: inline-block;
+    align-self: flex-start;
+    background-color: #ffffff;
+    color: $color-brand-dark;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-base;
+    font-family: $font-family-base;
+    padding: $space-3 $space-6;
+    border-radius: $radius-sm;
+    text-decoration: none;
+    transition: background-color $transition-base, color $transition-base;
+
+    &:hover {
+      background-color: $color-primary-dark;
+      color: #ffffff;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $color-focus;
+      outline-offset: 2px;
+    }
+  }
+}
+
 // --- News card grid ----------------------------------------------------------
 .news-grid {
   display: grid;
