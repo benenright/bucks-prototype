@@ -39,6 +39,15 @@ export default defineConfig({
         'waste-and-recycling': resolve(__dirname, 'waste-and-recycling/index.html'),
         'bin-collection-days': resolve(__dirname, 'waste-and-recycling/bin-collection-days/index.html'),
         'bin-collections': resolve(__dirname, 'waste-and-recycling/bin-collections/index.html'),
+        'replace-bin': resolve(__dirname, 'waste-and-recycling/bin-collections/replace-bin/index.html'),
+        'household-recycling-centres': resolve(__dirname, 'waste-and-recycling/household-recycling-centres/index.html'),
+        'hrc-find-your-nearest': resolve(__dirname, 'waste-and-recycling/household-recycling-centres/find-your-nearest/index.html'),
+        'hrc-hazardous-waste': resolve(__dirname, 'waste-and-recycling/household-recycling-centres/hazardous-waste/index.html'),
+        'bulky-waste': resolve(__dirname, 'waste-and-recycling/bulky-waste/index.html'),
+        'clinical-sharps-boxes': resolve(__dirname, 'waste-and-recycling/clinical-waste/sharps-boxes/index.html'),
+        'street-cleaning': resolve(__dirname, 'waste-and-recycling/street-cleaning/index.html'),
+        'street-cleaning-damaged-litter-bin': resolve(__dirname, 'waste-and-recycling/street-cleaning/damaged-litter-bin/index.html'),
+        'waste-feedback': resolve(__dirname, 'waste-and-recycling/feedback/index.html'),
       }
     }
   }

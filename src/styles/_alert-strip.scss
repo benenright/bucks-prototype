@@ -1,35 +1,28 @@
 // =============================================================================
-// Alert banner — container-width box beneath the site header.
-// Markup mirrors buckinghamshire.gov.uk: .alert.alert--message.alert--[blue|amber|red]
+// Alert banner — bordered box, sits inside the hero/page-banner container.
+// Markup: .alert.alert--message.alert--[blue|amber|red] inside the hero .container
 // Remove the element entirely when no alert is needed.
 // =============================================================================
 
-// Outer wrapper — full-bleed background only
-.alert-wrapper {
-  &--blue   { background: #E9F0F9; }
-  &--amber  { background: #FFF4CC; }
-  &--red    { background: #FEECEB; }
-}
-
-.alert-wrapper .container {
-  position: relative;
-}
+// Pull alert closer to header by halving each hero's padding-top
+.page-banner > .container > .alert { margin-top: -$space-4; @include bp(md) { margin-top: -$space-6; } }
+.content-header > .container > .alert { margin-top: -$space-6; }
+.landing-header > .container > .alert { margin-top: -$space-4; }
+.page-banner.search-page__header > .container > .alert { margin-top: -$space-4; @include bp(md) { margin-top: -$space-6; } }
 
 .alert {
-  padding: $space-4 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-size: $font-size-sm;
+  background: #ffffff;
+  border-radius: $radius-sm;
+  padding: $space-4;
+  overflow: hidden; // clear the float
+  font-size: $font-size-sm !important;
   line-height: 1.5;
-  max-width: 800px;
+  margin-bottom: $space-8;
 
   // --- Dismiss button ----------------------------------------------------------
   &__dismiss {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
+    float: right;
+    margin: 0 0 $space-2 $space-3;
     background: none;
     border: none;
     cursor: pointer;
@@ -42,7 +35,7 @@
     justify-content: center;
     transition: opacity $transition-base, background $transition-base;
 
-    svg { width: 18px; height: 18px; display: block; }
+    svg { width: 22px; height: 22px; display: block; }
 
     &:hover { opacity: 1; background: rgba(0, 0, 0, 0.07); }
     &:focus-visible { outline: 3px solid $color-focus; outline-offset: 2px; }
@@ -51,10 +44,11 @@
   // --- Header (icon + title in alert colour) ----------------------------------
   &__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: $space-2;
     font-weight: $font-weight-semibold;
-    font-size: $font-size-base;
+    font-size: $font-size-base !important;
+    line-height: 1.25;
     margin: 0;
   }
 
@@ -62,14 +56,16 @@
     flex-shrink: 0;
     width: 22px;
     height: 22px;
+    margin-top: 1px;
   }
 
   // --- Body copy (standard text colour) ----------------------------------------
   &__content {
     p {
       margin: 0;
-      color: $color-text;
-      max-width: 800px;
+      max-width: none !important;
+      font-size: $font-size-sm !important;
+      color: $color-text !important;
     }
 
     a {
@@ -80,16 +76,19 @@
 
   // --- Colour variants ---------------------------------------------------------
   &--blue {
-    .alert__header { color: $color-primary; }
+    border: 3px solid #006ab4;
+    .alert__header { color: #006ab4; }
     .alert__content a { color: $color-primary; }
   }
 
   &--amber {
+    border: 3px solid #e6a000;
     .alert__header { color: #7a5100; }
     .alert__content a { color: #7a5100; }
   }
 
   &--red {
+    border: 3px solid $color-red;
     .alert__header { color: $color-red; }
     .alert__content a { color: #a01000; }
   }

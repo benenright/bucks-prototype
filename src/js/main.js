@@ -17,6 +17,7 @@ const heroImages = [
   '/assets/images/sunset6.jpg',
   '/assets/images/sunset7.jpg',
   '/assets/images/sunset8.jpeg',
+  '/assets/images/field.jpg',
 ];
 
 const heroEl = document.querySelector('.hero');
@@ -323,6 +324,8 @@ document.querySelectorAll('.chat-panel__suggestion').forEach(btn => {
   btn.addEventListener('click', () => {
     const query = btn.dataset.query;
     if (!chatPanel?.classList.contains('is-open')) openPanel();
+    // Hide all suggestion chips once one is used
+    document.querySelectorAll('.chat-panel__suggestions').forEach(el => el.remove());
     // small delay so panel is open before bubbles appear
     setTimeout(() => {
       appendBubble({ role: 'user', text: query });
@@ -525,5 +528,5 @@ if (location.pathname.includes('/search')) {
 // Alert banner — dismiss button
 // =============================================================================
 document.querySelectorAll('.alert__dismiss').forEach(btn => {
-  btn.addEventListener('click', () => btn.closest('.alert-wrapper')?.remove());
+  btn.addEventListener('click', () => btn.closest('.alert')?.remove());
 });

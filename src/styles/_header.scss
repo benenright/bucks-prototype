@@ -39,7 +39,7 @@
   flex-shrink: 0;
 
   &__img {
-    height: 40px;
+    height: 35px;
     width: auto;
     display: block;
 
@@ -291,40 +291,47 @@
   &__panel {
     display: flex;
     flex-direction: column;
-    padding: $space-3 0;
+    padding: $space-6 0 $space-3;
 
     @include bp(md) {
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: flex-start;
       padding: $space-8 0 $space-10;
-      gap: $space-10;
+      gap: $space-6;
     }
   }
 
-  // Services wrap: contains services list + search
-  // On mobile: flex column so order can reposition the search to the top
-  &__services-wrap {
+  // Search section — label above input on all viewports
+  &__search-section {
+    @include bp(md) {
+      margin-bottom: 0;
+    }
+  }
+
+  // Services + Council activity side by side on desktop
+  &__cols {
     display: flex;
     flex-direction: column;
 
     @include bp(md) {
-      flex: 1 1 auto;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: $space-10;
     }
   }
 
-  // Search bar — above services list on both mobile and desktop
+  // Search bar
   &__search {
     padding: 0 0 $space-4;
 
     @include bp(md) {
-      padding: 0 0 $space-6;
+      padding: 0;
+      flex: 1;
+      max-width: 560px;
     }
   }
 
-  // Tighter gap between Search heading and the search input
   &__col-heading--search {
-    margin-bottom: $space-2;
+    margin-bottom: $space-3;
+    white-space: nowrap;
   }
 
   &__search-wrap {
@@ -444,7 +451,7 @@
 
       .site-nav__label {
         color: $color-primary-dark;
-        text-decoration: none;
+        text-decoration-thickness: 2px;
       }
 
       .site-nav__icon svg {
@@ -480,6 +487,7 @@
     font-size: 0.9rem;
     line-height: 1.3;
     text-decoration: underline;
+    text-decoration-thickness: 1px;
     text-underline-offset: 2px;
     transition: color $transition-base;
   }
@@ -513,7 +521,7 @@
 
       .site-nav__task-label {
         color: $color-primary-dark;
-        text-decoration: none;
+        text-decoration-thickness: 2px;
       }
 
       .site-nav__task-icon {
@@ -549,7 +557,7 @@
     font-weight: $font-weight-bold;
     color: $color-primary;
     text-decoration: underline;
-    text-decoration-color: rgba(0, 0, 0, 0.2);
+    text-decoration-thickness: 1px;
     text-underline-offset: 2px;
     line-height: 1.3;
   }
@@ -580,11 +588,13 @@
     font-weight: $font-weight-medium;
     color: $color-primary;
     text-decoration: underline;
-    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
     transition: color $transition-base;
 
     &:hover {
       color: $color-primary-dark;
+      text-decoration-thickness: 2px;
     }
 
     &:focus-visible {

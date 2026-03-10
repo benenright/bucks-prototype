@@ -64,7 +64,7 @@
 
       .site-footer__service-label {
         color: #84ccfc;
-        text-decoration: none;
+        text-decoration-thickness: 2px;
       }
 
       .site-footer__service-icon svg {
@@ -100,7 +100,7 @@
     font-size: 0.9rem;
     line-height: 1.3;
     text-decoration: underline;
-    text-decoration-color: rgba(255, 255, 255, 0.3);
+    text-decoration-thickness: 1px;
     text-underline-offset: 2px;
     transition: color $transition-base;
   }
@@ -133,7 +133,7 @@
 
       .site-footer__task-label {
         color: #84ccfc;
-        text-decoration: none;
+        text-decoration-thickness: 2px;
       }
 
       .site-footer__task-icon {
@@ -166,8 +166,8 @@
     font-size: $font-size-sm;
     font-weight: $font-weight-bold;
     text-decoration: underline;
+    text-decoration-thickness: 1px;
     text-underline-offset: 2px;
-    text-decoration-color: rgba(255, 255, 255, 0.35);
     line-height: 1.3;
   }
 
@@ -184,8 +184,7 @@
 
     @include bp(md) {
       flex-direction: row;
-      align-items: flex-end;
-      justify-content: space-between;
+      align-items: center;
       gap: $space-8;
     }
   }
@@ -194,6 +193,27 @@
     display: flex;
     flex-direction: column;
     gap: $space-4;
+
+    @include bp(md) {
+      flex: 0 0 66.666%;
+    }
+  }
+
+  &__lower-logos {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    a:focus-visible {
+      outline: 3px solid $color-focus;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+  }
+
+  &__safespaces-img {
+    width: 140px;
+    height: auto;
   }
 
   &__social {
@@ -206,15 +226,20 @@
       justify-content: center;
       width: 32px;
       height: 32px;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.18);
       border-radius: $radius-sm;
-      color: rgba(255, 255, 255, 0.65);
+      color: rgba(255, 255, 255, 0.9);
       text-decoration: none;
       transition: background $transition-base, color $transition-base;
 
       &:hover {
-        background-color: $color-primary;
+        background-color: $color-primary-dark;
         color: $color-text-inverted;
+      }
+
+      &:focus-visible {
+        outline: 3px solid $color-focus;
+        outline-offset: 2px;
       }
 
       svg {
@@ -230,13 +255,13 @@
     gap: $space-2 $space-4;
 
     a {
-      color: rgba(255, 255, 255, 0.55);
+      color: rgba(255, 255, 255, 0.8);
       text-decoration: underline;
       text-decoration-thickness: 1px;
       font-size: $font-size-sm;
       transition: color $transition-base;
 
-      &:hover { color: $color-text-inverted; }
+      &:hover { color: $color-text-inverted; text-decoration-thickness: 2px; }
 
       &:focus-visible {
         outline: 3px solid $color-focus;
@@ -245,16 +270,17 @@
     }
   }
 
-  // --- Logo + copyright (bottom right) --------------------------------------
+  // --- Logo + copyright (right col, 1/3 width) --------------------------------
   &__lower-brand {
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    align-items: center; // centred on mobile
+    align-items: center;
     gap: $space-2;
 
     @include bp(md) {
-      align-items: flex-end; // right-aligned on desktop
+      flex: 1;
+      align-items: flex-end;
     }
 
     img {

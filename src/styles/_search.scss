@@ -26,7 +26,7 @@
   align-items: center;
   background: $color-bg;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
-  border-radius: $radius-sm;
+  border-radius: 6px;
   overflow: hidden;
 
   &:focus-within {
@@ -72,7 +72,15 @@
       flex-shrink: 0;
     }
 
-    &:hover { background: $color-brand-dark; }
+    .search-page__btn-label {
+      display: none;
+
+      @include bp(md) {
+        display: inline;
+      }
+    }
+
+    &:hover { background: #0059a0; }
 
     &:focus-visible {
       outline: 3px solid $color-focus;
@@ -114,10 +122,6 @@
 // --- AI assistant teaser (sidebar) -------------------------------------------
 
 .search-ai-teaser {
-  background: $color-midnight-blue;
-  color: $color-text-inverted;
-  padding: $space-8;
-  border-radius: $radius-sm;
   display: flex;
   flex-direction: column;
   gap: $space-4;
@@ -126,77 +130,13 @@
     font-size: $font-size-xl;
     font-weight: $font-weight-semibold;
     margin: 0;
-    color: $color-text-inverted;
   }
 
   &__body {
     font-size: $font-size-sm;
-    color: rgba(255, 255, 255, 0.75);
+    color: $color-text-secondary;
     margin: 0;
     line-height: 1.6;
-  }
-
-  &__btn {
-    display: flex;
-    align-items: center;
-    gap: $space-3;
-    margin-top: $space-2;
-    background: none;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: $color-text-inverted;
-    padding: $space-3 $space-4;
-    font-family: $font-family-base;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-semibold;
-    cursor: pointer;
-    transition: border-color $transition-base;
-    text-align: left;
-  }
-
-  &__btn-icon {
-    display: inline-grid;
-    align-items: center;
-    justify-items: center;
-    flex-shrink: 0;
-  }
-
-  &__chat {
-    width: 22px;
-    height: 22px;
-    color: $color-accent;
-    grid-area: 1/1;
-  }
-
-  &__spark {
-    width: 16px;
-    height: 16px;
-    color: $color-midnight-blue;
-    grid-area: 1/1;
-    margin-top: -3px;
-    margin-left: 4px;
-  }
-
-  &__arrow {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    margin-left: auto;
-    opacity: 0.6;
-    transition: transform $transition-base, opacity $transition-base;
-  }
-
-  &__btn:hover {
-    border-color: rgba(255, 255, 255, 0.5);
-
-    .search-ai-teaser__arrow {
-      transform: translateX(3px);
-      opacity: 1;
-    }
-  }
-
-  &__btn:focus-visible {
-    outline: 3px solid $color-focus;
-    outline-offset: 3px;
   }
 }
 
@@ -238,11 +178,12 @@
     a {
       color: $color-primary;
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
 
       &:hover {
         color: $color-primary-dark;
-        text-decoration: none;
+        text-decoration-thickness: 2px;
       }
     }
   }
@@ -272,9 +213,10 @@
     font-size: inherit;
     cursor: pointer;
     text-decoration: underline;
-    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
 
-    &:hover { color: $color-primary-dark; }
+    &:hover { color: $color-primary-dark; text-decoration-thickness: 2px; }
   }
 }
 

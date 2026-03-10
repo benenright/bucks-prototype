@@ -53,7 +53,7 @@
           <button class="header-ai-btn" id="ai-panel-trigger" data-open-chat aria-controls="chat-panel" aria-expanded="false">
             <span class="header-ai-btn__icon-stack" aria-hidden="true"><svg class="header-ai-btn__chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 3.694-9.75 8.25 0 4.556 4.365 8.25 9.75 8.25a9.743 9.743 0 003.848-.769l3.152 1.378a.75.75 0 00.968-.968l-1.378-3.152A8.4 8.4 0 0021.75 10.5c0-4.556-4.365-8.25-9.75-8.25z" clip-rule="evenodd" /></svg><svg class="header-ai-btn__spark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg></span>
             <span class="header-ai-btn__dot" aria-hidden="true"></span>
-            <span class="header-ai-btn__label header-ai-btn__label--mobile" aria-hidden="true">Chat</span>
+            <span class="header-ai-btn__label header-ai-btn__label--mobile" aria-hidden="true">Ask us</span>
             <span class="header-ai-btn__label header-ai-btn__label--desktop">Ask us</span>
           </button>
 
@@ -64,15 +64,6 @@
     <!-- @include "/src/partials/nav.html" -->
   </header>
   <!-- Alert – remove element entirely when no alert needed -->
-  <div class="alert-wrapper alert-wrapper--red">
-    <div class="container">
-      <section class="alert alert--message alert--red" aria-labelledby="alert-title">
-        <p class="alert__header" id="alert-title"><svg class="alert__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg>Bank holiday collection changes</p>
-        <div class="alert__content"><p>Collections during the week of Monday 26 May will run one day late due to the bank holiday. Check your revised collection dates before putting your bins out.</p></div>
-      <button class="alert__dismiss" aria-label="Dismiss alert"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg></button>
-      </section>
-    </div>
-  </div>
 
 
   <main id="main-content">
@@ -83,6 +74,12 @@
 
     <div class="page-banner">
       <div class="container">
+      <!-- <section class="alert alert--message alert--red" aria-labelledby="alert-title">
+      <button class="alert__dismiss" aria-label="Dismiss alert"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg></button>
+        <p class="alert__header" id="alert-title"><svg class="alert__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg>Bank holiday collection changes</p>
+        <div class="alert__content"><p>Collections during the week of Monday 26 May will run one day late due to the bank holiday. Check your revised collection dates before putting your bins out.</p></div>
+      </section> -->
+
 
 
         <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -116,7 +113,7 @@
             <div class="task-tile__icon-wrap" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 9l3 3-3 3" /></svg></div>
           </a>
 
-          <a href="/waste-and-recycling/household-recycling-centres/" class="task-tile">
+          <a href="/waste-and-recycling/household-recycling-centres/find-your-nearest/" class="task-tile">
             <span class="task-tile__body">
               <span class="task-tile__label">Find a recycling centre</span>
             </span>
@@ -144,7 +141,7 @@
     <!-- =========================================================================
          TOPICS
     ========================================================================= -->
-    <section class="popular-services popular-services--no-icons" aria-labelledby="topics-heading">
+    <section class="popular-services popular-services--no-icons popular-services--topics" aria-labelledby="topics-heading">
       <div class="container">
         <div class="section__header">
           <h2 id="topics-heading">Topics</h2>
@@ -159,9 +156,10 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-.375c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v.375c0 .621.504 1.125 1.125 1.125z" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Bin collections<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__name">Bin collections</span>
                 <span class="service-row__desc">Bin days, missed collections, garden waste, damaged and replacement bins</span>
               </span>
+              <svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
             </a>
           </li>
 
@@ -171,9 +169,10 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Household recycling centres<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__name">Household recycling centres</span>
                 <span class="service-row__desc">Find your nearest tip, opening times, permits and what you can drop off</span>
               </span>
+              <svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
             </a>
           </li>
 
@@ -183,21 +182,23 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Bulky household item collections<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__name">Bulky household item collections</span>
                 <span class="service-row__desc">Book a one-off collection of large items such as furniture and appliances</span>
               </span>
+              <svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
             </a>
           </li>
 
           <li>
-            <a href="/waste-and-recycling/clinical-waste/" class="service-row">
+            <a href="/waste-and-recycling/clinical-waste/sharps-boxes/" class="service-row">
               <span class="service-row__icon" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Clinical waste and sharps collections<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__name">Clinical waste and sharps collections</span>
                 <span class="service-row__desc">Free and confidential household collection of clinical waste, needles and syringes</span>
               </span>
+              <svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
             </a>
           </li>
 
@@ -207,21 +208,23 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">School, business and charity waste<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__name">School, business and charity waste</span>
                 <span class="service-row__desc">Waste collections for schools, businesses, charities and other non-domestic premises</span>
               </span>
+              <svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
             </a>
           </li>
 
           <li>
-            <a href="/waste-and-recycling/littering-and-street-cleaning/" class="service-row">
+            <a href="/waste-and-recycling/street-cleaning/" class="service-row">
               <span class="service-row__icon" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Littering and street cleaning<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__name">Littering and street cleaning</span>
                 <span class="service-row__desc">Report littering, fly-tipping, overflowing bins or organise a litter pick</span>
               </span>
+              <svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
             </a>
           </li>
 
@@ -231,9 +234,10 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Buckinghamshire Recycles<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__name">Buckinghamshire Recycles</span>
                 <span class="service-row__desc">Resources and guidance to help you reduce waste and recycle more</span>
               </span>
+              <svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
             </a>
           </li>
 
@@ -243,9 +247,10 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>
               </span>
               <span class="service-row__text">
-                <span class="service-row__name">Give feedback on waste or street cleaning crews<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                <span class="service-row__name">Give feedback on waste or street cleaning crews</span>
                 <span class="service-row__desc">Report incidents or give feedback about our waste and street cleaning teams</span>
               </span>
+              <svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
             </a>
           </li>
 

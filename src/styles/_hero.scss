@@ -15,7 +15,6 @@
   padding: 8rem 0 0;
   position: relative;
   overflow: hidden;
-  text-align: left;
 
   // Subtle accent glow — bottom left, uses brand green
   &::before {
@@ -49,11 +48,12 @@
     position: relative;
     z-index: 1;
     max-width: 800px;
+    margin: 0 auto;
     padding-bottom: $space-12;
-    // Flexbox ensures every child aligns to the left
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
 
     @include bp(md) {
       padding-bottom: $space-24;
@@ -95,7 +95,7 @@
     letter-spacing: -0.02em;
 
     @include bp(md) {
-      font-size: 4rem;
+      font-size: 3.8rem;
       white-space: nowrap;
     }
   }
@@ -287,7 +287,7 @@
     width: 7px;
     height: 7px;
     background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 0;
+    border-radius: 50%;
     @media (prefers-reduced-motion: no-preference) {
       animation: typing-bounce 1.2s ease-in-out infinite;
       &:nth-child(2) { animation-delay: 0.2s; }
@@ -437,12 +437,13 @@
 
   a {
     color: rgba(255, 255, 255, 0.65);
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
 
     &:hover {
       color: #fff;
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      text-decoration-thickness: 2px;
     }
   }
 

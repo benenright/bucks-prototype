@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Search Buckinghamshire Council services, information and news." />
-  <title>Search – Buckinghamshire Council</title>
+  <meta name="description" content="Order a replacement bin if yours has been lost, stolen or damaged. Find out what you can order and how long delivery takes." />
+  <title>Replace a lost, stolen or damaged bin – Buckinghamshire Council</title>
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="/src/styles/main.scss" />
@@ -26,13 +26,6 @@
         </a>
 
         <div class="site-header__actions">
-
-          <!--
-          <a href="/sign-in/" class="header-account-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" /></svg>
-            <span class="header-btn-label">Account</span>
-          </a>
-          -->
 
           <button
             class="header-menu-btn"
@@ -63,106 +56,115 @@
 
     <!-- @include "/src/partials/nav.html" -->
   </header>
-  <!-- Alert – remove element entirely when no alert needed -->
-
 
   <main id="main-content">
 
     <!-- =========================================================================
          PAGE HEADER
     ========================================================================= -->
-    <div class="page-banner search-page__header">
+    <div class="content-header">
       <div class="container">
-      <!-- <section class="alert alert--message alert--blue" aria-labelledby="alert-title">
-      <button class="alert__dismiss" aria-label="Dismiss alert"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg></button>
-        <p class="alert__header" id="alert-title"><svg class="alert__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clip-rule="evenodd"/></svg>Try our AI assistant for faster answers</p>
-        <div class="alert__content"><p>Can't find what you're looking for? <a href="#" data-open-chat>Ask our AI assistant</a> — it can answer questions about council services instantly, 24 hours a day.</p></div>
-      </section> -->
 
-        <nav class="breadcrumb" aria-label="Breadcrumb">
+        <nav class="breadcrumb breadcrumb--on-light" aria-label="Breadcrumb">
           <ol>
             <li><a href="/">Home</a></li>
+            <li><a href="/waste-and-recycling/">Waste and recycling</a></li>
+            <li><a href="/waste-and-recycling/bin-collections/">Bin collections</a></li>
           </ol>
         </nav>
-        <h1 id="search-heading">Search</h1>
-        <form class="search-page__form" action="/search/" method="get" role="search">
-          <label for="search-page-input" class="visually-hidden">Search council services</label>
-          <div class="search-page__input-wrap">
-            <input
-              type="text"
-              id="search-page-input"
-              name="q"
-              placeholder="Search for a topic, service or task..."
-              autocomplete="off"
-              spellcheck="false"
-            />
-            <button type="submit" aria-label="Search">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-              </svg>
-              <span class="search-page__btn-label">Search</span>
-            </button>
-          </div>
-        </form>
+
+        <h1>Replace a lost, stolen or damaged bin</h1>
+
+        <nav class="contents-list" aria-label="On this page">
+          <h2 class="contents-list__heading">Contents</h2>
+          <ol class="contents-list__list">
+            <li><a href="#what-you-can-order">What you can order</a></li>
+            <li><a href="#what-you-cannot-order">What you cannot order</a></li>
+            <li><a href="#after-ordering">After ordering</a></li>
+          </ol>
+        </nav>
+
       </div>
     </div>
 
     <!-- =========================================================================
-         SEARCH RESULTS
+         TWO-COLUMN LAYOUT
     ========================================================================= -->
-    <div class="search-page__body">
-      <div class="container">
-        <div class="search-page__layout">
+    <div class="container">
+      <div class="content-layout">
 
-          <!-- Main column -->
-          <div class="search-page__main">
+        <!-- Main content -->
+        <article class="content-main prose">
 
-            <hr class="search-divider" />
+          <section id="before-you-order">
+            <p>You can order a replacement bin if yours has been lost, stolen or damaged. Before you report a bin missing, check nearby streets and your neighbours' properties — bins are sometimes moved during or after collection.</p>
+            <p>If your bin was damaged by our waste crew, we may replace it at no charge. You'll need to provide photographic evidence when you submit your request.</p>
 
-            <!-- Results list (JS-rendered) -->
-            <ul class="search-results" id="search-results" role="list" aria-label="Search results">
+            <a href="#" class="btn-primary btn-primary--accent">
+              Order a replacement bin
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </a>
+          </section>
+
+          <section id="what-you-can-order">
+            <h2>What you can order</h2>
+            <p>You can request a replacement for any of the following:</p>
+            <ul>
+              <li>General waste bin (grey)</li>
+              <li>Mixed recycling bin</li>
+              <li>Food waste caddy (23 litre, outdoor)</li>
+              <li>Paper and card bin</li>
+              <li>Garden waste bin — only if you have an active garden waste subscription</li>
             </ul>
+            <p>You can request the same size bin you previously had. Larger general waste bins (above the standard size) are only replaced if we have a record of a previous application. The maximum size available is 240 litres.</p>
+          </section>
 
-            <!-- No results state (shown by JS when needed) -->
-            <div class="search-no-results" id="search-no-results" hidden>
-              <p>No results found. Try different keywords, or <button class="search-no-results__chat" data-open-chat>ask our AI assistant</button>.</p>
-            </div>
+          <section id="what-you-cannot-order">
+            <h2>What you cannot order</h2>
+            <p>Indoor food caddies cannot be replaced through this service. You can use any suitable container as an alternative, or purchase a new one from a retailer.</p>
+          </section>
 
-            <!-- Results meta -->
-            <p class="search-meta" id="search-meta" aria-live="polite"></p>
+          <section id="after-ordering">
+            <h2>After ordering</h2>
+            <p>Replacement bins are usually delivered within 10 working days.</p>
+            <p>If you have a damaged bin to dispose of, leave it at your property boundary on your next collection day and our crew will take it away. If your old bin has not been removed, you can submit a separate request for collection.</p>
+            <p>If you need to cancel your order, you can get a full refund as long as the bin has not yet been delivered.</p>
+          </section>
 
-            <!-- Pagination (JS-rendered) -->
-            <nav class="search-pagination" id="search-pagination" aria-label="Search results pages">
-            </nav>
+        </article>
 
-          </div>
+        <!-- Sidebar -->
+        <aside class="content-sidebar">
+          <nav class="related-pages" aria-labelledby="related-heading">
+            <h2 class="related-pages__heading" id="related-heading">Related content</h2>
+            <ul>
+              <li><a href="/waste-and-recycling/bin-collections/">Bin collections</a></li>
+              <li><a href="/waste-and-recycling/bin-collection-days/">Check your bin collection day</a></li>
+              <li><a href="#">Report a missed bin collection</a></li>
+              <li><a href="#">Garden waste subscriptions</a></li>
+            </ul>
+          </nav>
 
-          <!-- Sidebar -->
-          <aside class="search-page__sidebar" aria-label="AI assistant">
-            <div class="search-ai-teaser">
-              <h2 class="search-ai-teaser__heading">Not finding what you need?</h2>
-              <p class="search-ai-teaser__body">Our AI assistant can answer questions about council services instantly.</p>
-              <button class="ask-btn" data-open-chat aria-controls="chat-panel" aria-expanded="false">
-                <span class="ask-btn__icon" aria-hidden="true">
-                  <svg class="ask-btn__chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 3.694-9.75 8.25 0 4.556 4.365 8.25 9.75 8.25a9.743 9.743 0 003.848-.769l3.152 1.378a.75.75 0 00.968-.968l-1.378-3.152A8.4 8.4 0 0021.75 10.5c0-4.556-4.365-8.25-9.75-8.25z" clip-rule="evenodd" /></svg>
-                  <svg class="ask-btn__spark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
-                </span>
-                <span class="ask-btn__text">
-                  <strong>Ask us anything</strong>
-                  <small>Get instant answers about council services</small>
-                </span>
-                <span class="ask-btn__arrow" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-                </span>
-              </button>
-            </div>
-          </aside>
+          <!-- @include "/src/partials/ask-btn.html" -->
+        </aside>
 
-        </div>
       </div>
     </div>
 
   </main>
+
+  <!-- Page feedback strip -->
+  <section class="page-feedback" aria-label="Page feedback">
+    <div class="container">
+      <div class="page-feedback__inner">
+        <p class="page-feedback__question">Is this page useful?</p>
+        <div class="page-feedback__actions">
+          <button class="page-feedback__btn page-feedback__btn--yes" type="button">Yes</button>
+          <button class="page-feedback__btn page-feedback__btn--no" type="button">No</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <!-- @include "/src/partials/footer.html" -->
@@ -188,10 +190,9 @@
     </div>
     <div class="chat-panel__footer">
       <div class="chat-panel__suggestions" role="group" aria-label="Quick suggestions">
-        <button class="chat-panel__suggestion" data-query="When is my bin collected?">When is my bin collected?</button>
-        <button class="chat-panel__suggestion" data-query="How do I pay my council tax?">How do I pay my council tax?</button>
-        <button class="chat-panel__suggestion" data-query="How do I apply for planning permission?">How do I apply for planning?</button>
-        <button class="chat-panel__suggestion" data-query="How do I report a pothole?">How do I report a pothole?</button>
+        <button class="chat-panel__suggestion" data-query="How do I replace a damaged bin?">How do I replace a damaged bin?</button>
+        <button class="chat-panel__suggestion" data-query="How long does bin delivery take?">How long does bin delivery take?</button>
+        <button class="chat-panel__suggestion" data-query="Can I get a bigger bin?">Can I get a bigger bin?</button>
       </div>
       <form class="chat-panel__input-area" id="chat-form" aria-label="Ask us anything">
         <label for="chat-input" class="visually-hidden">Type your question</label>

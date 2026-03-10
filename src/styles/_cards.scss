@@ -59,8 +59,7 @@
     font-size: 0.7rem;
     font-weight: $font-weight-bold;
     color: $color-primary;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.01em;
     margin-bottom: $space-1;
   }
 
@@ -81,11 +80,12 @@
     a {
       color: $color-primary;
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
 
       &:hover {
         color: $color-primary-dark;
-        text-decoration: none;
+        text-decoration-thickness: 2px;
       }
     }
   }
@@ -274,7 +274,7 @@
   font-weight: $font-weight-normal;
   color: $color-primary;
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 2px;
   font-size: $font-size-base;
   padding: $space-3 0;
 

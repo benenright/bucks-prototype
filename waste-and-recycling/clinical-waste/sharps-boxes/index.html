@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Check when your bins and boxes are collected in Buckinghamshire. Find your next collection dates for general waste, recycling, food waste and garden waste." />
-  <title>Check your bin collection day – Buckinghamshire Council</title>
+  <meta name="description" content="Book a free collection of your used sharps boxes in Buckinghamshire. Find out what we collect, how to prepare your sharps box and how to book." />
+  <title>Book a collection of sharps boxes – Buckinghamshire Council</title>
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="/src/styles/main.scss" />
@@ -14,9 +14,6 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- =========================================================================
-       SITE HEADER
-  ========================================================================= -->
   <header class="site-header" role="banner">
     <div class="container">
       <div class="site-header__inner">
@@ -26,13 +23,6 @@
         </a>
 
         <div class="site-header__actions">
-
-          <!--
-          <a href="/sign-in/" class="header-account-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" /></svg>
-            <span class="header-btn-label">Account</span>
-          </a>
-          -->
 
           <button
             class="header-menu-btn"
@@ -63,109 +53,113 @@
 
     <!-- @include "/src/partials/nav.html" -->
   </header>
-  <!-- Alert – remove element entirely when no alert needed -->
-
 
   <main id="main-content">
 
-    <!-- =========================================================================
-         PAGE HEADER
-    ========================================================================= -->
     <div class="content-header">
       <div class="container">
-      <section class="alert alert--message alert--amber" aria-labelledby="alert-title">
-      <button class="alert__dismiss" aria-label="Dismiss alert"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg></button>
-        <p class="alert__header" id="alert-title"><svg class="alert__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg>Collections disrupted this week</p>
-        <div class="alert__content"><p>Due to the bank holiday on Monday 26 May, all collections will run one day late. Your usual Monday collection will take place on Tuesday, and so on throughout the week.</p></div>
-      </section>
 
+        <section class="alert alert--message alert--amber" aria-labelledby="alert-sharps-title">
+          <button class="alert__dismiss" aria-label="Dismiss alert"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg></button>
+          <p class="alert__header" id="alert-sharps-title"><svg class="alert__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg>High demand for sharps collections</p>
+          <div class="alert__content"><p>We're currently experiencing high demand for sharps collections. If no dates are showing when you book, all current slots are full. New dates are released every Wednesday and Friday.</p></div>
+        </section>
 
         <nav class="breadcrumb breadcrumb--on-light" aria-label="Breadcrumb">
           <ol>
             <li><a href="/">Home</a></li>
             <li><a href="/waste-and-recycling/">Waste and recycling</a></li>
-            <li><a href="/waste-and-recycling/bin-collections/">Bin collections</a></li>
+            <li><a href="/waste-and-recycling/clinical-waste/">Clinical waste and sharps collections</a></li>
           </ol>
         </nav>
 
-        <h1>Check your bin collection day</h1>
+        <h1>Book a collection of sharps boxes</h1>
 
         <nav class="contents-list" aria-label="On this page">
           <h2 class="contents-list__heading">Contents</h2>
           <ol class="contents-list__list">
-            <li><a href="#what-goes-in">What goes in each bin</a></li>
-            <li><a href="#collection-changes">Collection changes</a></li>
-            <li><a href="#printable-calendar">Printable calendar</a></li>
+            <li><a href="#what-we-collect">What we collect</a></li>
+            <li><a href="#preparing-your-box">Preparing your sharps box</a></li>
+            <li><a href="#how-to-book">How to book</a></li>
+            <li><a href="#cancellations">Cancellations and changes</a></li>
+            <li><a href="#missed-collection">If we miss your collection</a></li>
           </ol>
         </nav>
 
       </div>
     </div>
 
-    <!-- =========================================================================
-         TWO-COLUMN LAYOUT
-    ========================================================================= -->
     <div class="container">
       <div class="content-layout">
 
-        <!-- Main content -->
         <article class="content-main prose">
 
-          <section id="check-dates">
-            <p>Use our online tool to find out when your bins and boxes are next collected. Enter your postcode and select your address to see your personalised collection schedule.</p>
+          <p>We offer a free, confidential collection of used sharps boxes from your home. This service is for household medical waste only — it cannot be used by businesses or healthcare providers.</p>
+
+          <a href="#" class="btn-primary btn-primary--accent">
+            Book a sharps box collection
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+          </a>
+
+          <section id="what-we-collect">
+            <h2>What we collect</h2>
+            <p>We collect used sharps boxes containing:</p>
+            <ul>
+              <li>Needles and syringes</li>
+              <li>Lancets</li>
+              <li>Needle clippers</li>
+            </ul>
+            <p>Sharps must be stored in an approved, locked sharps box before collection. These are available on prescription from your GP, diabetes nurse or pharmacist. We cannot collect loose sharps or sharps stored in other containers such as bottles or tins.</p>
+            <p>If you also have bagged clinical waste to be collected — such as dressings, tubing or catheter bags — this is a separate service. <a href="#">Find out about clinical waste collections</a>.</p>
+          </section>
+
+          <section id="preparing-your-box">
+            <h2>Preparing your sharps box</h2>
+            <p>Before your collection, make sure your sharps box is:</p>
+            <ul>
+              <li>Filled no higher than the marked fill line</li>
+              <li>Locked shut using the lid mechanism</li>
+              <li>Kept out of reach of children and pets until collection day</li>
+            </ul>
+            <p>On collection day, place your box at the front of your property by 6am at your normal bin collection point. Our teams have until 6pm to complete collections, so please leave the box out for the full day.</p>
+          </section>
+
+          <section id="how-to-book">
+            <h2>How to book</h2>
+            <p>Book your collection online. You will be asked for your address and to choose an available collection date.</p>
+            <p>If no dates are available when you book, all current slots are full. New slots are added every Wednesday and Friday, so check back then.</p>
 
             <a href="#" class="btn-primary btn-primary--accent">
-              Check your collection dates
+              Book a sharps box collection
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
             </a>
-
-            <p>We collect four types of waste from most homes:</p>
-            <ul>
-              <li>Food waste (weekly, in a small caddy)</li>
-              <li>Recycling — paper, card, cans, plastic and glass</li>
-              <li>General waste (fortnightly, grey bin)</li>
-              <li>Garden waste — if you have an active subscription</li>
-            </ul>
           </section>
 
-          <section id="what-goes-in">
-            <h2>What goes in each bin</h2>
-            <p>Putting the wrong things in your bins can contaminate an entire lorry load of recycling, so it's worth getting it right.</p>
-
-            <h3>Recycling bin (blue or green lid)</h3>
-            <p>Accepts paper, cardboard, plastic bottles and containers, glass bottles and jars, tins and cans. Items should be empty and rinsed but don't need to be spotless.</p>
-
-            <h3>Food waste caddy (small, with green lid)</h3>
-            <p>All cooked and uncooked food scraps, including meat, fish, dairy and vegetable peelings. Line with compostable liner bags or newspaper.</p>
-
-            <h3>General waste bin (grey)</h3>
-            <p>Anything that cannot be recycled or composted. Please bag your waste before placing it in the grey bin.</p>
+          <section id="cancellations">
+            <h2>Cancellations and changes</h2>
+            <p>To cancel or change your collection, contact us at least 48 hours before your scheduled date.</p>
+            <p>Call us on <a href="tel:03001316000">0300 131 6000</a> and select option 6.</p>
           </section>
 
-          <section id="collection-changes">
-            <h2>Collection changes</h2>
-            <p>Collections may be moved if a bank holiday falls on or before your scheduled day. When this happens, your collection will take place one day later than usual.</p>
-            <p>You'll be notified of any changes through the <a href="#">My Bucks account</a> service if you've set up alerts for your address.</p>
-          </section>
-
-          <section id="printable-calendar">
-            <h2>Printable calendar</h2>
-            <p>If you'd prefer a printed calendar, you can download a PDF version of your collection schedule. Enter your postcode using the tool above, then select <strong>View and download printable schedule</strong>.</p>
-            <p>Calendars show the full year and are updated every April.</p>
+          <section id="missed-collection">
+            <h2>If we miss your collection</h2>
+            <p>Our teams have until 6pm to complete all collections. If your sharps box has not been collected by 6pm on your scheduled day, you can report a missed collection online.</p>
+            <p>Leave your sharps box out until 6pm before reporting it as missed.</p>
+            <a href="#" class="btn-primary">
+              Report a missed sharps collection
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </a>
           </section>
 
         </article>
 
-        <!-- Sidebar -->
         <aside class="content-sidebar">
           <nav class="related-pages" aria-labelledby="related-heading">
             <h2 class="related-pages__heading" id="related-heading">Related content</h2>
             <ul>
-              <li><a href="/waste-and-recycling/missed-bin/">Report a missed bin collection</a></li>
-              <li><a href="/waste-and-recycling/household-recycling/">What can I recycle?</a></li>
-              <li><a href="/waste-and-recycling/garden-waste/">Garden waste subscriptions</a></li>
-              <li><a href="/waste-and-recycling/household-recycling-centres/">Find a recycling centre</a></li>
-              <li><a href="/waste-and-recycling/bulky-waste/">Bulky waste collections</a></li>
+              <li><a href="#">Clinical waste collections</a></li>
+              <li><a href="/waste-and-recycling/bin-collection-days/">Check your bin collection day</a></li>
+              <li><a href="/waste-and-recycling/bulky-waste/">Book a bulky waste collection</a></li>
             </ul>
           </nav>
 
@@ -177,7 +171,6 @@
 
   </main>
 
-  <!-- Page feedback strip -->
   <section class="page-feedback" aria-label="Page feedback">
     <div class="container">
       <div class="page-feedback__inner">
@@ -214,10 +207,10 @@
     </div>
     <div class="chat-panel__footer">
       <div class="chat-panel__suggestions" role="group" aria-label="Quick suggestions">
-        <button class="chat-panel__suggestion" data-query="When is my bin collected?">When is my bin collected?</button>
-        <button class="chat-panel__suggestion" data-query="How do I report a missed bin?">How do I report a missed bin?</button>
-        <button class="chat-panel__suggestion" data-query="What if my bin day changes?">What if my bin day changes?</button>
-        <button class="chat-panel__suggestion" data-query="What can I put in my recycling bin?">What can I put in my recycling?</button>
+        <button class="chat-panel__suggestion" data-query="How do I book a sharps box collection?">How do I book a sharps box collection?</button>
+        <button class="chat-panel__suggestion" data-query="What do I do if my sharps collection is missed?">What if my collection is missed?</button>
+        <button class="chat-panel__suggestion" data-query="How do I get a sharps box?">How do I get a sharps box?</button>
+        <button class="chat-panel__suggestion" data-query="Can I cancel my sharps collection?">Can I cancel my booking?</button>
       </div>
       <form class="chat-panel__input-area" id="chat-form" aria-label="Ask us anything">
         <label for="chat-input" class="visually-hidden">Type your question</label>
