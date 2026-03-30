@@ -35,6 +35,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        'report-it': resolve(__dirname, 'report-it/index.html'),
         search: resolve(__dirname, 'search/index.html'),
         'waste-and-recycling': resolve(__dirname, 'waste-and-recycling/index.html'),
         'bin-collection-days': resolve(__dirname, 'waste-and-recycling/bin-collection-days/index.html'),

@@ -69,8 +69,12 @@
         text-decoration-thickness: 2px;
       }
 
-      .site-footer__service-icon svg {
-        color: #84ccfc;
+      .site-footer__service-icon {
+        opacity: 1;
+
+        svg {
+          color: #84ccfc;
+        }
       }
     }
 
@@ -88,6 +92,8 @@
     align-items: center;
     justify-content: center;
     margin-top: 1px;
+    opacity: 0.7;
+    transition: opacity $transition-base;
 
     svg {
       width: 26px;
@@ -302,4 +308,30 @@
       text-align: right;
     }
   }
+}
+
+// --- Report CTA inside the footer (dark background) --------------------------
+.site-footer .report-cta {
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  border-radius: 6px;
+  padding: $space-3 $space-4;
+  transition: background $transition-base, transform $transition-base;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+
+    .report-cta__label { color: #84ccfc; text-decoration-thickness: 2px; }
+    .report-cta__icon { color: #84ccfc; background: rgba(132, 204, 252, 0.15); }
+  }
+}
+
+// Responsive show/hide for footer report-cta instances
+.site-footer__report-cta--mobile.report-cta {
+  @include bp(md) { display: none; }
+}
+
+.site-footer__report-cta--desktop.report-cta {
+  display: none;
+  @include bp(md) { display: flex; }
 }

@@ -19,11 +19,16 @@
   cursor: pointer;
   text-align: left;
   font-family: $font-family-base;
-  transition: background $transition-base, border-color $transition-base, box-shadow $transition-base;
+  transition: background $transition-base, border-color $transition-base, box-shadow $transition-base, transform $transition-base;
 
   &:hover {
     background: $color-brand-dark;
     border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: $shadow-sm;
+    transform: translateY(-1px);
+
+    .ask-btn__chat { color: #84ccfc; }
+    .ask-btn__text strong { color: #84ccfc; }
   }
 
   &:focus-visible {
@@ -138,6 +143,72 @@
   &:hover {
     background: #E9F0F9;
     border-color: rgba(0, 0, 0, 0.15);
+  }
+}
+
+// =============================================================================
+// Inline ask block — in-body CTA for content pages
+// Same dark background as the full-width contact-block, but self-contained
+// with border-radius so it sits naturally inside the content column.
+// Mobile: heading above button. Desktop: side by side.
+// =============================================================================
+.inline-ask {
+  background-color: $color-midnight-blue;
+  border-radius: $radius-sm;
+  padding: $space-6 $space-6;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin-top: $space-12;
+
+  &__heading {
+    font-family: $font-family-heading;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-inverted;
+    margin: 0;
+  }
+
+  &__action {
+    flex-shrink: 0;
+  }
+}
+
+// Larger gap on index/landing pages (not inside prose column)
+.popular-services .inline-ask {
+  gap: $space-4;
+}
+
+// Ask-btn reversal inside inline-ask (white card on dark background)
+.inline-ask .ask-btn {
+  background: $color-bg;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: $color-text;
+
+  .ask-btn__spark { color: $color-bg; }
+  .ask-btn__text small { color: $color-text-secondary; }
+  .ask-btn__arrow { color: $color-text; }
+
+  &:hover {
+    background: #E9F0F9;
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Shared hover enhancements for all light-bg reversals
+.search-ai-teaser .ask-btn,
+.contact-block .ask-btn,
+.content-sidebar .ask-btn,
+.inline-ask .ask-btn,
+.hero .ask-btn {
+  transition: background $transition-base, border-color $transition-base, box-shadow $transition-base, transform $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+    transform: translateY(-1px);
+
+    .ask-btn__chat { color: $color-primary-dark; }
+    .ask-btn__text strong { color: $color-primary-dark; }
   }
 }
 

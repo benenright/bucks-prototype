@@ -109,6 +109,18 @@
     gap: $space-16;
     align-items: start;
   }
+
+  &--wide {
+    grid-template-columns: 1fr;
+
+    @include bp(md) {
+      grid-template-columns: 1fr;
+    }
+
+    .inline-ask {
+      max-width: calc(66.667% - 2.667rem);
+    }
+  }
 }
 
 .content-main {

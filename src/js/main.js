@@ -346,6 +346,8 @@ const siteNav   = document.getElementById('site-nav');
 if (navToggle && siteNav) {
   navToggle.addEventListener('click', () => {
     const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+    // Close search panel if opening nav
+    if (!isOpen) closeSearch();
     navToggle.setAttribute('aria-expanded', String(!isOpen));
     navToggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
     siteNav.classList.toggle('is-open', !isOpen);
@@ -371,19 +373,54 @@ if (navToggle && siteNav) {
   });
 }
 
+// =============================================================================
+// Search panel toggle
+// =============================================================================
+const searchPanel   = document.getElementById('site-search');
+const searchTrigger = document.getElementById('search-trigger');
+
+function closeSearch() {
+  searchPanel?.classList.remove('is-open');
+  searchTrigger?.setAttribute('aria-expanded', 'false');
+}
+
+function openSearch() {
+  // Close nav if open
+  if (siteNav?.classList.contains('is-open')) {
+    siteNav.classList.remove('is-open');
+    navToggle?.setAttribute('aria-expanded', 'false');
+    navToggle?.setAttribute('aria-label', 'Open navigation menu');
+  }
+  searchPanel?.classList.add('is-open');
+  searchTrigger?.setAttribute('aria-expanded', 'true');
+  setTimeout(() => document.getElementById('site-search-input')?.focus(), 50);
+}
+
+searchTrigger?.addEventListener('click', () => {
+  searchPanel?.classList.contains('is-open') ? closeSearch() : openSearch();
+});
+
+// Close search when clicking outside the header
+document.addEventListener('click', (e) => {
+  if (!searchPanel?.classList.contains('is-open')) return;
+  const header = document.querySelector('.site-header');
+  if (header && !header.contains(e.target)) closeSearch();
+});
+
+// Close search on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && searchPanel?.classList.contains('is-open')) {
+    closeSearch();
+    searchTrigger?.focus();
+  }
+});
+
 
 // =============================================================================
 // Footer: auto-update copyright year
 // =============================================================================
 const yearEl = document.getElementById('footer-year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-// =============================================================================
-// Header search button → navigate to /search/
-// =============================================================================
-document.getElementById('search-trigger')?.addEventListener('click', () => {
-  window.location.href = '/search/';
-});
 
 // =============================================================================
 // Search results page

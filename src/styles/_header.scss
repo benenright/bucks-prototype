@@ -66,7 +66,7 @@
   padding: $space-2;
   background: transparent;
   border: none;
-  border-radius: $radius-sm;
+  border-radius: 6px;
   cursor: pointer;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
@@ -80,7 +80,7 @@
 
   &:hover {
     color: $color-text-inverted;
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color: rgba(0, 0, 0, 0.2);
   }
 
   &:focus-visible {
@@ -261,9 +261,87 @@
   }
 }
 
-// Search trigger hidden — search lives in the nav panel on all viewports
-.header-icon-btn--desktop-only {
+// --- Search panel -------------------------------------------------------------
+// Full-bleed in-flow panel, same visual treatment as .site-nav.
+.site-search {
   display: none;
+  background-color: #E9F0F9;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid $color-border-light;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
+
+  &.is-open {
+    display: block;
+  }
+
+  &__inner {
+    padding: $space-6 0;
+
+    @include bp(md) {
+      padding: $space-8 0;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-family: $font-family-heading;
+    font-weight: $font-weight-bold;
+    font-size: 1.25rem;
+    color: $color-text;
+    margin-bottom: $space-4;
+  }
+
+  &__form {
+    max-width: 600px;
+  }
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    border: 1px solid $color-border;
+    border-radius: 6px;
+    overflow: hidden;
+    background: $color-bg;
+
+    &:focus-within {
+      outline: 3px solid $color-focus;
+      outline-offset: 0;
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: $space-3;
+      font-family: $font-family-base;
+      font-size: $font-size-base;
+      color: $color-text;
+      background: transparent;
+      min-width: 0;
+
+      &::placeholder { color: $color-text-secondary; }
+      &:focus { outline: none; }
+    }
+
+    button {
+      flex-shrink: 0;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $color-primary-dark;
+      border: none;
+      color: $color-text-inverted;
+      padding: 0 $space-4;
+      cursor: pointer;
+      transition: background $transition-base;
+
+      svg { width: 18px; height: 18px; display: block; }
+
+      &:hover { background: $color-brand-dark; }
+      &:focus-visible { outline: 3px solid $color-focus; outline-offset: 2px; }
+    }
+  }
 }
 
 // --- Navigation panel --------------------------------------------------------
@@ -455,8 +533,12 @@
         text-decoration-thickness: 2px;
       }
 
-      .site-nav__icon svg {
-        color: $color-primary-dark;
+      .site-nav__icon {
+        opacity: 1;
+
+        svg {
+          color: $color-primary-dark;
+        }
       }
     }
 
@@ -474,6 +556,8 @@
     align-items: center;
     justify-content: center;
     margin-top: 1px;
+    opacity: 0.7;
+    transition: opacity $transition-base;
 
     svg {
       width: 26px;
@@ -519,7 +603,7 @@
     transition: box-shadow $transition-base, transform $transition-base;
 
     &:hover {
-      box-shadow: $shadow-md;
+      box-shadow: $shadow-sm;
       transform: translateY(-1px);
 
       .site-nav__task-label {
@@ -605,5 +689,63 @@
       outline-offset: 1px;
     }
   }
+}
+
+// --- Report CTA inside the nav (light background reversal) -------------------
+.site-nav .report-cta {
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  border-radius: 6px;
+  padding: $space-3 $space-4;
+  color: $color-text;
+  transition: background $transition-base, box-shadow $transition-base, transform $transition-base;
+
+  &:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: $shadow-sm;
+    transform: translateY(-1px);
+  }
+
+  .report-cta__icon {
+    background: rgba(220, 38, 38, 0.08);
+    color: #dc2626;
+  }
+
+  .report-cta__label {
+    color: $color-primary;
+  }
+
+  .report-cta__arrow {
+    color: $color-primary;
+    opacity: 0.6;
+  }
+
+  .report-cta__desc {
+    color: $color-text-secondary;
+  }
+
+  &:hover .report-cta__label {
+    color: $color-primary-dark;
+    text-decoration-thickness: 2px;
+  }
+
+  &:hover .report-cta__icon {
+    color: $color-primary-dark;
+    background: rgba($color-primary-dark, 0.08);
+  }
+
+  &:hover .report-cta__arrow {
+    opacity: 1;
+  }
+}
+
+// Responsive show/hide for nav report-cta instances
+.site-nav__report-cta--mobile.report-cta {
+  @include bp(md) { display: none; }
+}
+
+.site-nav__report-cta--desktop.report-cta {
+  display: none;
+  @include bp(md) { display: flex; }
 }
 
