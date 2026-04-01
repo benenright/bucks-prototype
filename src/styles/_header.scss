@@ -219,6 +219,23 @@
   background: transparent;
   border: none;
   border-radius: 6px;
+  position: relative;
+
+  // Straight vertical divider centred in the gap between Menu and Search
+  &::after {
+    content: '';
+    position: absolute;
+    right: calc(-1 * #{$space-1} / 2 - 0.5px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.18);
+
+    @include bp(md) {
+      right: calc(-1 * #{$space-2} / 2 - 0.5px);
+    }
+  }
   cursor: pointer;
   font-size: 0.75rem;
   font-weight: $font-weight-medium;
