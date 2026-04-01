@@ -51,6 +51,7 @@ export default defineConfig({
         'street-cleaning': resolve(__dirname, 'waste-and-recycling/street-cleaning/index.html'),
         'street-cleaning-damaged-litter-bin': resolve(__dirname, 'waste-and-recycling/street-cleaning/damaged-litter-bin/index.html'),
         'waste-feedback': resolve(__dirname, 'waste-and-recycling/feedback/index.html'),
+        'design-system': resolve(__dirname, 'design-system/index.html'),
       }
     }
   }

@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System – Buckinghamshire Council Prototype</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/src/styles/main.scss" />
+  <style>
+    /* =========================================================
+       Design System chrome — not part of the component library
+    ========================================================= */
+    .ds-intro {
+      background: #1d1751;
+      color: #fff;
+      padding: 3rem 0 2.5rem;
+    }
+    .ds-intro h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 0.5rem;
+    }
+    .ds-intro p {
+      font-size: 1.125rem;
+      color: rgba(255,255,255,0.75);
+      margin: 0 0 2rem;
+      max-width: 52ch;
+    }
+    .ds-template-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .ds-template-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.375rem 0.875rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 9999px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: background 150ms ease, border-color 150ms ease;
+    }
+    .ds-template-link:hover {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.4);
+      color: #fff;
+    }
+    .ds-template-link svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0.6;
+    }
+
+    .ds-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      align-items: start;
+    }
+    @media (min-width: 1024px) {
+      .ds-layout {
+        grid-template-columns: 220px 1fr;
+      }
+    }
+
+    .ds-nav {
+      display: none;
+    }
+    @media (min-width: 1024px) {
+      .ds-nav {
+        display: block;
+        position: sticky;
+        top: 80px;
+        padding: 2rem 0 2rem 0;
+        border-right: 1px solid #e8e8e8;
+        align-self: start;
+      }
+    }
+    .ds-nav ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      counter-reset: ds-nav;
+    }
+    .ds-nav > ol > li {
+      counter-increment: ds-nav;
+    }
+    .ds-nav__section {
+      display: block;
+      padding: 0.25rem 1.5rem 0.25rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #212121;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+    .ds-nav__section:first-child { margin-top: 0; }
+    .ds-nav ol ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .ds-nav ol ol a {
+      display: block;
+      padding: 0.2rem 1.5rem 0.2rem 1.5rem;
+      font-size: 0.875rem;
+      color: #595959;
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      margin-left: 0.25rem;
+    }
+    .ds-nav ol ol a:hover {
+      color: #006ab4;
+      border-left-color: #006ab4;
+    }
+
+    .ds-main {
+      padding: 3rem 0 3rem 3rem;
+    }
+    @media (max-width: 1023px) {
+      .ds-main { padding: 2rem 0; }
+    }
+
+    .ds-section {
+      padding-bottom: 3rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .ds-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .ds-section-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #2c2d84;
+      margin: 0 0 0.375rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 3px solid #2c2d84;
+    }
+    .ds-section-intro {
+      font-size: 0.9375rem;
+      color: #595959;
+      max-width: 72ch;
+      margin: 0.75rem 0 2rem;
+    }
+    .ds-subsection {
+      margin-top: 2.5rem;
+    }
+    .ds-subsection-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #212121;
+      margin: 0 0 0.25rem;
+    }
+    .ds-subsection-desc {
+      font-size: 0.875rem;
+      color: #595959;
+      margin: 0 0 1rem;
+      max-width: 72ch;
+    }
+
+    /* Colour tokens */
+    .ds-token-group {
+      margin-bottom: 1.5rem;
+    }
+    .ds-token-group-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #595959;
+      margin: 0 0 0.5rem;
+    }
+    .ds-tokens {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .ds-token {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+      min-width: 120px;
+    }
+    .ds-token__swatch {
+      width: 100%;
+      height: 56px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.07);
+    }
+    .ds-token__name {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #212121;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+    .ds-token__label {
+      font-size: 0.75rem;
+      color: #595959;
+    }
+    .ds-token__hex {
+      font-size: 0.75rem;
+      color: #595959;
+      font-family: monospace;
+    }
+
+    /* Type scale */
+    .ds-type-item {
+      padding: 0.875rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+    }
+    .ds-type-item:last-child { border-bottom: none; }
+    .ds-type-meta {
+      min-width: 140px;
+      flex-shrink: 0;
+      font-size: 0.8125rem;
+      font-family: monospace;
+      color: #595959;
+    }
+
+    /* Spacing scale */
+    .ds-space-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      align-items: flex-end;
+    }
+    .ds-space-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    .ds-space-bar {
+      background: #bfdaec;
+      border: 1px solid #006ab4;
+      border-radius: 3px;
+      width: 28px;
+    }
+    .ds-space-label {
+      font-size: 0.75rem;
+      font-family: monospace;
+      color: #595959;
+      text-align: center;
+    }
+
+    /* Shadow demos */
+    .ds-shadow-demos {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .ds-shadow-card {
+      width: 140px;
+      height: 80px;
+      background: #fff;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+    }
+    .ds-shadow-card span { font-size: 0.8125rem; font-family: monospace; color: #595959; }
+    .ds-shadow-card small { font-size: 0.75rem; color: #b1b4b6; }
+
+    /* Radius demos */
+    .ds-radius-demos {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .ds-radius-box {
+      width: 80px;
+      height: 60px;
+      background: #bfdaec;
+      border: 2px solid #006ab4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+    }
+    .ds-radius-box span { font-size: 0.75rem; font-family: monospace; color: #2c2d84; }
+
+    /* Demo wrappers */
+    .ds-demo {
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      padding: 1.5rem;
+      background: #fff;
+      margin-top: 0.75rem;
+    }
+    .ds-demo--dark {
+      background: #2c2d84;
+      border-color: #2c2d84;
+    }
+    .ds-demo--warm {
+      background: #f7f6f2;
+      border-color: #e8e8e8;
+    }
+    .ds-demo--midnight {
+      background: #1d1751;
+      border-color: #1d1751;
+    }
+    .ds-demo--flush {
+      padding: 0;
+      overflow: hidden;
+    }
+    .ds-demo--row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .ds-demo--grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .ds-tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.125rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+    .ds-tag--modifier { background: #cfe39d; color: #2c2a00; }
+    .ds-tag--context  { background: #bfdaec; color: #1d1751; }
+    .ds-tag--dark     { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+
+    .ds-variant-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #595959;
+      margin: 0 0 0.5rem;
+      font-family: monospace;
+    }
+
+    .ds-variants {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    code {
+      font-size: 0.8125rem;
+      background: #f0f0f0;
+      padding: 0.125rem 0.375rem;
+      border-radius: 4px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: #2c2d84;
+    }
+
+    .ds-rule {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.625rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.875rem;
+    }
+    .ds-rule:last-child { border-bottom: none; }
+    .ds-rule strong { min-width: 160px; flex-shrink: 0; }
+    .ds-rule span { color: #595959; }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="site-header__inner">
+        <a href="/" class="site-logo" aria-label="Buckinghamshire Council – go to homepage">
+          <img src="/assets/images/bucks-logo.svg" alt="Buckinghamshire Council" class="site-logo__img" />
+        </a>
+        <div class="site-header__actions">
+          <button class="header-menu-btn" id="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open navigation menu">
+            <svg class="header-menu-btn__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+            <span class="header-menu-btn__label">Menu</span>
+          </button>
+          <button class="header-icon-btn" aria-label="Search the site" id="search-trigger" aria-controls="site-search" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+            <span class="header-btn-label">Search</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- @include "/src/partials/nav.html" -->
+    <!-- @include "/src/partials/search.html" -->
+  </header>
+
+  <div class="ds-intro">
+    <div class="container">
+      <h1>Design System</h1>
+      <p>A complete reference for all colours, typography, spacing tokens and UI components used in the Buckinghamshire Council prototype.</p>
+      <div class="ds-template-links">
+        <a href="/" class="ds-template-link">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+          Homepage
+        </a>
+        <a href="/waste-and-recycling/" class="ds-template-link">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+          Level 1 index
+        </a>
+        <a href="/waste-and-recycling/bin-collections/" class="ds-template-link">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+          Level 2 index
+        </a>
+        <a href="/waste-and-recycling/bin-collections/bin-contents/" class="ds-template-link">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+          Content page
+        </a>
+        <a href="/search/" class="ds-template-link">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+          Search results
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <div class="container">
+      <div class="ds-layout">
+
+        <!-- SIDEBAR NAV -->
+        <nav class="ds-nav" aria-label="Design system sections">
+          <ol>
+            <li><a class="ds-nav__section" href="#foundations">1. Foundations</a>
+              <ol>
+                <li><a href="#colours">Colour palette</a></li>
+                <li><a href="#typography">Typography</a></li>
+                <li><a href="#spacing">Spacing</a></li>
+                <li><a href="#effects">Shadows &amp; radius</a></li>
+                <li><a href="#breakpoints">Breakpoints</a></li>
+              </ol>
+            </li>
+            <li><a class="ds-nav__section" href="#components">2. Components</a>
+              <ol>
+                <li><a href="#breadcrumb">Breadcrumb</a></li>
+                <li><a href="#alerts">Alerts</a></li>
+                <li><a href="#buttons">Buttons</a></li>
+                <li><a href="#ask-btn">Ask button</a></li>
+                <li><a href="#report-cta">Report CTA</a></li>
+              </ol>
+            </li>
+            <li><a class="ds-nav__section" href="#tasks-services">3. Tasks &amp; services</a>
+              <ol>
+                <li><a href="#task-tiles">Task tiles</a></li>
+                <li><a href="#service-rows">Service rows</a></li>
+                <li><a href="#topic-links">Topic links</a></li>
+              </ol>
+            </li>
+            <li><a class="ds-nav__section" href="#cards">4. Cards</a>
+              <ol>
+                <li><a href="#news-cards">News cards</a></li>
+                <li><a href="#featured-story">Featured story</a></li>
+                <li><a href="#promo-banner">Promo banner</a></li>
+                <li><a href="#timely-cards">Timely cards</a></li>
+              </ol>
+            </li>
+            <li><a class="ds-nav__section" href="#content">5. Content patterns</a>
+              <ol>
+                <li><a href="#accordion">Accordion</a></li>
+                <li><a href="#contents-list">Contents list</a></li>
+                <li><a href="#contact-block">Contact block</a></li>
+                <li><a href="#page-feedback">Page feedback</a></li>
+                <li><a href="#related-pages">Related pages</a></li>
+              </ol>
+            </li>
+          </ol>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <div class="ds-main">
+
+          <!-- ===================================================
+               1. FOUNDATIONS
+          =================================================== -->
+          <section class="ds-section" id="foundations">
+            <h2 class="ds-section-title">1. Foundations</h2>
+            <p class="ds-section-intro">Core design tokens. These compile from SCSS variables in <code>src/styles/_variables.scss</code> and are the single source of truth for all visual decisions.</p>
+
+            <!-- COLOURS -->
+            <div class="ds-subsection" id="colours">
+              <h3 class="ds-subsection-title">Colour palette</h3>
+              <p class="ds-subsection-desc">Colours are defined as SCSS variables. The primary indigo <code>#2c2d84</code> is used for structural backgrounds (header, footer, banners) and as the default link colour. The hover blue <code>#006ab4</code> is strictly a hover/interactive state — never use as a static colour. Yellow <code>#ffdd00</code> is reserved for focus rings only.</p>
+
+              <div class="ds-token-group">
+                <p class="ds-token-group-label">Brand</p>
+                <div class="ds-tokens">
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#2c2d84"></div>
+                    <span class="ds-token__name">$color-primary</span>
+                    <span class="ds-token__hex">#2c2d84</span>
+                    <span class="ds-token__label">Links, icons, structural bg</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#006ab4"></div>
+                    <span class="ds-token__name">$color-primary-dark</span>
+                    <span class="ds-token__hex">#006ab4</span>
+                    <span class="ds-token__label">Hover states only</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#bfdaec"></div>
+                    <span class="ds-token__name">$color-primary-light</span>
+                    <span class="ds-token__hex">#bfdaec</span>
+                    <span class="ds-token__label">Tinted backgrounds</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#1d1751"></div>
+                    <span class="ds-token__name">$color-midnight-blue</span>
+                    <span class="ds-token__hex">#1d1751</span>
+                    <span class="ds-token__label">Ask button, chat panel</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ds-token-group">
+                <p class="ds-token-group-label">Accent &amp; action</p>
+                <div class="ds-tokens">
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#9fc63b"></div>
+                    <span class="ds-token__name">$color-accent</span>
+                    <span class="ds-token__hex">#9fc63b</span>
+                    <span class="ds-token__label">Task tile icons, badges</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#4c8200"></div>
+                    <span class="ds-token__name">$color-accent-dark</span>
+                    <span class="ds-token__hex">#4c8200</span>
+                    <span class="ds-token__label">Accent hover</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#cfe39d"></div>
+                    <span class="ds-token__name">$color-accent-light</span>
+                    <span class="ds-token__hex">#cfe39d</span>
+                    <span class="ds-token__label">Light tint</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#009b3e"></div>
+                    <span class="ds-token__name">$color-teal</span>
+                    <span class="ds-token__hex">#009b3e</span>
+                    <span class="ds-token__label">Ask button chat icon</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ds-token-group">
+                <p class="ds-token-group-label">Semantic</p>
+                <div class="ds-tokens">
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#fcbc00"></div>
+                    <span class="ds-token__name">$color-yellow</span>
+                    <span class="ds-token__hex">#fcbc00</span>
+                    <span class="ds-token__label">Warning / highlight</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#d4351c"></div>
+                    <span class="ds-token__name">$color-red</span>
+                    <span class="ds-token__hex">#d4351c</span>
+                    <span class="ds-token__label">Errors, red alerts</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#e83f4b"></div>
+                    <span class="ds-token__name">$color-watermelon</span>
+                    <span class="ds-token__hex">#e83f4b</span>
+                    <span class="ds-token__label">Featured story accent</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#ffdd00; border-color: #ccc"></div>
+                    <span class="ds-token__name">$color-focus</span>
+                    <span class="ds-token__hex">#ffdd00</span>
+                    <span class="ds-token__label">Focus rings only (WCAG)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ds-token-group">
+                <p class="ds-token-group-label">Text &amp; backgrounds</p>
+                <div class="ds-tokens">
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#212121"></div>
+                    <span class="ds-token__name">$color-text</span>
+                    <span class="ds-token__hex">#212121</span>
+                    <span class="ds-token__label">Primary text</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#595959"></div>
+                    <span class="ds-token__name">$color-text-secondary</span>
+                    <span class="ds-token__hex">#595959</span>
+                    <span class="ds-token__label">Descriptions, metadata</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#ffffff; border: 1px solid #e8e8e8"></div>
+                    <span class="ds-token__name">$color-bg</span>
+                    <span class="ds-token__hex">#ffffff</span>
+                    <span class="ds-token__label">Default page background</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#f7f6f2"></div>
+                    <span class="ds-token__name">$color-bg-warm</span>
+                    <span class="ds-token__hex">#f7f6f2</span>
+                    <span class="ds-token__label">Section backgrounds</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#b1b4b6"></div>
+                    <span class="ds-token__name">$color-border</span>
+                    <span class="ds-token__hex">#b1b4b6</span>
+                    <span class="ds-token__label">Borders, dividers</span>
+                  </div>
+                  <div class="ds-token">
+                    <div class="ds-token__swatch" style="background:#e8e8e8"></div>
+                    <span class="ds-token__name">$color-border-light</span>
+                    <span class="ds-token__hex">#e8e8e8</span>
+                    <span class="ds-token__label">Subtle dividers, card borders</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TYPOGRAPHY -->
+            <div class="ds-subsection" id="typography">
+              <h3 class="ds-subsection-title">Typography</h3>
+              <p class="ds-subsection-desc">The root font size is set to 112.5% (18px). All <code>rem</code> values scale from this. The type system uses a single sans-serif stack — no web fonts are loaded, keeping performance lean for the prototype. Font weight 800 is used for all heading levels.</p>
+
+              <div class="ds-demo">
+                <div class="ds-type-item">
+                  <span class="ds-type-meta">h1 · 2.5rem · 800</span>
+                  <h1 style="margin:0; font-size: 2.5rem; font-weight: 800">Page heading</h1>
+                </div>
+                <div class="ds-type-item">
+                  <span class="ds-type-meta">h2 · 2rem · 800</span>
+                  <h2 style="margin:0; font-size: 2rem; font-weight: 800">Section heading</h2>
+                </div>
+                <div class="ds-type-item">
+                  <span class="ds-type-meta">h3 · 1.5rem · 700</span>
+                  <h3 style="margin:0; font-size: 1.5rem; font-weight: 700">Sub-section heading</h3>
+                </div>
+                <div class="ds-type-item">
+                  <span class="ds-type-meta">h4 · 1.25rem · 700</span>
+                  <h4 style="margin:0; font-size: 1.25rem; font-weight: 700">Minor heading</h4>
+                </div>
+                <div class="ds-type-item">
+                  <span class="ds-type-meta">base · 1rem · 400</span>
+                  <p style="margin:0">Body text — used for all paragraph content. Line height 1.5. Maximum line width is <code>$max-width-narrow</code> (768px) for prose columns.</p>
+                </div>
+                <div class="ds-type-item">
+                  <span class="ds-type-meta">sm · 0.875rem · 400</span>
+                  <p style="margin:0; font-size: 0.875rem">Small text — metadata, descriptions, footer links, badge labels.</p>
+                </div>
+                <div class="ds-type-item">
+                  <span class="ds-type-meta">link</span>
+                  <p style="margin:0"><a href="#">Default link style</a> — indigo <code>#2c2d84</code>, underline at 1px. Hover turns blue <code>#006ab4</code> with underline at 2px.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- SPACING -->
+            <div class="ds-subsection" id="spacing">
+              <h3 class="ds-subsection-title">Spacing</h3>
+              <p class="ds-subsection-desc">An 8pt grid. All spacing uses <code>$space-*</code> tokens. Use multiples of 4px for micro-spacing (padding inside components) and multiples of 8px for layout spacing between components.</p>
+              <div class="ds-demo">
+                <div class="ds-space-grid">
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:4px"></div><span class="ds-space-label">$space-1<br>4px</span></div>
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:8px"></div><span class="ds-space-label">$space-2<br>8px</span></div>
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:12px"></div><span class="ds-space-label">$space-3<br>12px</span></div>
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:16px"></div><span class="ds-space-label">$space-4<br>16px</span></div>
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:20px"></div><span class="ds-space-label">$space-5<br>20px</span></div>
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:24px"></div><span class="ds-space-label">$space-6<br>24px</span></div>
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:32px"></div><span class="ds-space-label">$space-8<br>32px</span></div>
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:40px"></div><span class="ds-space-label">$space-10<br>40px</span></div>
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:48px"></div><span class="ds-space-label">$space-12<br>48px</span></div>
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:64px"></div><span class="ds-space-label">$space-16<br>64px</span></div>
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:80px"></div><span class="ds-space-label">$space-20<br>80px</span></div>
+                  <div class="ds-space-item"><div class="ds-space-bar" style="height:96px"></div><span class="ds-space-label">$space-24<br>96px</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SHADOWS & RADIUS -->
+            <div class="ds-subsection" id="effects">
+              <h3 class="ds-subsection-title">Shadows &amp; border radius</h3>
+              <p class="ds-subsection-desc"><code>$shadow-sm</code> is the default hover shadow for interactive cards and menu items. <code>$shadow-md</code> is used sparingly for modals or strongly elevated surfaces. All interactive cards use <code>$radius-sm</code> (12px).</p>
+              <div class="ds-demo" style="background:#f7f6f2; display:flex; gap:2rem; flex-wrap:wrap; align-items:flex-start; padding: 2rem;">
+                <div class="ds-shadow-card" style="box-shadow: none; border: 1px solid #e8e8e8;">
+                  <span>none</span>
+                  <small>Default</small>
+                </div>
+                <div class="ds-shadow-card" style="box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
+                  <span>$shadow-sm</span>
+                  <small>Hover cards, menu items</small>
+                </div>
+                <div class="ds-shadow-card" style="box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+                  <span>$shadow-md</span>
+                  <small>Elevated surfaces</small>
+                </div>
+                <div class="ds-shadow-card" style="box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+                  <span>$shadow-lg</span>
+                  <small>Modals, overlays</small>
+                </div>
+              </div>
+              <div class="ds-demo ds-demo--row" style="margin-top:1rem; align-items:center;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.375rem;">
+                  <div style="width:80px;height:56px;background:#bfdaec;border:2px solid #006ab4;border-radius:0;"></div>
+                  <span style="font-size:0.75rem;font-family:monospace;color:#595959">none</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.375rem;">
+                  <div style="width:80px;height:56px;background:#bfdaec;border:2px solid #006ab4;border-radius:4px;"></div>
+                  <span style="font-size:0.75rem;font-family:monospace;color:#595959">4px</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.375rem;">
+                  <div style="width:80px;height:56px;background:#bfdaec;border:2px solid #006ab4;border-radius:6px;"></div>
+                  <span style="font-size:0.75rem;font-family:monospace;color:#595959">6px (buttons)</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.375rem;">
+                  <div style="width:80px;height:56px;background:#bfdaec;border:2px solid #006ab4;border-radius:12px;"></div>
+                  <span style="font-size:0.75rem;font-family:monospace;color:#595959">$radius-sm · 12px</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.375rem;">
+                  <div style="width:80px;height:56px;background:#bfdaec;border:2px solid #006ab4;border-radius:9999px;"></div>
+                  <span style="font-size:0.75rem;font-family:monospace;color:#595959">$radius-full</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- BREAKPOINTS -->
+            <div class="ds-subsection" id="breakpoints">
+              <h3 class="ds-subsection-title">Breakpoints</h3>
+              <p class="ds-subsection-desc">Mobile-first. Use <code>@include bp(md)</code> for most layout switches. The <code>lg</code> breakpoint is used for multi-column grids. All breakpoints use <code>min-width</code>.</p>
+              <div class="ds-demo">
+                <div class="ds-rule"><strong><code>$bp-sm</code></strong><span>480px — small phones in landscape</span></div>
+                <div class="ds-rule"><strong><code>$bp-md</code></strong><span>768px — tablet / most layout switches (nav → desktop, 2-col grids)</span></div>
+                <div class="ds-rule"><strong><code>$bp-lg</code></strong><span>1024px — desktop (3-col grids, sticky sidebar, wider hero)</span></div>
+                <div class="ds-rule"><strong><code>$bp-xl</code></strong><span>1280px — wide desktop (rarely needed)</span></div>
+                <div class="ds-rule"><strong><code>$max-width</code></strong><span>1090px — maximum content width, applied via <code>.container</code></span></div>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- ===================================================
+               2. COMPONENTS
+          =================================================== -->
+          <section class="ds-section" id="components">
+            <h2 class="ds-section-title">2. Components</h2>
+            <p class="ds-section-intro">Reusable UI components. Each has a base class and optional modifier classes. Context overrides (e.g. dark-background reversals) are applied via ancestor selectors.</p>
+
+            <!-- BREADCRUMB -->
+            <div class="ds-subsection" id="breadcrumb">
+              <h3 class="ds-subsection-title">Breadcrumb</h3>
+              <p class="ds-subsection-desc">Two visual variants sharing the same markup — the colour flips based on the modifier class. Use <code>aria-current="page"</code> on the last item when the current page is shown. The final crumb is typically omitted to keep the trail concise.</p>
+              <div class="ds-variants">
+                <div>
+                  <p class="ds-variant-label">.breadcrumb (on dark page banner)</p>
+                  <div class="ds-demo ds-demo--dark">
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                      <ol>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/waste-and-recycling/">Waste and recycling</a></li>
+                      </ol>
+                    </nav>
+                  </div>
+                </div>
+                <div>
+                  <p class="ds-variant-label">.breadcrumb--on-light (on white content header)</p>
+                  <div class="ds-demo">
+                    <nav class="breadcrumb breadcrumb--on-light" aria-label="Breadcrumb">
+                      <ol>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/waste-and-recycling/">Waste and recycling</a></li>
+                        <li><a href="/waste-and-recycling/bin-collections/">Bin collections</a></li>
+                      </ol>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ALERTS -->
+            <div class="ds-subsection" id="alerts">
+              <h3 class="ds-subsection-title">Alert</h3>
+              <p class="ds-subsection-desc">Used to communicate time-sensitive information at the top of a page section. Always includes a dismiss button and a labelled header. Three colour variants — blue for information, amber for warnings, red for urgent/critical. Place immediately after the page header, before the breadcrumb or main content.</p>
+              <div class="ds-variants">
+                <div>
+                  <p class="ds-variant-label">.alert--blue</p>
+                  <div class="ds-demo ds-demo--dark ds-demo--flush">
+                    <div style="padding: 1rem 1.25rem 0.5rem">
+                    <section class="alert alert--message alert--blue" aria-labelledby="alert-blue-title">
+                      <button class="alert__dismiss" aria-label="Dismiss alert"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg></button>
+                      <p class="alert__header" id="alert-blue-title"><svg class="alert__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clip-rule="evenodd"/></svg>Information notice</p>
+                      <div class="alert__content"><p>Enter your postcode to <a href="#">check your personal collection schedule</a> and see which bins are due.</p></div>
+                    </section>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <p class="ds-variant-label">.alert--red</p>
+                  <div class="ds-demo ds-demo--dark ds-demo--flush">
+                    <div style="padding: 1rem 1.25rem 0.5rem">
+                    <section class="alert alert--message alert--red" aria-labelledby="alert-red-title">
+                      <button class="alert__dismiss" aria-label="Dismiss alert"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg></button>
+                      <p class="alert__header" id="alert-red-title"><svg class="alert__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd"/></svg>Bank holiday collection changes</p>
+                      <div class="alert__content"><p>Collections during the week of Monday 26 May will run one day late due to the bank holiday.</p></div>
+                    </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="ds-subsection" id="buttons">
+              <h3 class="ds-subsection-title">Primary button</h3>
+              <p class="ds-subsection-desc">Used for primary CTAs inside prose content and forms. The <code>--accent</code> modifier uses the lime green colour — use sparingly when you need to distinguish a positive/confirm action.</p>
+              <div class="ds-demo ds-demo--row">
+                <div>
+                  <p class="ds-variant-label">.btn-primary</p>
+                  <a href="#" class="btn-primary">Start now</a>
+                </div>
+                <div>
+                  <p class="ds-variant-label">.btn-primary--accent</p>
+                  <a href="#" class="btn-primary btn-primary--accent">Confirm and continue</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- ASK BUTTON -->
+            <div class="ds-subsection" id="ask-btn">
+              <h3 class="ds-subsection-title">Ask button</h3>
+              <p class="ds-subsection-desc">Opens the AI chat panel. The base style is dark midnight-blue with a green chat bubble and spark overlay icon. It reverses to a white card in all light-background contexts. The button always has <code>data-open-chat</code> and <code>aria-controls="chat-panel"</code>. Never modify the icon stack — the overlaid spark is carefully positioned.</p>
+              <div class="ds-variants">
+                <div>
+                  <p class="ds-variant-label">Base (dark bg — used standalone only)</p>
+                  <div class="ds-demo ds-demo--midnight">
+                    <button class="ask-btn" data-open-chat aria-controls="chat-panel" aria-expanded="false">
+                      <span class="ask-btn__icon" aria-hidden="true">
+                        <svg class="ask-btn__chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 3.694-9.75 8.25 0 4.556 4.365 8.25 9.75 8.25a9.743 9.743 0 003.848-.769l3.152 1.378a.75.75 0 00.968-.968l-1.378-3.152A8.4 8.4 0 0021.75 10.5c0-4.556-4.365-8.25-9.75-8.25z" clip-rule="evenodd" /></svg>
+                        <svg class="ask-btn__spark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+                      </span>
+                      <span class="ask-btn__text">
+                        <strong>Ask us</strong>
+                        <small>Get instant answers about council services</small>
+                      </span>
+                      <span class="ask-btn__arrow" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <p class="ds-variant-label">.hero .ask-btn / .contact-block .ask-btn / .content-sidebar .ask-btn / .inline-ask .ask-btn (white reversal)</p>
+                  <div class="ds-demo">
+                    <div class="contact-block" style="padding:0; background:transparent;">
+                      <button class="ask-btn" data-open-chat aria-controls="chat-panel" aria-expanded="false">
+                        <span class="ask-btn__icon" aria-hidden="true">
+                          <svg class="ask-btn__chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 3.694-9.75 8.25 0 4.556 4.365 8.25 9.75 8.25a9.743 9.743 0 003.848-.769l3.152 1.378a.75.75 0 00.968-.968l-1.378-3.152A8.4 8.4 0 0021.75 10.5c0-4.556-4.365-8.25-9.75-8.25z" clip-rule="evenodd" /></svg>
+                          <svg class="ask-btn__spark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+                        </span>
+                        <span class="ask-btn__text">
+                          <strong>Ask us</strong>
+                          <small>Get instant answers about council services</small>
+                        </span>
+                        <span class="ask-btn__arrow" aria-hidden="true">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- REPORT CTA -->
+            <div class="ds-subsection" id="report-cta">
+              <h3 class="ds-subsection-title">Report CTA</h3>
+              <p class="ds-subsection-desc">A contextual CTA for reporting problems, concerns or changes. The base style lives on dark backgrounds (page banner, section landing hero). Light-background reversals are applied via <code>.site-nav .report-cta</code> and <code>.site-footer .report-cta</code>. On hover: icon and label go to the contextual hover blue, with a lift and shadow.</p>
+              <div class="ds-variants">
+                <div>
+                  <p class="ds-variant-label">Base (dark page banner background)</p>
+                  <div class="ds-demo ds-demo--dark" style="padding-bottom: 1.5rem">
+                    <a href="/report-it/" class="report-cta">
+                      <span class="report-cta__icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" /></svg>
+                      </span>
+                      <span class="report-cta__body">
+                        <strong class="report-cta__label">Report it <svg class="report-cta__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></strong>
+                        <span class="report-cta__desc">Contact us about problems, concerns or changes</span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div>
+                  <p class="ds-variant-label">.site-nav .report-cta (navigation panel — light bg)</p>
+                  <div class="ds-demo" style="background: rgba(255,255,255,0.5); max-width: 320px">
+                    <div class="site-nav" style="display:block; position:static; background:transparent; padding:0; box-shadow:none">
+                      <a href="/report-it/" class="report-cta">
+                        <span class="report-cta__icon" aria-hidden="true">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" /></svg>
+                        </span>
+                        <span class="report-cta__body">
+                          <strong class="report-cta__label">Report it <svg class="report-cta__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></strong>
+                          <span class="report-cta__desc">Contact us about problems, concerns or changes</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- ===================================================
+               3. TASKS & SERVICES
+          =================================================== -->
+          <section class="ds-section" id="tasks-services">
+            <h2 class="ds-section-title">3. Tasks &amp; services</h2>
+            <p class="ds-section-intro">Three related patterns for surfacing tasks, services and topics. Task tiles are for primary actions. Service rows are for browsing service areas. Topic links are for navigating child pages within a section.</p>
+
+            <!-- TASK TILES -->
+            <div class="ds-subsection" id="task-tiles">
+              <h3 class="ds-subsection-title">Task tiles</h3>
+              <p class="ds-subsection-desc">Used in the main <code>.top-tasks</code> section (dark background) and on section landing page banners. Each tile has a service category label (hidden on mobile), a primary task label, and an accent-coloured icon. The grid is 2-col on mobile, 4-col on desktop. A light-background variant <code>.top-tasks--light</code> uses <code>$color-bg-warm</code>.</p>
+              <div class="ds-demo ds-demo--dark ds-demo--flush">
+                <div class="top-tasks" style="margin:0; padding: 1.5rem">
+                  <div class="top-tasks__grid" style="max-width:100%">
+                    <a href="#" class="task-tile">
+                      <span class="task-tile__body">
+                        <span class="task-tile__service">Waste and recycling</span>
+                        <span class="task-tile__label">Check bin collection day</span>
+                      </span>
+                      <div class="task-tile__icon-wrap" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5" /></svg></div>
+                    </a>
+                    <a href="#" class="task-tile">
+                      <span class="task-tile__body">
+                        <span class="task-tile__service">Council tax</span>
+                        <span class="task-tile__label">Pay council tax</span>
+                      </span>
+                      <div class="task-tile__icon-wrap" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg></div>
+                    </a>
+                    <a href="#" class="task-tile">
+                      <span class="task-tile__body">
+                        <span class="task-tile__service">Planning</span>
+                        <span class="task-tile__label">View a planning application</span>
+                      </span>
+                      <div class="task-tile__icon-wrap" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg></div>
+                    </a>
+                    <a href="#" class="task-tile">
+                      <span class="task-tile__body">
+                        <span class="task-tile__service">Roads and transport</span>
+                        <span class="task-tile__label">Pay or appeal a parking fine</span>
+                      </span>
+                      <div class="task-tile__icon-wrap" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0z" /></svg></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SERVICE ROWS -->
+            <div class="ds-subsection" id="service-rows">
+              <h3 class="ds-subsection-title">Service rows</h3>
+              <p class="ds-subsection-desc">Used in the services grid on the homepage (<code>.popular-services--cards</code>) and in section landing pages. Each row has an icon, name with an animated right-arrow, and an optional description. On hover the row lifts and the arrow slides right. Available modifiers: <code>--no-icons</code>, <code>--compact</code>, <code>--cards</code> (bordered card grid), <code>--topics</code>.</p>
+              <div class="ds-demo">
+                <ul class="service-grid" role="list" style="max-width:640px">
+                  <li>
+                    <a href="#" class="service-row">
+                      <span class="service-row__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg></span>
+                      <span class="service-row__text">
+                        <span class="service-row__name">Housing and benefits<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                        <span class="service-row__desc">Housing support and advice, benefits, and the Debt Respite Scheme.</span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="service-row">
+                      <span class="service-row__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg></span>
+                      <span class="service-row__text">
+                        <span class="service-row__name">Schools and learning<svg class="service-row__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                        <span class="service-row__desc">Schools, early years and childcare, and the local offer for children with SEND.</span>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- TOPIC LINKS -->
+            <div class="ds-subsection" id="topic-links">
+              <h3 class="ds-subsection-title">Topic links</h3>
+              <p class="ds-subsection-desc">Used on level-2 landing pages to link to child content pages. Each card shows a name, optional description, and a right-arrow that animates on hover. Grid: 1-col on mobile, 2-col on desktop.</p>
+              <div class="ds-demo">
+                <div class="topic-links" style="max-width:560px">
+                  <a href="#" class="topic-link">
+                    <span class="topic-link__name">Check what you can put in your bins</span>
+                    <span class="topic-link__desc">Find out what goes in each bin type — recycling, food waste, general waste and garden waste.</span>
+                    <svg class="topic-link__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  </a>
+                  <a href="#" class="topic-link">
+                    <span class="topic-link__name">Replace a damaged or missing bin</span>
+                    <span class="topic-link__desc">Request a free replacement if your bin is damaged, missing or stolen.</span>
+                    <svg class="topic-link__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- ===================================================
+               4. CARDS
+          =================================================== -->
+          <section class="ds-section" id="cards">
+            <h2 class="ds-section-title">4. Cards</h2>
+            <p class="ds-section-intro">Card patterns for news, featured stories, promotional content and timely service updates. Always use real images or an appropriate placeholder — never leave image slots empty.</p>
+
+            <!-- NEWS CARDS -->
+            <div class="ds-subsection" id="news-cards">
+              <h3 class="ds-subsection-title">News card</h3>
+              <p class="ds-subsection-desc">Used in the homepage news grid (<code>.news-grid</code>). Each card has an image, category, date, headline link, and excerpt. Grid: 1-col mobile → 2-col tablet → 3-col desktop. The <code>.view-all-link</code> pattern appears as a section header action link.</p>
+              <div class="ds-demo">
+                <div class="news-grid" style="max-width:100%">
+                  <article class="card">
+                    <div class="card__image">
+                      <img src="/assets/images/news1.jpg" alt="Highway worker" />
+                    </div>
+                    <div class="card__body">
+                      <p class="card__category">Highways</p>
+                      <time class="card__date" datetime="2025-01-28">28 January 2025</time>
+                      <h3 class="card__title"><a href="#">Council highlights highways progress over the past six months</a></h3>
+                      <p class="card__excerpt">Buckinghamshire Council has shared an update on the extensive work carried out by its highways teams.</p>
+                    </div>
+                  </article>
+                </div>
+                <div style="margin-top: 1rem">
+                  <p class="ds-variant-label">.view-all-link</p>
+                  <a href="#" class="view-all-link">
+                    All news
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- FEATURED STORY -->
+            <div class="ds-subsection" id="featured-story">
+              <h3 class="ds-subsection-title">Featured story</h3>
+              <p class="ds-subsection-desc">Used in the <code>.right-now</code> section (currently commented out on homepage). A large 2-col card with a prominent image, heading, body text and CTA link. Used for seasonal or time-sensitive features.</p>
+              <div class="ds-demo">
+                <div class="featured-story" style="max-width:600px">
+                  <img src="/assets/images/news1.jpg" alt="Featured story image" class="featured-story__img" />
+                  <div class="featured-story__content">
+                    <h3 class="featured-story__heading">Half term begins 16 February</h3>
+                    <p class="featured-story__body">School term dates, INSET days, closures, and transport information for all Buckinghamshire schools.</p>
+                    <a href="#" class="featured-story__cta">Check term dates</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PROMO BANNER -->
+            <div class="ds-subsection" id="promo-banner">
+              <h3 class="ds-subsection-title">Promo banner</h3>
+              <p class="ds-subsection-desc">A horizontal promotional card — image on the left, dark content panel on the right. Used above the news section for campaign or award content. Stacks vertically on mobile.</p>
+              <div class="ds-demo">
+                <div class="promo-banner">
+                  <img src="/assets/images/star.jpg" alt="" class="promo-banner__img" />
+                  <div class="promo-banner__content">
+                    <h2 class="promo-banner__heading">Proud of Bucks Awards 2026</h2>
+                    <p class="promo-banner__body">Celebrating the people and communities making a difference across Buckinghamshire.</p>
+                    <a href="#" class="promo-banner__cta">Nominations are now open</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TIMELY CARDS -->
+            <div class="ds-subsection" id="timely-cards">
+              <h3 class="ds-subsection-title">Timely cards</h3>
+              <p class="ds-subsection-desc">Small contextual cards used in the <code>.right-now</code> section. A coloured left border signals urgency or category. Swap content seasonally — the card itself does not carry permanent content. Four colour variants: <code>--blue</code>, <code>--green</code>, <code>--orange</code>, <code>--alert</code>.</p>
+              <div class="ds-demo ds-demo--row">
+                <a href="#" class="timely-card timely-card--blue" style="max-width:260px; flex:1">
+                  <span class="timely-card__category">Schools and learning</span>
+                  <h3 class="timely-card__title">Apply for a school place for September 2026<svg class="timely-card__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></h3>
+                  <p class="timely-card__desc">Applications for September 2026 entry are now open.</p>
+                </a>
+                <a href="#" class="timely-card timely-card--green" style="max-width:260px; flex:1">
+                  <span class="timely-card__category">Waste and recycling</span>
+                  <h3 class="timely-card__title">Renew your garden waste subscription<svg class="timely-card__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></h3>
+                  <p class="timely-card__desc">Collections peak March–May. Renew before the season starts.</p>
+                </a>
+                <a href="#" class="timely-card timely-card--orange" style="max-width:260px; flex:1">
+                  <span class="timely-card__category">Council Tax</span>
+                  <h3 class="timely-card__title">Set up your council tax for 2025/26<svg class="timely-card__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></h3>
+                  <p class="timely-card__desc">New bills issued in March. Set up a direct debit now.</p>
+                </a>
+                <a href="#" class="timely-card timely-card--alert" style="max-width:260px; flex:1">
+                  <span class="timely-card__category">Highways</span>
+                  <h3 class="timely-card__title">Road closures in Aylesbury this weekend<svg class="timely-card__arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></h3>
+                  <p class="timely-card__desc">Check planned closures before you travel.</p>
+                </a>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- ===================================================
+               5. CONTENT PATTERNS
+          =================================================== -->
+          <section class="ds-section" id="content">
+            <h2 class="ds-section-title">5. Content patterns</h2>
+            <p class="ds-section-intro">Patterns used on content pages and throughout the site. These are not full-page templates but reusable sections that appear across multiple page types.</p>
+
+            <!-- ACCORDION -->
+            <div class="ds-subsection" id="accordion">
+              <h3 class="ds-subsection-title">Accordion</h3>
+              <p class="ds-subsection-desc">Used in content pages to structure detailed or tabular content (e.g. what goes in each bin). Uses native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> — no JavaScript required. The chevron rotates 90° when open via the <code>[open]</code> CSS selector. Group multiple items inside a single <code>.accordion</code> wrapper.</p>
+              <div class="ds-demo">
+                <div class="accordion" style="max-width:600px">
+                  <details class="accordion__item">
+                    <summary>
+                      <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                      General waste bin
+                    </summary>
+                    <div class="accordion__body">
+                      <p>Accepts broken glass, nappies, crisp wrappers, plastic bags and similar non-recyclable household waste.</p>
+                      <p><strong>Do not put in:</strong> batteries, gas bottles, electrical items or clinical waste.</p>
+                    </div>
+                  </details>
+                  <details class="accordion__item" open>
+                    <summary>
+                      <svg class="accordion__chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                      Mixed recycling bin
+                    </summary>
+                    <div class="accordion__body">
+                      <p>Accepts plastic bottles, glass bottles and jars, tins, cans, foil, aerosols, and milk cartons.</p>
+                      <p><strong>Do not put in:</strong> plastic bags, crisp packets, wrappers, or polystyrene.</p>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+
+            <!-- CONTENTS LIST -->
+            <div class="ds-subsection" id="contents-list">
+              <h3 class="ds-subsection-title">Contents list</h3>
+              <p class="ds-subsection-desc">In-page navigation for long content pages. Based on the GDS pattern. Placed at the top of the <code>.content-main</code> column, before the first prose heading. Links should anchor to <code>id</code> attributes on headings within the page.</p>
+              <div class="ds-demo" style="max-width:480px">
+                <nav class="contents-list" aria-label="Contents">
+                  <h2 class="contents-list__heading">Contents</h2>
+                  <ol class="contents-list__list">
+                    <li><a href="#">General waste bin</a></li>
+                    <li><a href="#">Food waste caddy</a></li>
+                    <li><a href="#">Mixed recycling bin</a></li>
+                    <li><a href="#">Paper and cardboard recycling</a></li>
+                    <li><a href="#">Garden waste bin</a></li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+
+            <!-- CONTACT BLOCK + INLINE ASK -->
+            <div class="ds-subsection" id="contact-block">
+              <h3 class="ds-subsection-title">Contact block &amp; inline ask</h3>
+              <p class="ds-subsection-desc">Two patterns for surfacing the AI assistant. The <code>.contact-block</code> is a full-width dark footer section used as a fallback CTA at the bottom of most pages ("Can't find what you need?"). The <code>.inline-ask</code> is a self-contained dark card that can be dropped inside prose content or section landing pages.</p>
+              <div class="ds-variants">
+                <div>
+                  <p class="ds-variant-label">.contact-block (full-width section)</p>
+                  <div class="ds-demo ds-demo--flush">
+                    <section class="contact-block" style="margin:0" aria-label="Can't find what you need?">
+                      <div class="container">
+                        <div class="contact-block__inner">
+                          <div class="contact-block__text"><h2 style="margin:0">Can't find what you need?</h2></div>
+                          <div class="contact-block__action">
+                            <button class="ask-btn" data-open-chat aria-controls="chat-panel" aria-expanded="false">
+                              <span class="ask-btn__icon" aria-hidden="true">
+                                <svg class="ask-btn__chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 3.694-9.75 8.25 0 4.556 4.365 8.25 9.75 8.25a9.743 9.743 0 003.848-.769l3.152 1.378a.75.75 0 00.968-.968l-1.378-3.152A8.4 8.4 0 0021.75 10.5c0-4.556-4.365-8.25-9.75-8.25z" clip-rule="evenodd" /></svg>
+                                <svg class="ask-btn__spark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+                              </span>
+                              <span class="ask-btn__text"><strong>Ask us</strong><small>Get instant answers about council services</small></span>
+                              <span class="ask-btn__arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+                <div>
+                  <p class="ds-variant-label">.inline-ask (embedded in content)</p>
+                  <div class="ds-demo ds-demo--flush">
+                    <div class="inline-ask" style="margin:0; border-radius:0">
+                      <h2 class="inline-ask__heading">Not sure which bin?</h2>
+                      <div class="inline-ask__action">
+                        <button class="ask-btn" data-open-chat aria-controls="chat-panel" aria-expanded="false">
+                          <span class="ask-btn__icon" aria-hidden="true">
+                            <svg class="ask-btn__chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 3.694-9.75 8.25 0 4.556 4.365 8.25 9.75 8.25a9.743 9.743 0 003.848-.769l3.152 1.378a.75.75 0 00.968-.968l-1.378-3.152A8.4 8.4 0 0021.75 10.5c0-4.556-4.365-8.25-9.75-8.25z" clip-rule="evenodd" /></svg>
+                            <svg class="ask-btn__spark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+                          </span>
+                          <span class="ask-btn__text"><strong>Ask us</strong><small>Get instant answers about council services</small></span>
+                          <span class="ask-btn__arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PAGE FEEDBACK -->
+            <div class="ds-subsection" id="page-feedback">
+              <h3 class="ds-subsection-title">Page feedback</h3>
+              <p class="ds-subsection-desc">A lightweight "Is this page useful?" strip placed immediately before the footer on all page types. Uses warm background. The Yes/No buttons can be wired to an analytics event or a follow-up form.</p>
+              <div class="ds-demo ds-demo--flush">
+                <section class="page-feedback" style="margin:0" aria-label="Page feedback">
+                  <div class="container">
+                    <div class="page-feedback__inner">
+                      <p class="page-feedback__question">Is this page useful?</p>
+                      <div class="page-feedback__actions">
+                        <button class="page-feedback__btn page-feedback__btn--yes" type="button">Yes</button>
+                        <button class="page-feedback__btn page-feedback__btn--no" type="button">No</button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <!-- RELATED PAGES -->
+            <div class="ds-subsection" id="related-pages">
+              <h3 class="ds-subsection-title">Related pages</h3>
+              <p class="ds-subsection-desc">A sidebar widget for content pages. Placed in <code>.content-sidebar</code>, which is sticky on desktop. Provides contextual navigation to related content within the same service area.</p>
+              <div class="ds-demo" style="max-width:280px">
+                <div class="content-sidebar" style="position:static; padding:0; border:none; margin:0">
+                  <div class="related-pages">
+                    <h2 class="related-pages__heading">Related pages</h2>
+                    <ul>
+                      <li><a href="#">Check bin collection day</a></li>
+                      <li><a href="#">Replace a damaged or missing bin</a></li>
+                      <li><a href="#">Report a missed bin collection</a></li>
+                      <li><a href="#">Household recycling centres</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+        </div>
+        <!-- /ds-main -->
+      </div>
+    </div>
+  </main>
+
+  <section class="page-feedback" aria-label="Page feedback">
+    <div class="container">
+      <div class="page-feedback__inner">
+        <p class="page-feedback__question">Is this page useful?</p>
+        <div class="page-feedback__actions">
+          <button class="page-feedback__btn page-feedback__btn--yes" type="button">Yes</button>
+          <button class="page-feedback__btn page-feedback__btn--no" type="button">No</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- @include "/src/partials/footer.html" -->
+
+  <div class="chat-panel-overlay" id="chat-panel-overlay" aria-hidden="true"></div>
+  <aside class="chat-panel" id="chat-panel" role="dialog" aria-label="AI assistant" aria-modal="true" aria-hidden="true">
+    <div class="chat-panel__header">
+      <button class="chat-panel__close" id="chat-panel-close" aria-label="Close chat panel">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+      <img src="/assets/images/bucks-logo.svg" class="chat-panel__logo" alt="Buckinghamshire Council">
+      <div class="chat-panel__title">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+        AI Assistant
+      </div>
+    </div>
+    <div class="chat-panel__messages" id="chat-messages" aria-live="polite" aria-label="Chat conversation">
+      <div class="chat-panel__empty" id="chat-empty">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+        Ask me anything about Buckinghamshire Council services.
+      </div>
+    </div>
+    <div class="chat-panel__footer">
+      <div class="chat-panel__suggestions" role="group" aria-label="Quick suggestions">
+        <button class="chat-panel__suggestion" data-query="When is my bin collected?">When is my bin collected?</button>
+        <button class="chat-panel__suggestion" data-query="How do I pay my council tax?">Council tax</button>
+      </div>
+      <form class="chat-panel__input-area" id="chat-form" aria-label="Ask us anything">
+        <label for="chat-input" class="visually-hidden">Type your question</label>
+        <input type="text" id="chat-input" class="chat-panel__input" placeholder="Ask us anything..." autocomplete="off" />
+        <button type="submit" class="chat-panel__send" aria-label="Send message">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
+        </button>
+      </form>
+      <p class="chat-panel__disclaimer" aria-hidden="true">AI answers may be inaccurate. Always verify important information.</p>
+    </div>
+  </aside>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>
